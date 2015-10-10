@@ -1,0 +1,3 @@
+Imie [text 64];Nazwisko [text 64];Email [text 64];typ [text 64];komisje obwodowe [lista PKW ID kody oddzielone , ]
+ChcePozostać;Anonimowy;anonim@migmail.pl;RU;
+Norbert;Halek;norbert.halek@gmail.com;RU;

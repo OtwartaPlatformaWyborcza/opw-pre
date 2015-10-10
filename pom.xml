@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pl.otwartapw</groupId>
+    <artifactId>opw-pre-parent</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+    <name>opw-pre</name>
+    <description>Top OPW-PRE project pom.xml file</description>
+    <url>http://otwartapw.pl</url>
+
+    <organization>
+        <name>Otwarta Platforma Wyborcza </name>
+        <url>http://otwartapw.pl</url>
+    </organization>
+    <inceptionYear>2015</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <scm>
+        <connection>scm:git:git@github.com:OtwartaPlatformaWyborcza/opw-pre.git</connection>
+        <url>scm:git:git@github.com:OtwartaPlatformaWyborcza/opw-pre.git</url>
+        <developerConnection>scm:git:git@github.com:OtwartaPlatformaWyborcza/opw-pre.git</developerConnection>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <slf4j.version>1.7.12</slf4j.version>
+        <wildfly.hostname>${server.wildfly.hostname}</wildfly.hostname>
+        <wildfly.port>${server.wildfly.port}</wildfly.port>
+        <wildfly.username>${server.wildfly.username}</wildfly.username>
+        <wildfly.password>${server.wildfly.password}</wildfly.password>
+    </properties>
+
+    <developers>
+        <developer>            
+            <id>adam</id>
+            <name>Adam Kowalewski</name>
+            <email></email>
+        </developer>
+    </developers>
+    
+    <modules>
+        <module>opw-pre-base</module>
+        <module>opw-pre-register</module>
+        <module>opw-pre-register-ws</module>
+        <module>opw-pre-register-ws-api</module>        
+    </modules>
+
+</project>
