@@ -19,52 +19,42 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <resteasy.version>3.0.12.Final</resteasy.version>        
     </properties>        
     
     <dependencies>
         <dependency>
+            <groupId>pl.otwartapw</groupId>
+            <artifactId>opw-pre-register-ws-api</artifactId>
+        </dependency>
+        
+        <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>5.2</version>
-        </dependency>
-        <dependency>
-            <groupId>ok.otwartapw.opw</groupId>
-            <artifactId>opw-pre-ws-register-model</artifactId>
-            <version>0.1.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
-            <version>${resteasy.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jackson-provider</artifactId>
-            <version>${resteasy.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-json-p-provider</artifactId>
-            <version>${resteasy.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>
-            <version>${slf4j.version}</version>
+            <artifactId>slf4j-api</artifactId>            
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>            
+        </dependency>        
         <dependency>
             <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
+            <artifactId>javaee-web-api</artifactId>            
         </dependency>
     </dependencies>
 

@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.ws.register.model;
+package pl.otwartapw.opw.pre.register.ws.api;
 
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;

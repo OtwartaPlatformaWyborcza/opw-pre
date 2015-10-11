@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.ws.register;
+package pl.otwartapw.opw.pre.register.ws;
 
 import java.io.IOException;
 import java.io.InputStream;

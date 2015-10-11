@@ -21,14 +21,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.ws.register;
+package pl.otwartapw.opw.pre.register.ws;
 
-import java.io.Serializable;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map.Entry;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.ext.Provider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author Adam Kowalewski
  */
-public class RegisterService implements Serializable {
+@Provider
+public class FilterContainerRequest implements ContainerRequestFilter {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    public FilterContainerRequest() {
+        logger.info("FilterRequest()");
+    }
+
+    @Override
+    public void filter(ContainerRequestContext requestContext) throws IOException {
+        logger.info("filter()");
+
+        if (logger.isDebugEnabled()) {
+            printHttpHeaders(requestContext.getHeaders());
+        }
+
+    }
+
+    private void printHttpHeaders(MultivaluedMap<String, String> headers) {
+        logger.debug("printHttpHeaders");
+        for (Entry<String, List<String>> entry : headers.entrySet()) {
+            logger.debug("{}: {}", entry.getKey(), entry.getValue());
+        }
+    }
 
 }

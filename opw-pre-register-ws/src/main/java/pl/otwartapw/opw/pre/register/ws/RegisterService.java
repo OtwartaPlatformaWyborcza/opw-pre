@@ -21,35 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.ws.register;
+package pl.otwartapw.opw.pre.register.ws;
 
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.ws.register.model.PersonDto;
-import pl.otwartapw.opw.pre.ws.register.model.RegisterApi;
+import java.io.Serializable;
 
 /**
- * Implementation of REST API.
  *
  * @author Adam Kowalewski
  */
-@Path("/")
-public class RegisterResource implements RegisterApi {
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @Override
-    public Response register(PersonDto personDto) {
-        logger.info("register WiP {} ", personDto.toString());
-        return Response.ok().build();
-    }
-
-    @Override
-    public Response version() {
-        Version version = new Version();
-        return Response.ok().entity(version.getVersionFull()).build();
-    }
+public class RegisterService implements Serializable {
 
 }

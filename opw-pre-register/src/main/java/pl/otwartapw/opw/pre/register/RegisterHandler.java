@@ -32,8 +32,8 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.ws.register.model.PersonDto;
-import pl.otwartapw.opw.pre.ws.register.model.RegisterApi;
+import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
+import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 
 /**
  *
@@ -60,7 +60,7 @@ public class RegisterHandler implements Serializable {
     }
 
     public void register() throws Exception {
-        
+
         Response r = buildClient().register(person);
 
         logger.info("resp {}", r.getStatus());

@@ -21,46 +21,36 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.ws.register;
+package pl.otwartapw.opw.pre.register.ws.api;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Map.Entry;
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.ext.Provider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static javax.ws.rs.core.MediaType.APPLICATION_XML;
+import javax.ws.rs.core.Response;
 
 /**
+ * REST API definition for OPW-PRE registration.
  *
  * @author Adam Kowalewski
+ * @version 2015.09.19
  */
-@Provider
-public class FilterContainerRequest implements ContainerRequestFilter {
+public interface RegisterApi {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    @POST
+    @Path("/register")
+    @Consumes({APPLICATION_JSON, APPLICATION_XML})
+    @Produces({APPLICATION_JSON, APPLICATION_XML})
+    Response register(@NotNull @Valid PersonDto personDto);
 
-    public FilterContainerRequest() {
-        logger.info("FilterRequest()");
-    }
-
-    @Override
-    public void filter(ContainerRequestContext requestContext) throws IOException {
-        logger.info("filter()");
-
-        if (logger.isDebugEnabled()) {
-            printHttpHeaders(requestContext.getHeaders());
-        }
-
-    }
-
-    private void printHttpHeaders(MultivaluedMap<String, String> headers) {
-        logger.debug("printHttpHeaders");
-        for (Entry<String, List<String>> entry : headers.entrySet()) {
-            logger.debug("{}: {}", entry.getKey(), entry.getValue());
-        }
-    }
+    @GET
+    @Path("/version")
+    @Produces({APPLICATION_JSON, APPLICATION_XML})
+    Response version();
 
 }

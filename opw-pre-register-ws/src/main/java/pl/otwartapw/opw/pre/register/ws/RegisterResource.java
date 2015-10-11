@@ -21,17 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.ws.register;
+package pl.otwartapw.opw.pre.register.ws;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
+import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 
 /**
- * REST activation.
+ * Implementation of REST API.
  *
  * @author Adam Kowalewski
  */
-@ApplicationPath("/service")
-public class RegisterApplication extends Application {
+@Path("/")
+public class RegisterResource implements RegisterApi {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Override
+    public Response register(PersonDto personDto) {
+        logger.info("register WiP {} ", personDto.toString());
+        return Response.ok().build();
+    }
+
+    @Override
+    public Response version() {
+        Version version = new Version();
+        return Response.ok().entity(version.getVersionFull()).build();
+    }
 
 }
