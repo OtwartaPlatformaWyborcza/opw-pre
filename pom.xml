@@ -64,6 +64,7 @@
                 <groupId>pl.otwartapw</groupId>
                 <artifactId>opw-pre-register-ws-api</artifactId>            
                 <version>${project.version}</version>
+                <type>jar</type>
             </dependency>
             
             <dependency>
