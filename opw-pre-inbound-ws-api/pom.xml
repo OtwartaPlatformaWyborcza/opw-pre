@@ -4,29 +4,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>pl.otwartapw</groupId>
         <artifactId>opw-pre-parent</artifactId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
-
-    <artifactId>opw-pre-register-ws-api</artifactId>
+    
+    <artifactId>opw-pre-inbound-ws-api</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-
+    
     <packaging>jar</packaging>
-    <name>opw-pre-register-ws-api</name>
-
+    <name>opw-pre-inbound-ws-api</name>
+    
     <properties>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-        
+    
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>                        
+            <artifactId>javaee-web-api</artifactId>
+            <type>jar</type>
         </dependency>
     </dependencies>
-
+    
 </project>
