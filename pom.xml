@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -34,6 +36,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
         <slf4j.version>1.7.12</slf4j.version>
         <resteasy.version>3.0.12.Final</resteasy.version>
         <wildfly.hostname>${server.wildfly.hostname}</wildfly.hostname>
@@ -57,7 +61,9 @@
         <module>opw-pre-register-ws-api</module>
     <module>opw-pre-management</module>
         <module>opw-pre-inbound-ws-api</module>
-    </modules>
+        <module>opw-pre-outbound-ws-api</module>
+    <module>opw-pre-outbound-ws</module>
+  </modules>
     
     <dependencyManagement>
         <dependencies>
