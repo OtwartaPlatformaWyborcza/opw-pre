@@ -42,6 +42,8 @@
         <wildfly.port>${server.wildfly.port}</wildfly.port>
         <wildfly.username>${server.wildfly.username}</wildfly.username>
         <wildfly.password>${server.wildfly.password}</wildfly.password>
+        
+        <wildfly.plugin.version>1.0.2.Final</wildfly.plugin.version>
     </properties>
 
     <developers>
