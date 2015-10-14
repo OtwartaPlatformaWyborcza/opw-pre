@@ -59,11 +59,11 @@
         <module>opw-pre-register</module>
         <module>opw-pre-register-ws</module>
         <module>opw-pre-register-ws-api</module>
-    <module>opw-pre-management</module>
+        <module>opw-pre-management</module>
         <module>opw-pre-inbound-ws-api</module>
         <module>opw-pre-outbound-ws-api</module>
-    <module>opw-pre-outbound-ws</module>
-  </modules>
+        <module>opw-pre-outbound-ws</module>
+    </modules>
     
     <dependencyManagement>
         <dependencies>
@@ -71,6 +71,12 @@
             <dependency>
                 <groupId>pl.otwartapw</groupId>
                 <artifactId>opw-pre-register-ws-api</artifactId>            
+                <version>${project.version}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>pl.otwartapw</groupId>
+                <artifactId>opw-pre-outbound-ws-api</artifactId>
                 <version>${project.version}</version>
                 <type>jar</type>
             </dependency>
