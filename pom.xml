@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -47,7 +45,7 @@
     </properties>
 
     <developers>
-        <developer>            
+        <developer>
             <id>adam</id>
             <name>Adam Kowalewski</name>
             <email/>
@@ -56,13 +54,14 @@
     
     <modules>
         <module>opw-pre-base</module>
+        <module>opw-pre-management</module>
+        <module>opw-pre-inbound-ws-api</module>
+        <module>opw-pre-inbound-ws</module>
+        <module>opw-pre-outbound-ws-api</module>
+        <module>opw-pre-outbound-ws</module>
         <module>opw-pre-register</module>
         <module>opw-pre-register-ws</module>
         <module>opw-pre-register-ws-api</module>
-        <module>opw-pre-management</module>
-        <module>opw-pre-inbound-ws-api</module>
-        <module>opw-pre-outbound-ws-api</module>
-        <module>opw-pre-outbound-ws</module>
     </modules>
     
     <dependencyManagement>
@@ -70,7 +69,7 @@
             
             <dependency>
                 <groupId>pl.otwartapw</groupId>
-                <artifactId>opw-pre-register-ws-api</artifactId>            
+                <artifactId>opw-pre-register-ws-api</artifactId>
                 <version>${project.version}</version>
                 <type>jar</type>
             </dependency>
