@@ -23,8 +23,6 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws.api;
 
-import pl.otwartapw.opw.pre.inbound.ws.api.dto.ProtokolDto;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -37,36 +35,22 @@ import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import javax.ws.rs.core.Response;
 
 /**
- * API definition for Komisja Obwodowa resource.
  *
  * @author Adam Kowalewski
  */
-@Path("/obwodowa")
-public interface ObwodowaApi {
+@Path("/user")
+public interface UserApi {
 
-    public static final String PP_PKWID = "pkwId";
+    public static final String PP_UID = "userId";
 
     @GET
     @Path("/")
     @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getObwodowaList();
+    public Response getUserList();
 
     @GET
-    @Path("/{" + PP_PKWID + "}")
+    @Path("/{" + PP_UID + "}")
     @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getObwodowa(@NotNull @PathParam(PP_PKWID) String pkwId);
-
-    @GET
-    @Path("/{" + PP_PKWID + "}/protokol")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getObwodowaProtokolList(@NotNull @PathParam(PP_PKWID) String pkwId);
-
-    @POST
-    @Path("/{" + PP_PKWID + "}/protokol")
-    @Consumes({APPLICATION_JSON, APPLICATION_XML})
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response postObwodowaProtokol(
-            @NotNull @PathParam(PP_PKWID) String pkwId,
-            @NotNull @Valid ProtokolDto protokolDto);
+    public Response getUser(@NotNull @PathParam(PP_UID) String userId);
 
 }

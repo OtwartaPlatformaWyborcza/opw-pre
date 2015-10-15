@@ -21,23 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.inbound.ws.api;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.MediaType.APPLICATION_XML;
-import javax.ws.rs.core.Response;
+package pl.otwartapw.opw.pre.inbound.ws.api.dto;
 
 /**
  *
  * @author Adam Kowalewski
  */
-public interface InboundApi {
-
-    @GET
-    @Path("/version")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    Response version();
+public class ProtokolDto {
+    
 }

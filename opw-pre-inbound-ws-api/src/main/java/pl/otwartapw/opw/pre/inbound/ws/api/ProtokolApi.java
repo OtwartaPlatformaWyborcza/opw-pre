@@ -23,6 +23,7 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws.api;
 
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.ProtokolDto;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
@@ -55,7 +56,7 @@ public interface ProtokolApi {
     @Path("/")
     @Consumes({APPLICATION_JSON, APPLICATION_XML})
     @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response postProtokol(@NotNull @Valid ObwodowaProtokolDto dto);
+    public Response postProtokol(@NotNull @Valid ProtokolDto dto);
 
     @GET
     @Path("/{" + PP_PID + "}")
@@ -68,6 +69,6 @@ public interface ProtokolApi {
     @Produces({APPLICATION_JSON, APPLICATION_XML})
     public Response putProtokol(
             @NotNull @Valid @PathParam(PP_PID) String protokolId,
-            @NotNull @Valid ObwodowaProtokolDto dto);
+            @NotNull @Valid ProtokolDto dto);
 
 }

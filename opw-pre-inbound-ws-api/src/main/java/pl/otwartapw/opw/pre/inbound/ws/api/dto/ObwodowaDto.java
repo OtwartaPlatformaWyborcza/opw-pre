@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.inbound.ws.api;
+package pl.otwartapw.opw.pre.inbound.ws.api.dto;
 
 /**
  *
  * @author Adam Kowalewski
  */
-public interface WynikApi {
+public class ObwodowaDto {
     
 }
