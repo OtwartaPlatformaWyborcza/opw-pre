@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Adam Kowalewski.
+ * Copyright 2015 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_config", catalog = "opw", schema = "")
+@Table(name = "opw_config", catalog = "opw_pre", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OpwConfig.findAll", query = "SELECT o FROM OpwConfig o"),

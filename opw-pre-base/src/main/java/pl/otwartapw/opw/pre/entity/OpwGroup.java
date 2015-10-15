@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Adam Kowalewski.
+ * Copyright 2015 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_group", catalog = "opw", schema = "")
+@Table(name = "opw_group", catalog = "opw_pre", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OpwGroup.findAll", query = "SELECT o FROM OpwGroup o"),
@@ -66,16 +66,16 @@ public class OpwGroup implements Serializable {
     @Size(max = 64)
     @Column(name = "description", length = 64)
     private String description;
-    @JoinTable(name = "opw_group_has_opw_permission", joinColumns = {
-        @JoinColumn(name = "opw_group_id", referencedColumnName = "id", nullable = false)}, inverseJoinColumns = {
-        @JoinColumn(name = "opw_permission_id", referencedColumnName = "id", nullable = false)})
-    @ManyToMany
-    private List<OpwPermission> opwPermissionList;
     @JoinTable(name = "opw_user_has_opw_group", joinColumns = {
         @JoinColumn(name = "opw_group_id", referencedColumnName = "id", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "opw_user_id", referencedColumnName = "id", nullable = false)})
     @ManyToMany
     private List<OpwUser> opwUserList;
+    @JoinTable(name = "opw_group_has_opw_permission", joinColumns = {
+        @JoinColumn(name = "opw_group_id", referencedColumnName = "id", nullable = false)}, inverseJoinColumns = {
+        @JoinColumn(name = "opw_permission_id", referencedColumnName = "id", nullable = false)})
+    @ManyToMany
+    private List<OpwPermission> opwPermissionList;
 
     public OpwGroup() {
     }
@@ -109,21 +109,21 @@ public class OpwGroup implements Serializable {
     }
 
     @XmlTransient
-    public List<OpwPermission> getOpwPermissionList() {
-        return opwPermissionList;
-    }
-
-    public void setOpwPermissionList(List<OpwPermission> opwPermissionList) {
-        this.opwPermissionList = opwPermissionList;
-    }
-
-    @XmlTransient
     public List<OpwUser> getOpwUserList() {
         return opwUserList;
     }
 
     public void setOpwUserList(List<OpwUser> opwUserList) {
         this.opwUserList = opwUserList;
+    }
+
+    @XmlTransient
+    public List<OpwPermission> getOpwPermissionList() {
+        return opwPermissionList;
+    }
+
+    public void setOpwPermissionList(List<OpwPermission> opwPermissionList) {
+        this.opwPermissionList = opwPermissionList;
     }
 
     @Override

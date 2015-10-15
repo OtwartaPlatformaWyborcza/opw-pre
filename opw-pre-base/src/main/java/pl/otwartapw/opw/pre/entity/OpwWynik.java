@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Adam Kowalewski.
+ * Copyright 2015 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_wynik", catalog = "opw", schema = "")
+@Table(name = "opw_wynik", catalog = "opw_pre", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OpwWynik.findAll", query = "SELECT o FROM OpwWynik o"),
@@ -63,17 +63,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "OpwWynik.findByFileOriginal", query = "SELECT o FROM OpwWynik o WHERE o.fileOriginal = :fileOriginal"),
     @NamedQuery(name = "OpwWynik.findByActive", query = "SELECT o FROM OpwWynik o WHERE o.active = :active"),
     @NamedQuery(name = "OpwWynik.findByDateCreated", query = "SELECT o FROM OpwWynik o WHERE o.dateCreated = :dateCreated"),
-    @NamedQuery(name = "OpwWynik.findByK1", query = "SELECT o FROM OpwWynik o WHERE o.k1 = :k1"),
-    @NamedQuery(name = "OpwWynik.findByK2", query = "SELECT o FROM OpwWynik o WHERE o.k2 = :k2"),
-    @NamedQuery(name = "OpwWynik.findByK3", query = "SELECT o FROM OpwWynik o WHERE o.k3 = :k3"),
-    @NamedQuery(name = "OpwWynik.findByK4", query = "SELECT o FROM OpwWynik o WHERE o.k4 = :k4"),
-    @NamedQuery(name = "OpwWynik.findByK5", query = "SELECT o FROM OpwWynik o WHERE o.k5 = :k5"),
-    @NamedQuery(name = "OpwWynik.findByK6", query = "SELECT o FROM OpwWynik o WHERE o.k6 = :k6"),
-    @NamedQuery(name = "OpwWynik.findByK7", query = "SELECT o FROM OpwWynik o WHERE o.k7 = :k7"),
-    @NamedQuery(name = "OpwWynik.findByK8", query = "SELECT o FROM OpwWynik o WHERE o.k8 = :k8"),
-    @NamedQuery(name = "OpwWynik.findByK9", query = "SELECT o FROM OpwWynik o WHERE o.k9 = :k9"),
-    @NamedQuery(name = "OpwWynik.findByK10", query = "SELECT o FROM OpwWynik o WHERE o.k10 = :k10"),
-    @NamedQuery(name = "OpwWynik.findByK11", query = "SELECT o FROM OpwWynik o WHERE o.k11 = :k11"),
     @NamedQuery(name = "OpwWynik.findByRatedPositiv", query = "SELECT o FROM OpwWynik o WHERE o.ratedPositiv = :ratedPositiv"),
     @NamedQuery(name = "OpwWynik.findByRatedNegativ", query = "SELECT o FROM OpwWynik o WHERE o.ratedNegativ = :ratedNegativ"),
     @NamedQuery(name = "OpwWynik.findByStatus", query = "SELECT o FROM OpwWynik o WHERE o.status = :status")})
@@ -102,47 +91,27 @@ public class OpwWynik implements Serializable {
     @Column(name = "dateCreated")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
-    @Column(name = "k1")
-    private Short k1;
-    @Column(name = "k2")
-    private Short k2;
-    @Column(name = "k3")
-    private Short k3;
-    @Column(name = "k4")
-    private Short k4;
-    @Column(name = "k5")
-    private Short k5;
-    @Column(name = "k6")
-    private Short k6;
-    @Column(name = "k7")
-    private Short k7;
-    @Column(name = "k8")
-    private Short k8;
-    @Column(name = "k9")
-    private Short k9;
-    @Column(name = "k10")
-    private Short k10;
-    @Column(name = "k11")
-    private Short k11;
     @Column(name = "ratedPositiv")
     private Integer ratedPositiv;
     @Column(name = "ratedNegativ")
     private Integer ratedNegativ;
     @Column(name = "status")
     private Integer status;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwWynikId")
-    private List<OpwLink> opwLinkList;
+    @JoinColumn(name = "opw_obwodowa_komisja_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private OpwObwodowaKomisja opwObwodowaKomisjaId;
+    @JoinColumn(name = "opw_user_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private OpwUser opwUserId;
     @OneToMany(mappedBy = "parentId")
     private List<OpwWynik> opwWynikList;
     @JoinColumn(name = "parentId", referencedColumnName = "id")
     @ManyToOne
     private OpwWynik parentId;
-    @JoinColumn(name = "opw_user_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private OpwUser opwUserId;
-    @JoinColumn(name = "opw_obwodowa_komisja_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private OpwObwodowaKomisja opwObwodowaKomisjaId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwWynikId")
+    private List<OpwLink> opwLinkList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwWynik")
+    private List<OpwWynikkandydata> opwWynikkandydataList;
 
     public OpwWynik() {
     }
@@ -223,94 +192,6 @@ public class OpwWynik implements Serializable {
         this.dateCreated = dateCreated;
     }
 
-    public Short getK1() {
-        return k1;
-    }
-
-    public void setK1(Short k1) {
-        this.k1 = k1;
-    }
-
-    public Short getK2() {
-        return k2;
-    }
-
-    public void setK2(Short k2) {
-        this.k2 = k2;
-    }
-
-    public Short getK3() {
-        return k3;
-    }
-
-    public void setK3(Short k3) {
-        this.k3 = k3;
-    }
-
-    public Short getK4() {
-        return k4;
-    }
-
-    public void setK4(Short k4) {
-        this.k4 = k4;
-    }
-
-    public Short getK5() {
-        return k5;
-    }
-
-    public void setK5(Short k5) {
-        this.k5 = k5;
-    }
-
-    public Short getK6() {
-        return k6;
-    }
-
-    public void setK6(Short k6) {
-        this.k6 = k6;
-    }
-
-    public Short getK7() {
-        return k7;
-    }
-
-    public void setK7(Short k7) {
-        this.k7 = k7;
-    }
-
-    public Short getK8() {
-        return k8;
-    }
-
-    public void setK8(Short k8) {
-        this.k8 = k8;
-    }
-
-    public Short getK9() {
-        return k9;
-    }
-
-    public void setK9(Short k9) {
-        this.k9 = k9;
-    }
-
-    public Short getK10() {
-        return k10;
-    }
-
-    public void setK10(Short k10) {
-        this.k10 = k10;
-    }
-
-    public Short getK11() {
-        return k11;
-    }
-
-    public void setK11(Short k11) {
-        this.k11 = k11;
-    }
-
     public Integer getRatedPositiv() {
         return ratedPositiv;
     }
@@ -335,13 +216,20 @@ public class OpwWynik implements Serializable {
         this.status = status;
     }
 
-    @XmlTransient
-    public List<OpwLink> getOpwLinkList() {
-        return opwLinkList;
+    public OpwObwodowaKomisja getOpwObwodowaKomisjaId() {
+        return opwObwodowaKomisjaId;
     }
 
-    public void setOpwLinkList(List<OpwLink> opwLinkList) {
-        this.opwLinkList = opwLinkList;
+    public void setOpwObwodowaKomisjaId(OpwObwodowaKomisja opwObwodowaKomisjaId) {
+        this.opwObwodowaKomisjaId = opwObwodowaKomisjaId;
+    }
+
+    public OpwUser getOpwUserId() {
+        return opwUserId;
+    }
+
+    public void setOpwUserId(OpwUser opwUserId) {
+        this.opwUserId = opwUserId;
     }
 
     @XmlTransient
@@ -361,20 +249,22 @@ public class OpwWynik implements Serializable {
         this.parentId = parentId;
     }
 
-    public OpwUser getOpwUserId() {
-        return opwUserId;
+    @XmlTransient
+    public List<OpwLink> getOpwLinkList() {
+        return opwLinkList;
     }
 
-    public void setOpwUserId(OpwUser opwUserId) {
-        this.opwUserId = opwUserId;
+    public void setOpwLinkList(List<OpwLink> opwLinkList) {
+        this.opwLinkList = opwLinkList;
     }
 
-    public OpwObwodowaKomisja getOpwObwodowaKomisjaId() {
-        return opwObwodowaKomisjaId;
+    @XmlTransient
+    public List<OpwWynikkandydata> getOpwWynikkandydataList() {
+        return opwWynikkandydataList;
     }
 
-    public void setOpwObwodowaKomisjaId(OpwObwodowaKomisja opwObwodowaKomisjaId) {
-        this.opwObwodowaKomisjaId = opwObwodowaKomisjaId;
+    public void setOpwWynikkandydataList(List<OpwWynikkandydata> opwWynikkandydataList) {
+        this.opwWynikkandydataList = opwWynikkandydataList;
     }
 
     @Override

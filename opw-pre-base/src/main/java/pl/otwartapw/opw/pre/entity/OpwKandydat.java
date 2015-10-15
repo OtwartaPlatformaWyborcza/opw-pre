@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Adam Kowalewski.
+ * Copyright 2015 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,9 @@
 package pl.otwartapw.opw.pre.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,16 +34,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_kandydat", catalog = "opw", schema = "")
+@Table(name = "opw_kandydat", catalog = "opw_pre", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OpwKandydat.findAll", query = "SELECT o FROM OpwKandydat o"),
@@ -64,6 +68,8 @@ public class OpwKandydat implements Serializable {
     @Size(max = 64)
     @Column(name = "lastname", length = 64)
     private String lastname;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwKandydat")
+    private List<OpwWynikkandydata> opwWynikkandydataList;
 
     public OpwKandydat() {
     }
@@ -102,6 +108,15 @@ public class OpwKandydat implements Serializable {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    @XmlTransient
+    public List<OpwWynikkandydata> getOpwWynikkandydataList() {
+        return opwWynikkandydataList;
+    }
+
+    public void setOpwWynikkandydataList(List<OpwWynikkandydata> opwWynikkandydataList) {
+        this.opwWynikkandydataList = opwWynikkandydataList;
     }
 
     @Override

@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Adam Kowalewski.
+ * Copyright 2015 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_obwodowa_komisja", catalog = "opw", schema = "", uniqueConstraints = {
+@Table(name = "opw_obwodowa_komisja", catalog = "opw_pre", schema = "", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"pkwId"})})
 @XmlRootElement
 @NamedQueries({

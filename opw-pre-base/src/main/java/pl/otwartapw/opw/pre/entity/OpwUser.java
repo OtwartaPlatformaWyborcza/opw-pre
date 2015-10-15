@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Adam Kowalewski.
+ * Copyright 2015 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_user", catalog = "opw", schema = "", uniqueConstraints = {
+@Table(name = "opw_user", catalog = "opw_pre", schema = "", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"email"})})
 @XmlRootElement
 @NamedQueries({
@@ -113,11 +113,11 @@ public class OpwUser implements Serializable {
     @ManyToMany(mappedBy = "opwUserList")
     private List<OpwGroup> opwGroupList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwUserId")
-    private List<OpwLink> opwLinkList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwUserId")
     private List<OpwWynik> opwWynikList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwUserId")
     private List<OpwSession> opwSessionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwUserId")
+    private List<OpwLink> opwLinkList;
 
     public OpwUser() {
     }
@@ -241,15 +241,6 @@ public class OpwUser implements Serializable {
     }
 
     @XmlTransient
-    public List<OpwLink> getOpwLinkList() {
-        return opwLinkList;
-    }
-
-    public void setOpwLinkList(List<OpwLink> opwLinkList) {
-        this.opwLinkList = opwLinkList;
-    }
-
-    @XmlTransient
     public List<OpwWynik> getOpwWynikList() {
         return opwWynikList;
     }
@@ -265,6 +256,15 @@ public class OpwUser implements Serializable {
 
     public void setOpwSessionList(List<OpwSession> opwSessionList) {
         this.opwSessionList = opwSessionList;
+    }
+
+    @XmlTransient
+    public List<OpwLink> getOpwLinkList() {
+        return opwLinkList;
+    }
+
+    public void setOpwLinkList(List<OpwLink> opwLinkList) {
+        this.opwLinkList = opwLinkList;
     }
 
     @Override
