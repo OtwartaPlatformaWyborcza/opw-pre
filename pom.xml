@@ -63,7 +63,13 @@
         <dependencies>
             
             <dependency>
-                <groupId>pl.otwartapw</groupId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>opw-pre-base</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+            </dependency>            
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>opw-pre-register-ws-api</artifactId>            
                 <version>${project.version}</version>
                 <type>jar</type>
@@ -100,6 +106,7 @@
                 <artifactId>slf4j-jdk14</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
+            
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-web-api</artifactId>
