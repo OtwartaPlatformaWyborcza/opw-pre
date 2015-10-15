@@ -34,16 +34,20 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
         <slf4j.version>1.7.12</slf4j.version>
         <resteasy.version>3.0.12.Final</resteasy.version>
         <wildfly.hostname>${server.wildfly.hostname}</wildfly.hostname>
         <wildfly.port>${server.wildfly.port}</wildfly.port>
         <wildfly.username>${server.wildfly.username}</wildfly.username>
         <wildfly.password>${server.wildfly.password}</wildfly.password>
+        
+        <wildfly.plugin.version>1.0.2.Final</wildfly.plugin.version>
     </properties>
 
     <developers>
-        <developer>            
+        <developer>
             <id>adam</id>
             <name>Adam Kowalewski</name>
             <email/>
@@ -52,11 +56,14 @@
     
     <modules>
         <module>opw-pre-base</module>
+        <module>opw-pre-management</module>
+        <module>opw-pre-inbound-ws-api</module>
+        <module>opw-pre-inbound-ws</module>
+        <module>opw-pre-outbound-ws-api</module>
+        <module>opw-pre-outbound-ws</module>
         <module>opw-pre-register</module>
         <module>opw-pre-register-ws</module>
         <module>opw-pre-register-ws-api</module>
-    <module>opw-pre-management</module>
-        <module>opw-pre-inbound-ws-api</module>
     </modules>
     
     <dependencyManagement>
@@ -67,7 +74,19 @@
                 <artifactId>opw-pre-base</artifactId>
                 <version>${project.version}</version>
                 <type>jar</type>
-            </dependency>            
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>opw-pre-inbound-ws-api</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>opw-pre-outbound-ws-api</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+            </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>opw-pre-register-ws-api</artifactId>            
@@ -80,7 +99,6 @@
                 <artifactId>primefaces</artifactId>
                 <version>5.2</version>
             </dependency>
-            
             <dependency>
                 <groupId>org.jboss.resteasy</groupId>
                 <artifactId>resteasy-client</artifactId>
