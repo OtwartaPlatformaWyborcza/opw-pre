@@ -23,10 +23,19 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws.api.dto;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author Adam Kowalewski
  */
-public class ProtokolDto {
-    
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class ProtokolDto implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
 }
