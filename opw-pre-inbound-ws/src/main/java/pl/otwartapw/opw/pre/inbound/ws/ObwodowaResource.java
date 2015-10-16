@@ -23,6 +23,7 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws;
 
+import javax.ejb.EJB;
 import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,9 @@ import pl.otwartapw.opw.pre.inbound.ws.api.dto.ProtokolDto;
 public class ObwodowaResource implements ObwodowaApi{
     
     private static final Logger logger = LoggerFactory.getLogger(ObwodowaResource.class);
+    
+    @EJB
+    ObwodowaService service;
 
     @Override
     public Response getObwodowaList() {
@@ -44,12 +48,14 @@ public class ObwodowaResource implements ObwodowaApi{
     }
 
     @Override
-    public Response getObwodowaShort() {
+    public Response getObwodowaShortList() {
+        logger.info("getObwodowaShortList");
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Response getObwodowa(String pkwId) {
+        logger.info("getObwodowa {}", pkwId);
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
