@@ -54,7 +54,7 @@ public interface ObwodowaApi {
     @GET
     @Path("/short")
     @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getObwodowaShort();
+    public Response getObwodowaShortList();
 
     @GET
     @Path("/{" + PP_PKWID + "}")
