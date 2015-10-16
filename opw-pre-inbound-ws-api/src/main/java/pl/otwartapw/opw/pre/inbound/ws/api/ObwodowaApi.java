@@ -50,6 +50,11 @@ public interface ObwodowaApi {
     @Path("/")
     @Produces({APPLICATION_JSON, APPLICATION_XML})
     public Response getObwodowaList();
+    
+    @GET
+    @Path("/short")
+    @Produces({APPLICATION_JSON, APPLICATION_XML})
+    public Response getObwodowaShort();
 
     @GET
     @Path("/{" + PP_PKWID + "}")
