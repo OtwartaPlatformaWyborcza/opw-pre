@@ -29,9 +29,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * TODO reconsider
+ * DTO represents Kandydat.
  *
  * @author Adam Kowalewski
+ * @version 2015.10.19
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -44,5 +45,62 @@ public class KandydatDto implements Serializable {
     private String lastname;
     private int glosow;
 
-    
+    public KandydatDto() {
+    }
+
+    public KandydatDto(String pkwId, String firstname, String lastname) {
+        this.pkwId = pkwId;
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
+    public KandydatDto(String pkwId, String firstname, String lastname, int glosow) {
+        this.pkwId = pkwId;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.glosow = glosow;
+    }
+
+    public String getPkwId() {
+        return pkwId;
+    }
+
+    public void setPkwId(String pkwId) {
+        this.pkwId = pkwId;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public int getGlosow() {
+        return glosow;
+    }
+
+    public void setGlosow(int glosow) {
+        this.glosow = glosow;
+    }
+
+    @Override
+    public String toString() {
+        return "KandydatDto{"
+                + "pkwId=" + pkwId
+                + ", firstname=" + firstname
+                + ", lastname=" + lastname
+                + ", glosow=" + glosow
+                + '}';
+    }
+
 }

@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * DTO represents a Komisja Okregowa.
  *
  * @author Adam Kowalewski
+ * @version 2015.10.19
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
