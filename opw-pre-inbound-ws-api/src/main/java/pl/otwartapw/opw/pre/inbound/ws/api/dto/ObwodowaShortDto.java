@@ -23,10 +23,88 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws.api.dto;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
+ * DTO represents a single row in Komisja Obwodowa table.
  *
  * @author Adam Kowalewski
  */
-public class ObwodowaShortDto {
-    
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class ObwodowaShortDto implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private int id;
+    private String pkwId;
+    private String name;
+    private String address;
+    private int protokolCount;
+
+    public ObwodowaShortDto() {
+    }
+
+    public ObwodowaShortDto(int id, String pkwId, String name, String address, int protokolCount) {
+        this.id = id;
+        this.pkwId = pkwId;
+        this.name = name;
+        this.address = address;
+        this.protokolCount = protokolCount;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getPkwId() {
+        return pkwId;
+    }
+
+    public void setPkwId(String pkwId) {
+        this.pkwId = pkwId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getProtokolCount() {
+        return protokolCount;
+    }
+
+    public void setProtokolCount(int protokolCount) {
+        this.protokolCount = protokolCount;
+    }
+
+    @Override
+    public String toString() {
+        return "ObwodowaShortDto{"
+                + "id=" + id
+                + ", pkwId=" + pkwId
+                + ", name=" + name
+                + ", address=" + address
+                + ", protokolCount=" + protokolCount
+                + '}';
+    }
+
 }
