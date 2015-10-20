@@ -1,15 +1,72 @@
 # Otwarta Platforma Wyborcza
 1. [Organizacja](https://github.com/OtwartaPlatformaWyborcza/Organizacja#otwarta-platforma-wyborcza)  
 2. [Członkowie](https://github.com/OtwartaPlatformaWyborcza/Organizacja#cz%C5%82onkowie)  
-3. [Jak do nas dołączyć?](https://github.com/OtwartaPlatformaWyborcza/Organizacja#jak-do-nas-do%C5%82%C4%85czy%C4%87) 
+3. [Jak do nas dołączyć?](https://github.com/OtwartaPlatformaWyborcza/Organizacja#jak-do-nas-do%C5%82%C4%85czy%C4%87)
 
 # opw-pre
 Wybory prezydenckie
 
 # Roadmap
+Plan realizacji systemu OPW-PRE.
 
 ### Wersja 0.1.0
-[PRE-1]()
-[PRE-2]()
-[PRE-3]()
-[PRE-4]()
+Refactoring struktury projektu, architektury jak i podstawowych komponentów API.  
+* [PRE-2](https://otwartapw.atlassian.net/browse/PRE-2) Refactoring struktury projektu
+* [DONE] [PRE-3](https://otwartapw.atlassian.net/browse/PRE-3) DB limit kandydatów
+* [PRE-5](https://otwartapw.atlassian.net/browse/PRE-5) Koncepcja serwisu GET Version
+* [PRE-6](https://otwartapw.atlassian.net/browse/PRE-6) Definicja artefaktu commons  
+
+### Wersja 0.2.0
+Implementacja masek administracyjnych.  
+* [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD
+
+
+### Wersja 0.3.0
+Integracja komisji obwodowej.  
+* [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD
+
+### Wersja 0.4.0
+Rejestracja wolontariusza
+* [PRE-1](https://otwartapw.atlassian.net/browse/PRE-1) Formularz rejestracji wolontariusza
+* [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD
+
+### Wersja 0.5.0
+Integracja docker'a.
+* [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD
+
+### Wersja 0.6.0
+Nowe funkcje TBD.
+* [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD Koncepcja monitoringu serwisów
+* Definicja szablonu SMS
+* Podbieranie protokołów przesłanych na skrzynke pocztową
+* Automatyczne parsowanie protokołów ze skrzynki pocztowej
+  * import poprawnych protokołów
+  * tagowanie błędnych protokołów
+* tagowanie błędnych protokołów
+
+
+
+### Wersja 0.7.0
+Nowe funkcje TBD.
+* [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD Implementacja monitoringu serwisów
+
+### Wersja 0.8.0
+Nowe funkcje TBD.
+
+### Wersja 0.9.0
+Implementacja testów wydajnościowych.
+
+### Wersja 0.10.0
+Stabilizacja aplikacji.
+
+### Wersja 0.11.0
+beta (automatyczna symulacja wyborów)
+
+### Wersja 0.12.0
+RC1 (automatyczna symulacja wyborów)
+
+### Wersja 0.13.0
+RC2 (automatyczna symulacja wyborów)
+
+### Wersja 1.0.0
+stable release
