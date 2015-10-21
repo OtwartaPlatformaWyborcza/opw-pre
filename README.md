@@ -18,7 +18,13 @@ Refactoring struktury projektu, architektury jak i podstawowych komponentów API
 
 ### Wersja 0.2.0
 Implementacja masek administracyjnych.  
-* [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD
+* [PRE-7](https://otwartapw.atlassian.net/browse/PRE-7) Maski administracyjne: Komisja Okregowa
+* [PRE-8](https://otwartapw.atlassian.net/browse/PRE-8) Maski administracyjne: Komisja Obwodowa
+* [PRE-9](https://otwartapw.atlassian.net/browse/PRE-9) Maski administracyjne: Województwo
+* [PRE-10](https://otwartapw.atlassian.net/browse/PRE-10) Maski administracyjne: Wynik
+* [PRE-11](https://otwartapw.atlassian.net/browse/PRE-11) Maski administracyjne: Link
+* [PRE-12](https://otwartapw.atlassian.net/browse/PRE-12) Maski administracyjne: Konfiguracja
+* [PRE-13](https://otwartapw.atlassian.net/browse/PRE-12) Maski administracyjne: Użytkownik
 
 
 ### Wersja 0.3.0
