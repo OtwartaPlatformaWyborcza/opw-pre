@@ -23,51 +23,24 @@
  */
 package pl.otwartapw.opw.pre.management.ws.api;
 
-import java.util.List;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.MediaType.APPLICATION_XML;
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * API definition for Wojewodztwo resource.
+ * DTO represents Wojewodztwo.
  *
  * @author Adam Kowalewski
  * @version 2015.10.23
  */
-@Path("/wojewodztwo")
-public interface WojewodztwoApi {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class WojewodztwoDto implements Serializable {
 
-    public static final String PP_PID = "wojewodztwoId";
+    private static final long serialVersionUID = 1L;
 
-    @GET
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    List<WojewodztwoDto> findAll();
-
-    @POST
-    @Consumes({APPLICATION_JSON, APPLICATION_XML})
-    void create(@NotNull @Valid WojewodztwoDto dto);
-
-    @GET
-    @Path("{" + PP_PID + "}")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    WojewodztwoDto find(@NotNull @PathParam(PP_PID) Integer wojewodztwoId);
-
-    @DELETE
-    @Path("{" + PP_PID + "}")
-    void remove(@NotNull @PathParam(PP_PID) Integer wojewodztwoId);
-
-    @PUT
-    @Path("{" + PP_PID + "}")
-    @Consumes({APPLICATION_JSON, APPLICATION_XML})
-    void edit(@PathParam(PP_PID) Integer id, @NotNull @Valid WojewodztwoDto dto);
+    public WojewodztwoDto() {
+    }
 
 }
