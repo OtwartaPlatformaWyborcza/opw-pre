@@ -1,5 +1,5 @@
 # Otwarta Platforma Wyborcza
-1. [Organizacja](https://github.com/OtwartaPlatformaWyborcza/Organizacja#otwarta-platforma-wyborcza)  
+1. [Organizacja](https://github.com/OtwartaPlatformaWyborcza/Organizacja#otwarta-platforma-wyborcza)
 2. [Członkowie](https://github.com/OtwartaPlatformaWyborcza/Organizacja#cz%C5%82onkowie)  
 3. [Jak do nas dołączyć?](https://github.com/OtwartaPlatformaWyborcza/Organizacja#jak-do-nas-do%C5%82%C4%85czy%C4%87)
 
@@ -14,7 +14,7 @@ Refactoring struktury projektu, architektury jak i podstawowych komponentów API
 * [x] [PRE-2](https://otwartapw.atlassian.net/browse/PRE-2) Refactoring struktury projektu
 * [x] [PRE-3](https://otwartapw.atlassian.net/browse/PRE-3) DB limit kandydatów
 * [x] [PRE-5](https://otwartapw.atlassian.net/browse/PRE-5) Koncepcja serwisu GET Version
-* [x] [PRE-6](https://otwartapw.atlassian.net/browse/PRE-6) Definicja artefaktu commons  
+* [x] [PRE-6](https://otwartapw.atlassian.net/browse/PRE-6) Definicja artefaktu commons
 
 ### Wersja 0.2.0
 Implementacja masek administracyjnych.  
@@ -24,7 +24,8 @@ Implementacja masek administracyjnych.
 * [PRE-10](https://otwartapw.atlassian.net/browse/PRE-10) Maski administracyjne: Wynik
 * [PRE-11](https://otwartapw.atlassian.net/browse/PRE-11) Maski administracyjne: Link
 * [PRE-12](https://otwartapw.atlassian.net/browse/PRE-12) Maski administracyjne: Konfiguracja
-* [PRE-13](https://otwartapw.atlassian.net/browse/PRE-12) Maski administracyjne: Użytkownik
+* [PRE-13](https://otwartapw.atlassian.net/browse/PRE-13) Maski administracyjne: Użytkownik
+* [PRE-14](https://otwartapw.atlassian.net/browse/PRE-14) Maski administracyjne: kandydat
 
 
 ### Wersja 0.3.0
