@@ -24,6 +24,8 @@
 package pl.otwartapw.opw.pre.management.ws.api;
 
 import java.io.Serializable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -40,7 +42,44 @@ public class WojewodztwoDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @NotNull
+    @Size(max = 64)
+    private String name;
+
+    @NotNull
+    @Size(max = 2)
+    private String teryt;
+
     public WojewodztwoDto() {
+    }
+
+    public WojewodztwoDto(String name, String teryt) {
+        this.name = name;
+        this.teryt = teryt;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTeryt() {
+        return teryt;
+    }
+
+    public void setTeryt(String teryt) {
+        this.teryt = teryt;
+    }
+
+    @Override
+    public String toString() {
+        return "WojewodztwoDto{"
+                + "name=" + name
+                + ", teryt=" + teryt
+                + '}';
     }
 
 }
