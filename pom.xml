@@ -51,7 +51,7 @@
         <developer>
             <id>adam</id>
             <name>Adam Kowalewski</name>
-            <email />
+            <email/>
         </developer>
     </developers>
     
@@ -66,6 +66,8 @@
         <module>opw-pre-register</module>
         <module>opw-pre-register-ws</module>
         <module>opw-pre-register-ws-api</module>
+        <module>opw-pre-management-ws-api</module>
+        <module>opw-pre-management-ws</module>
     </modules>
     
     <dependencyManagement>
