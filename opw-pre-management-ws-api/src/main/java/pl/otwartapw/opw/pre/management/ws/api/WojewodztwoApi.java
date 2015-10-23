@@ -70,4 +70,12 @@ public interface WojewodztwoApi {
     @Consumes({APPLICATION_JSON, APPLICATION_XML})
     void edit(@PathParam(PP_PID) Integer id, @NotNull @Valid WojewodztwoDto dto);
 
+    @GET
+    @Path("{from}/{to}")
+    @Produces({APPLICATION_JSON, APPLICATION_XML})
+    List<WojewodztwoDto> findRange(
+            @NotNull @PathParam("from") Integer from,
+            @NotNull @PathParam("to") Integer to
+    );
+
 }
