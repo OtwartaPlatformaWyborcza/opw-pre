@@ -27,15 +27,23 @@ import java.io.IOException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
+import javax.ws.rs.ext.Provider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author Adam Kowalewski
  */
+@Provider
 public class ContainerResponse implements ContainerResponseFilter{
+    private final static Logger logger = LoggerFactory.getLogger(ContainerResponse.class);
 
     @Override
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
+        logger.info(responseContext.getHeaders().toString());
+        responseContext.getHeaders().add("x-OPW", "lolo");
+        logger.info(responseContext.getHeaders().toString());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

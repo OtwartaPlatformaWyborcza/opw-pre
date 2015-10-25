@@ -21,23 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.ws.filter;
+package pl.otwartapw.opw.pre.management.ws;
 
-import java.io.IOException;
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.ext.Provider;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
 /**
  *
  * @author Adam Kowalewski
  */
-@Provider
-public class ContainerRequest implements ContainerRequestFilter{
-
-    @Override
-    public void filter(ContainerRequestContext requestContext) throws IOException {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+@ApplicationPath("/service")
+public class ManagementApplication extends Application{
     
 }
