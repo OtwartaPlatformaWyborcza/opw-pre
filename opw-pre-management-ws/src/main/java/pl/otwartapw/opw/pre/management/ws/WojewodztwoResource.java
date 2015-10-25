@@ -62,5 +62,10 @@ public class WojewodztwoResource implements WojewodztwoApi{
     public List<WojewodztwoDto> findRange(Integer from, Integer to) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public String count() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
