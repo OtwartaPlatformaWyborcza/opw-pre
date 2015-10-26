@@ -32,6 +32,6 @@ import javax.ws.rs.Path;
  * @version 2015.10.25
  */
 @Path("link")
-public interface LinkApi extends CrudApi<LinkDto> {
+public interface LinkApi extends AbstractCrudApi<LinkDto> {
 
 }

@@ -24,6 +24,9 @@
 package pl.otwartapw.opw.pre.management.ws;
 
 import java.util.List;
+import javax.ejb.EJB;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.management.ws.api.WojewodztwoApi;
 import pl.otwartapw.opw.pre.management.ws.api.WojewodztwoDto;
 
@@ -31,7 +34,12 @@ import pl.otwartapw.opw.pre.management.ws.api.WojewodztwoDto;
  *
  * @author Adam Kowalewski
  */
-public class WojewodztwoResource implements WojewodztwoApi{
+public class WojewodztwoResource implements WojewodztwoApi {
+
+    private final static Logger logger = LoggerFactory.getLogger(WojewodztwoResource.class);
+
+    @EJB
+    WojewodztwoService service;
 
     @Override
     public List<WojewodztwoDto> findAll() {
@@ -45,7 +53,7 @@ public class WojewodztwoResource implements WojewodztwoApi{
 
     @Override
     public WojewodztwoDto find(Integer wojewodztwoId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new WojewodztwoDto("test", "01");        
     }
 
     @Override
@@ -65,7 +73,7 @@ public class WojewodztwoResource implements WojewodztwoApi{
 
     @Override
     public String count() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return String.valueOf(service.count());
     }
-    
+
 }

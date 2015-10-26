@@ -21,17 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.ws.api;
+package pl.otwartapw.opw.pre.management.ws;
 
-import javax.ws.rs.Path;
+import java.io.Serializable;
+import javax.ejb.Stateless;
 
 /**
- * API definition for Wojewodztwo resource.
  *
  * @author Adam Kowalewski
- * @version 2015.10.23
  */
-@Path("wojewodztwo")
-public interface WojewodztwoApi extends AbstractCrudApi<WojewodztwoDto> {
+@Stateless
+public class WojewodztwoService implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    public int count() {
+        return 55;
+    }
 
 }

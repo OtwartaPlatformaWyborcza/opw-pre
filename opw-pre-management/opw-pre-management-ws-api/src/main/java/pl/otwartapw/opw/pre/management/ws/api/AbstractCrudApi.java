@@ -46,9 +46,7 @@ import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
  * @version 2015.10.25
  *
  */
-public interface CrudApi<T> {
-
-    static final String PP_PID = "id";
+public interface AbstractCrudApi<T> {
 
     @GET
     @Produces({APPLICATION_JSON, APPLICATION_XML})
@@ -59,18 +57,18 @@ public interface CrudApi<T> {
     void create(@NotNull @Valid T dto);
 
     @GET
-    @Path("{" + PP_PID + "}")
+    @Path("{id}")
     @Produces({APPLICATION_JSON, APPLICATION_XML})
-    T find(@NotNull @PathParam(PP_PID) Integer id);
+    T find(@NotNull @PathParam("id") Integer id);
 
     @DELETE
-    @Path("{" + PP_PID + "}")
-    void remove(@NotNull @PathParam(PP_PID) Integer id);
+    @Path("{id}")
+    void remove(@NotNull @PathParam("id") Integer id);
 
     @PUT
-    @Path("{" + PP_PID + "}")
+    @Path("{id}")
     @Consumes({APPLICATION_JSON, APPLICATION_XML})
-    void edit(@PathParam(PP_PID) Integer id, @NotNull @Valid T dto);
+    void edit(@PathParam("id") Integer id, @NotNull @Valid T dto);
 
     @GET
     @Path("{from}/{to}")
