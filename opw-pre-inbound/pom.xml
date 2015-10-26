@@ -9,15 +9,11 @@
         <version>0.2.0-SNAPSHOT</version>
     </parent>
     
-    <artifactId>opw-pre-inbound-ws-api</artifactId>    
+    <artifactId>opw-pre-inbound</artifactId>
+    <packaging>pom</packaging>
     
-    <packaging>jar</packaging>    
-    
-    <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>            
-        </dependency>
-    </dependencies>
-    
+    <modules>
+        <module>opw-pre-inbound-ws</module>
+        <module>opw-pre-inbound-ws-api</module>
+    </modules>
 </project>

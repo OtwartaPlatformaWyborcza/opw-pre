@@ -58,16 +58,10 @@
     <modules>
         <module>opw-pre-base</module>
         <module>opw-pre-commons</module>
+        <module>opw-pre-inbound</module>
+        <module>opw-pre-outbound</module>
         <module>opw-pre-management</module>
-        <module>opw-pre-inbound-ws-api</module>
-        <module>opw-pre-inbound-ws</module>
-        <module>opw-pre-outbound-ws-api</module>
-        <module>opw-pre-outbound-ws</module>
-        <module>opw-pre-register</module>
-        <module>opw-pre-register-ws</module>
-        <module>opw-pre-register-ws-api</module>
-        <module>opw-pre-management-ws-api</module>
-        <module>opw-pre-management-ws</module>
+        <module>opw-pre-register</module>        
     </modules>
     
     <dependencyManagement>
