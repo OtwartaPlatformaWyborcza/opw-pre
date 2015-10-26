@@ -5,11 +5,11 @@
     
     <parent>
         <artifactId>opw-pre-parent</artifactId>
-        <groupId>pl.otwartapw</groupId>
+        <groupId>pl.otwartapw.opw-pre</groupId>
         <version>0.2.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>pl.otwartapw</groupId>
+    <groupId>pl.otwartapw.opw-pre</groupId>
     <artifactId>opw-pre-outbound-ws</artifactId>
     <version>0.2.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -23,7 +23,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>pl.otwartapw</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>opw-pre-outbound-ws-api</artifactId>
         </dependency>
         

@@ -3,11 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>opw-pre-parent</artifactId>
-        <groupId>pl.otwartapw</groupId>
+        <groupId>pl.otwartapw.opw-pre</groupId>
         <version>0.2.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>pl.otwartapw</groupId>
     <artifactId>opw-pre-management-ws</artifactId>
     <version>0.2.0-SNAPSHOT</version>
     <packaging>war</packaging>
