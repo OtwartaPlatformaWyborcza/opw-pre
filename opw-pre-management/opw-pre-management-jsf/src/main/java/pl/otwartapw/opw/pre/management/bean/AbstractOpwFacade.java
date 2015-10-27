@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package pl.otwartapw.opw.pre.management;
+package pl.otwartapw.opw.pre.management.bean;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -36,7 +36,7 @@ import javax.persistence.EntityManager;
  */
 public abstract class AbstractOpwFacade<T> {
     protected final String PU_OPW = "opwprePU";
-    private Class<T> entityClass;
+    private final Class<T> entityClass;
 
     public AbstractOpwFacade(Class<T> entityClass) {
         this.entityClass = entityClass;

@@ -21,18 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management;
+package pl.otwartapw.opw.pre.management.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -41,14 +46,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_config", catalog = "opw_pre", schema = "")
+@Table(name = "opw_session", catalog = "opw_pre", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "OpwConfig.findAll", query = "SELECT o FROM OpwConfig o"),
-    @NamedQuery(name = "OpwConfig.findById", query = "SELECT o FROM OpwConfig o WHERE o.id = :id"),
-    @NamedQuery(name = "OpwConfig.findByCfgKey", query = "SELECT o FROM OpwConfig o WHERE o.cfgKey = :cfgKey"),
-    @NamedQuery(name = "OpwConfig.findByCfgValue", query = "SELECT o FROM OpwConfig o WHERE o.cfgValue = :cfgValue")})
-public class OpwConfig implements Serializable {
+    @NamedQuery(name = "OpwSession.findAll", query = "SELECT o FROM OpwSession o"),
+    @NamedQuery(name = "OpwSession.findById", query = "SELECT o FROM OpwSession o WHERE o.id = :id"),
+    @NamedQuery(name = "OpwSession.findByToken", query = "SELECT o FROM OpwSession o WHERE o.token = :token"),
+    @NamedQuery(name = "OpwSession.findByDateValidTo", query = "SELECT o FROM OpwSession o WHERE o.dateValidTo = :dateValidTo"),
+    @NamedQuery(name = "OpwSession.findByActive", query = "SELECT o FROM OpwSession o WHERE o.active = :active")})
+public class OpwSession implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,16 +62,21 @@ public class OpwConfig implements Serializable {
     @Column(name = "id", nullable = false)
     private Integer id;
     @Size(max = 64)
-    @Column(name = "cfg_key", length = 64)
-    private String cfgKey;
-    @Size(max = 256)
-    @Column(name = "cfg_value", length = 256)
-    private String cfgValue;
+    @Column(name = "token", length = 64)
+    private String token;
+    @Column(name = "dateValidTo")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateValidTo;
+    @Column(name = "active")
+    private Boolean active;
+    @JoinColumn(name = "opw_user_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private OpwUser opwUserId;
 
-    public OpwConfig() {
+    public OpwSession() {
     }
 
-    public OpwConfig(Integer id) {
+    public OpwSession(Integer id) {
         this.id = id;
     }
 
@@ -77,20 +88,36 @@ public class OpwConfig implements Serializable {
         this.id = id;
     }
 
-    public String getCfgKey() {
-        return cfgKey;
+    public String getToken() {
+        return token;
     }
 
-    public void setCfgKey(String cfgKey) {
-        this.cfgKey = cfgKey;
+    public void setToken(String token) {
+        this.token = token;
     }
 
-    public String getCfgValue() {
-        return cfgValue;
+    public Date getDateValidTo() {
+        return dateValidTo;
     }
 
-    public void setCfgValue(String cfgValue) {
-        this.cfgValue = cfgValue;
+    public void setDateValidTo(Date dateValidTo) {
+        this.dateValidTo = dateValidTo;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public OpwUser getOpwUserId() {
+        return opwUserId;
+    }
+
+    public void setOpwUserId(OpwUser opwUserId) {
+        this.opwUserId = opwUserId;
     }
 
     @Override
@@ -103,10 +130,10 @@ public class OpwConfig implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OpwConfig)) {
+        if (!(object instanceof OpwSession)) {
             return false;
         }
-        OpwConfig other = (OpwConfig) object;
+        OpwSession other = (OpwSession) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -115,7 +142,7 @@ public class OpwConfig implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.otwartapw.opw.pre.entity.OpwConfig[ id=" + id + " ]";
+        return "pl.otwartapw.opw.pre.management.entity.OpwSession[ id=" + id + " ]";
     }
     
 }
