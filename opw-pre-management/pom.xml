@@ -9,9 +9,11 @@
     
     <artifactId>opw-pre-management</artifactId>
     <packaging>pom</packaging>
+    
     <modules>
         <module>opw-pre-management-ws-api</module>
         <module>opw-pre-management-ws</module>
         <module>opw-pre-management-jsf</module>
     </modules>
+    
 </project>
