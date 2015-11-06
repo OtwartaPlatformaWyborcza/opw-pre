@@ -50,7 +50,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_user", catalog = "opw_pre", schema = "", uniqueConstraints = {
+@Table(name = "opw_user", catalog = "opwpre", schema = "", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"email"})})
 @XmlRootElement
 @NamedQueries({
@@ -68,6 +68,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "OpwUser.findByOrigin", query = "SELECT o FROM OpwUser o WHERE o.origin = :origin"),
     @NamedQuery(name = "OpwUser.findByDateCreated", query = "SELECT o FROM OpwUser o WHERE o.dateCreated = :dateCreated")})
 public class OpwUser implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -109,15 +110,17 @@ public class OpwUser implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
     @ManyToMany(mappedBy = "opwUserList")
-    private List<OpwObwodowaKomisja> opwObwodowaKomisjaList;
-    @ManyToMany(mappedBy = "opwUserList")
     private List<OpwGroup> opwGroupList;
+    @ManyToMany(mappedBy = "opwUserList")
+    private List<OpwObwodowa> opwObwodowaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwUserId")
-    private List<OpwWynik> opwWynikList;
+    private List<OpwProtokol> opwProtokolList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwUserId")
     private List<OpwSession> opwSessionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwUserId")
     private List<OpwLink> opwLinkList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwUserId")
+    private List<OpwRating> opwRatingList;
 
     public OpwUser() {
     }
@@ -223,15 +226,6 @@ public class OpwUser implements Serializable {
     }
 
     @XmlTransient
-    public List<OpwObwodowaKomisja> getOpwObwodowaKomisjaList() {
-        return opwObwodowaKomisjaList;
-    }
-
-    public void setOpwObwodowaKomisjaList(List<OpwObwodowaKomisja> opwObwodowaKomisjaList) {
-        this.opwObwodowaKomisjaList = opwObwodowaKomisjaList;
-    }
-
-    @XmlTransient
     public List<OpwGroup> getOpwGroupList() {
         return opwGroupList;
     }
@@ -241,12 +235,21 @@ public class OpwUser implements Serializable {
     }
 
     @XmlTransient
-    public List<OpwWynik> getOpwWynikList() {
-        return opwWynikList;
+    public List<OpwObwodowa> getOpwObwodowaList() {
+        return opwObwodowaList;
     }
 
-    public void setOpwWynikList(List<OpwWynik> opwWynikList) {
-        this.opwWynikList = opwWynikList;
+    public void setOpwObwodowaList(List<OpwObwodowa> opwObwodowaList) {
+        this.opwObwodowaList = opwObwodowaList;
+    }
+
+    @XmlTransient
+    public List<OpwProtokol> getOpwProtokolList() {
+        return opwProtokolList;
+    }
+
+    public void setOpwProtokolList(List<OpwProtokol> opwProtokolList) {
+        this.opwProtokolList = opwProtokolList;
     }
 
     @XmlTransient
@@ -265,6 +268,15 @@ public class OpwUser implements Serializable {
 
     public void setOpwLinkList(List<OpwLink> opwLinkList) {
         this.opwLinkList = opwLinkList;
+    }
+
+    @XmlTransient
+    public List<OpwRating> getOpwRatingList() {
+        return opwRatingList;
+    }
+
+    public void setOpwRatingList(List<OpwRating> opwRatingList) {
+        this.opwRatingList = opwRatingList;
     }
 
     @Override

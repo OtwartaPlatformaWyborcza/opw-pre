@@ -44,18 +44,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_okregowa_komisja", catalog = "opw_pre", schema = "", uniqueConstraints = {
+@Table(name = "opw_okregowa", catalog = "opwpre", schema = "", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"pkwId"})})
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "OpwOkregowaKomisja.findAll", query = "SELECT o FROM OpwOkregowaKomisja o"),
-    @NamedQuery(name = "OpwOkregowaKomisja.findById", query = "SELECT o FROM OpwOkregowaKomisja o WHERE o.id = :id"),
-    @NamedQuery(name = "OpwOkregowaKomisja.findByPkwId", query = "SELECT o FROM OpwOkregowaKomisja o WHERE o.pkwId = :pkwId"),
-    @NamedQuery(name = "OpwOkregowaKomisja.findByName", query = "SELECT o FROM OpwOkregowaKomisja o WHERE o.name = :name"),
-    @NamedQuery(name = "OpwOkregowaKomisja.findByAddress", query = "SELECT o FROM OpwOkregowaKomisja o WHERE o.address = :address"),
-    @NamedQuery(name = "OpwOkregowaKomisja.findByPowiaty", query = "SELECT o FROM OpwOkregowaKomisja o WHERE o.powiaty = :powiaty"),
-    @NamedQuery(name = "OpwOkregowaKomisja.findByMiasta", query = "SELECT o FROM OpwOkregowaKomisja o WHERE o.miasta = :miasta")})
-public class OpwOkregowaKomisja implements Serializable {
+    @NamedQuery(name = "OpwOkregowa.findAll", query = "SELECT o FROM OpwOkregowa o"),
+    @NamedQuery(name = "OpwOkregowa.findById", query = "SELECT o FROM OpwOkregowa o WHERE o.id = :id"),
+    @NamedQuery(name = "OpwOkregowa.findByPkwId", query = "SELECT o FROM OpwOkregowa o WHERE o.pkwId = :pkwId"),
+    @NamedQuery(name = "OpwOkregowa.findByName", query = "SELECT o FROM OpwOkregowa o WHERE o.name = :name"),
+    @NamedQuery(name = "OpwOkregowa.findByAddress", query = "SELECT o FROM OpwOkregowa o WHERE o.address = :address"),
+    @NamedQuery(name = "OpwOkregowa.findByPowiaty", query = "SELECT o FROM OpwOkregowa o WHERE o.powiaty = :powiaty"),
+    @NamedQuery(name = "OpwOkregowa.findByMiasta", query = "SELECT o FROM OpwOkregowa o WHERE o.miasta = :miasta")})
+public class OpwOkregowa implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -80,10 +81,10 @@ public class OpwOkregowaKomisja implements Serializable {
     @ManyToOne(optional = false)
     private OpwWojewodztwo opwWojewodztwoId;
 
-    public OpwOkregowaKomisja() {
+    public OpwOkregowa() {
     }
 
-    public OpwOkregowaKomisja(Integer id) {
+    public OpwOkregowa(Integer id) {
         this.id = id;
     }
 
@@ -153,10 +154,10 @@ public class OpwOkregowaKomisja implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OpwOkregowaKomisja)) {
+        if (!(object instanceof OpwOkregowa)) {
             return false;
         }
-        OpwOkregowaKomisja other = (OpwOkregowaKomisja) object;
+        OpwOkregowa other = (OpwOkregowa) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -165,7 +166,7 @@ public class OpwOkregowaKomisja implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.otwartapw.opw.pre.entity.OpwOkregowaKomisja[ id=" + id + " ]";
+        return "pl.otwartapw.opw.pre.entity.OpwOkregowa[ id=" + id + " ]";
     }
     
 }

@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_link", catalog = "opw_pre", schema = "")
+@Table(name = "opw_link", catalog = "opwpre", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OpwLink.findAll", query = "SELECT o FROM OpwLink o"),
@@ -57,6 +57,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "OpwLink.findByActive", query = "SELECT o FROM OpwLink o WHERE o.active = :active"),
     @NamedQuery(name = "OpwLink.findByDateCreated", query = "SELECT o FROM OpwLink o WHERE o.dateCreated = :dateCreated")})
 public class OpwLink implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,12 +78,12 @@ public class OpwLink implements Serializable {
     @Column(name = "dateCreated")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
+    @JoinColumn(name = "opw_protokol_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private OpwProtokol opwProtokolId;
     @JoinColumn(name = "opw_user_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private OpwUser opwUserId;
-    @JoinColumn(name = "opw_wynik_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private OpwWynik opwWynikId;
 
     public OpwLink() {
     }
@@ -139,20 +140,20 @@ public class OpwLink implements Serializable {
         this.dateCreated = dateCreated;
     }
 
+    public OpwProtokol getOpwProtokolId() {
+        return opwProtokolId;
+    }
+
+    public void setOpwProtokolId(OpwProtokol opwProtokolId) {
+        this.opwProtokolId = opwProtokolId;
+    }
+
     public OpwUser getOpwUserId() {
         return opwUserId;
     }
 
     public void setOpwUserId(OpwUser opwUserId) {
         this.opwUserId = opwUserId;
-    }
-
-    public OpwWynik getOpwWynikId() {
-        return opwWynikId;
-    }
-
-    public void setOpwWynikId(OpwWynik opwWynikId) {
-        this.opwWynikId = opwWynikId;
     }
 
     @Override

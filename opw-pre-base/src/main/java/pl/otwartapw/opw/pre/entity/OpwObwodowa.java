@@ -50,20 +50,21 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_obwodowa_komisja", catalog = "opw_pre", schema = "", uniqueConstraints = {
+@Table(name = "opw_obwodowa", catalog = "opwpre", schema = "", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"pkwId"})})
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "OpwObwodowaKomisja.findAll", query = "SELECT o FROM OpwObwodowaKomisja o"),
-    @NamedQuery(name = "OpwObwodowaKomisja.findById", query = "SELECT o FROM OpwObwodowaKomisja o WHERE o.id = :id"),
-    @NamedQuery(name = "OpwObwodowaKomisja.findByPkwId", query = "SELECT o FROM OpwObwodowaKomisja o WHERE o.pkwId = :pkwId"),
-    @NamedQuery(name = "OpwObwodowaKomisja.findByObwodNr", query = "SELECT o FROM OpwObwodowaKomisja o WHERE o.obwodNr = :obwodNr"),
-    @NamedQuery(name = "OpwObwodowaKomisja.findByName", query = "SELECT o FROM OpwObwodowaKomisja o WHERE o.name = :name"),
-    @NamedQuery(name = "OpwObwodowaKomisja.findByAddress", query = "SELECT o FROM OpwObwodowaKomisja o WHERE o.address = :address"),
-    @NamedQuery(name = "OpwObwodowaKomisja.findByType", query = "SELECT o FROM OpwObwodowaKomisja o WHERE o.type = :type"),
-    @NamedQuery(name = "OpwObwodowaKomisja.findByAllowedToVote", query = "SELECT o FROM OpwObwodowaKomisja o WHERE o.allowedToVote = :allowedToVote"),
-    @NamedQuery(name = "OpwObwodowaKomisja.findByStatus", query = "SELECT o FROM OpwObwodowaKomisja o WHERE o.status = :status")})
-public class OpwObwodowaKomisja implements Serializable {
+    @NamedQuery(name = "OpwObwodowa.findAll", query = "SELECT o FROM OpwObwodowa o"),
+    @NamedQuery(name = "OpwObwodowa.findById", query = "SELECT o FROM OpwObwodowa o WHERE o.id = :id"),
+    @NamedQuery(name = "OpwObwodowa.findByPkwId", query = "SELECT o FROM OpwObwodowa o WHERE o.pkwId = :pkwId"),
+    @NamedQuery(name = "OpwObwodowa.findByObwodNr", query = "SELECT o FROM OpwObwodowa o WHERE o.obwodNr = :obwodNr"),
+    @NamedQuery(name = "OpwObwodowa.findByName", query = "SELECT o FROM OpwObwodowa o WHERE o.name = :name"),
+    @NamedQuery(name = "OpwObwodowa.findByAddress", query = "SELECT o FROM OpwObwodowa o WHERE o.address = :address"),
+    @NamedQuery(name = "OpwObwodowa.findByType", query = "SELECT o FROM OpwObwodowa o WHERE o.type = :type"),
+    @NamedQuery(name = "OpwObwodowa.findByAllowedToVote", query = "SELECT o FROM OpwObwodowa o WHERE o.allowedToVote = :allowedToVote"),
+    @NamedQuery(name = "OpwObwodowa.findByStatus", query = "SELECT o FROM OpwObwodowa o WHERE o.status = :status")})
+public class OpwObwodowa implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -88,21 +89,21 @@ public class OpwObwodowaKomisja implements Serializable {
     private Integer allowedToVote;
     @Column(name = "status")
     private Integer status;
-    @JoinTable(name = "opw_user_has_opw_obwodowa_komisja", joinColumns = {
-        @JoinColumn(name = "opw_obwodowa_komisja_id", referencedColumnName = "id", nullable = false)}, inverseJoinColumns = {
+    @JoinTable(name = "opw_user_has_opw_obwodowa", joinColumns = {
+        @JoinColumn(name = "opw_obwodowa_id", referencedColumnName = "id", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "opw_user_id", referencedColumnName = "id", nullable = false)})
     @ManyToMany
     private List<OpwUser> opwUserList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwObwodowaKomisjaId")
-    private List<OpwWynik> opwWynikList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwObwodowaId")
+    private List<OpwProtokol> opwProtokolList;
     @JoinColumn(name = "opw_wojewodztwo_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private OpwWojewodztwo opwWojewodztwoId;
 
-    public OpwObwodowaKomisja() {
+    public OpwObwodowa() {
     }
 
-    public OpwObwodowaKomisja(Integer id) {
+    public OpwObwodowa(Integer id) {
         this.id = id;
     }
 
@@ -180,12 +181,12 @@ public class OpwObwodowaKomisja implements Serializable {
     }
 
     @XmlTransient
-    public List<OpwWynik> getOpwWynikList() {
-        return opwWynikList;
+    public List<OpwProtokol> getOpwProtokolList() {
+        return opwProtokolList;
     }
 
-    public void setOpwWynikList(List<OpwWynik> opwWynikList) {
-        this.opwWynikList = opwWynikList;
+    public void setOpwProtokolList(List<OpwProtokol> opwProtokolList) {
+        this.opwProtokolList = opwProtokolList;
     }
 
     public OpwWojewodztwo getOpwWojewodztwoId() {
@@ -206,10 +207,10 @@ public class OpwObwodowaKomisja implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OpwObwodowaKomisja)) {
+        if (!(object instanceof OpwObwodowa)) {
             return false;
         }
-        OpwObwodowaKomisja other = (OpwObwodowaKomisja) object;
+        OpwObwodowa other = (OpwObwodowa) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -218,7 +219,7 @@ public class OpwObwodowaKomisja implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.otwartapw.opw.pre.entity.OpwObwodowaKomisja[ id=" + id + " ]";
+        return "pl.otwartapw.opw.pre.entity.OpwObwodowa[ id=" + id + " ]";
     }
     
 }

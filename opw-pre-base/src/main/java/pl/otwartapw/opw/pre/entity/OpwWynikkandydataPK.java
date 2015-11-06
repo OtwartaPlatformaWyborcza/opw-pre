@@ -35,21 +35,22 @@ import javax.validation.constraints.NotNull;
  */
 @Embeddable
 public class OpwWynikkandydataPK implements Serializable {
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "opw_kandydat_id", nullable = false)
     private int opwKandydatId;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "opw_wynik_id", nullable = false)
-    private int opwWynikId;
+    @Column(name = "opw_protokol_id", nullable = false)
+    private int opwProtokolId;
 
     public OpwWynikkandydataPK() {
     }
 
-    public OpwWynikkandydataPK(int opwKandydatId, int opwWynikId) {
+    public OpwWynikkandydataPK(int opwKandydatId, int opwProtokolId) {
         this.opwKandydatId = opwKandydatId;
-        this.opwWynikId = opwWynikId;
+        this.opwProtokolId = opwProtokolId;
     }
 
     public int getOpwKandydatId() {
@@ -60,19 +61,19 @@ public class OpwWynikkandydataPK implements Serializable {
         this.opwKandydatId = opwKandydatId;
     }
 
-    public int getOpwWynikId() {
-        return opwWynikId;
+    public int getOpwProtokolId() {
+        return opwProtokolId;
     }
 
-    public void setOpwWynikId(int opwWynikId) {
-        this.opwWynikId = opwWynikId;
+    public void setOpwProtokolId(int opwProtokolId) {
+        this.opwProtokolId = opwProtokolId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) opwKandydatId;
-        hash += (int) opwWynikId;
+        hash += (int) opwProtokolId;
         return hash;
     }
 
@@ -86,7 +87,7 @@ public class OpwWynikkandydataPK implements Serializable {
         if (this.opwKandydatId != other.opwKandydatId) {
             return false;
         }
-        if (this.opwWynikId != other.opwWynikId) {
+        if (this.opwProtokolId != other.opwProtokolId) {
             return false;
         }
         return true;
@@ -94,7 +95,7 @@ public class OpwWynikkandydataPK implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.otwartapw.opw.pre.entity.OpwWynikkandydataPK[ opwKandydatId=" + opwKandydatId + ", opwWynikId=" + opwWynikId + " ]";
+        return "pl.otwartapw.opw.pre.entity.OpwWynikkandydataPK[ opwKandydatId=" + opwKandydatId + ", opwProtokolId=" + opwProtokolId + " ]";
     }
     
 }

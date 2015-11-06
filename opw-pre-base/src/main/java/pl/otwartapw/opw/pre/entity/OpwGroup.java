@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_group", catalog = "opw_pre", schema = "")
+@Table(name = "opw_group", catalog = "opwpre", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OpwGroup.findAll", query = "SELECT o FROM OpwGroup o"),
@@ -54,6 +54,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "OpwGroup.findByName", query = "SELECT o FROM OpwGroup o WHERE o.name = :name"),
     @NamedQuery(name = "OpwGroup.findByDescription", query = "SELECT o FROM OpwGroup o WHERE o.description = :description")})
 public class OpwGroup implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -24,6 +24,7 @@
 package pl.otwartapw.opw.pre.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,23 +33,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_config", catalog = "opwpre", schema = "")
+@Table(name = "opw_status", catalog = "opwpre", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "OpwConfig.findAll", query = "SELECT o FROM OpwConfig o"),
-    @NamedQuery(name = "OpwConfig.findById", query = "SELECT o FROM OpwConfig o WHERE o.id = :id"),
-    @NamedQuery(name = "OpwConfig.findByCfgKey", query = "SELECT o FROM OpwConfig o WHERE o.cfgKey = :cfgKey"),
-    @NamedQuery(name = "OpwConfig.findByCfgValue", query = "SELECT o FROM OpwConfig o WHERE o.cfgValue = :cfgValue")})
-public class OpwConfig implements Serializable {
+    @NamedQuery(name = "OpwStatus.findAll", query = "SELECT o FROM OpwStatus o"),
+    @NamedQuery(name = "OpwStatus.findById", query = "SELECT o FROM OpwStatus o WHERE o.id = :id"),
+    @NamedQuery(name = "OpwStatus.findByName", query = "SELECT o FROM OpwStatus o WHERE o.name = :name"),
+    @NamedQuery(name = "OpwStatus.findByDescription", query = "SELECT o FROM OpwStatus o WHERE o.description = :description")})
+public class OpwStatus implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,16 +60,18 @@ public class OpwConfig implements Serializable {
     @Column(name = "id", nullable = false)
     private Integer id;
     @Size(max = 64)
-    @Column(name = "cfgKey", length = 64)
-    private String cfgKey;
-    @Size(max = 256)
-    @Column(name = "cfgValue", length = 256)
-    private String cfgValue;
+    @Column(name = "name", length = 64)
+    private String name;
+    @Size(max = 512)
+    @Column(name = "description", length = 512)
+    private String description;
+    @OneToMany(mappedBy = "opwStatusId")
+    private List<OpwProtokol> opwProtokolList;
 
-    public OpwConfig() {
+    public OpwStatus() {
     }
 
-    public OpwConfig(Integer id) {
+    public OpwStatus(Integer id) {
         this.id = id;
     }
 
@@ -78,20 +83,29 @@ public class OpwConfig implements Serializable {
         this.id = id;
     }
 
-    public String getCfgKey() {
-        return cfgKey;
+    public String getName() {
+        return name;
     }
 
-    public void setCfgKey(String cfgKey) {
-        this.cfgKey = cfgKey;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCfgValue() {
-        return cfgValue;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCfgValue(String cfgValue) {
-        this.cfgValue = cfgValue;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @XmlTransient
+    public List<OpwProtokol> getOpwProtokolList() {
+        return opwProtokolList;
+    }
+
+    public void setOpwProtokolList(List<OpwProtokol> opwProtokolList) {
+        this.opwProtokolList = opwProtokolList;
     }
 
     @Override
@@ -104,10 +118,10 @@ public class OpwConfig implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OpwConfig)) {
+        if (!(object instanceof OpwStatus)) {
             return false;
         }
-        OpwConfig other = (OpwConfig) object;
+        OpwStatus other = (OpwStatus) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -116,7 +130,7 @@ public class OpwConfig implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.otwartapw.opw.pre.entity.OpwConfig[ id=" + id + " ]";
+        return "pl.otwartapw.opw.pre.entity.OpwStatus[ id=" + id + " ]";
     }
     
 }

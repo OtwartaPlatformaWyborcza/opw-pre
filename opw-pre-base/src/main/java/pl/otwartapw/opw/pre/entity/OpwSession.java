@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_session", catalog = "opw_pre", schema = "")
+@Table(name = "opw_session", catalog = "opwpre", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OpwSession.findAll", query = "SELECT o FROM OpwSession o"),
@@ -55,6 +55,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "OpwSession.findByDateValidTo", query = "SELECT o FROM OpwSession o WHERE o.dateValidTo = :dateValidTo"),
     @NamedQuery(name = "OpwSession.findByActive", query = "SELECT o FROM OpwSession o WHERE o.active = :active")})
 public class OpwSession implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

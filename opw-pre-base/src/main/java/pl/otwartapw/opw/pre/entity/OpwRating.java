@@ -24,16 +24,20 @@
 package pl.otwartapw.opw.pre.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -41,14 +45,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_config", catalog = "opwpre", schema = "")
+@Table(name = "opw_rating", catalog = "opwpre", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "OpwConfig.findAll", query = "SELECT o FROM OpwConfig o"),
-    @NamedQuery(name = "OpwConfig.findById", query = "SELECT o FROM OpwConfig o WHERE o.id = :id"),
-    @NamedQuery(name = "OpwConfig.findByCfgKey", query = "SELECT o FROM OpwConfig o WHERE o.cfgKey = :cfgKey"),
-    @NamedQuery(name = "OpwConfig.findByCfgValue", query = "SELECT o FROM OpwConfig o WHERE o.cfgValue = :cfgValue")})
-public class OpwConfig implements Serializable {
+    @NamedQuery(name = "OpwRating.findAll", query = "SELECT o FROM OpwRating o"),
+    @NamedQuery(name = "OpwRating.findById", query = "SELECT o FROM OpwRating o WHERE o.id = :id"),
+    @NamedQuery(name = "OpwRating.findByPositiv", query = "SELECT o FROM OpwRating o WHERE o.positiv = :positiv"),
+    @NamedQuery(name = "OpwRating.findByActive", query = "SELECT o FROM OpwRating o WHERE o.active = :active"),
+    @NamedQuery(name = "OpwRating.findByDateCreated", query = "SELECT o FROM OpwRating o WHERE o.dateCreated = :dateCreated")})
+public class OpwRating implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -56,17 +61,24 @@ public class OpwConfig implements Serializable {
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
     private Integer id;
-    @Size(max = 64)
-    @Column(name = "cfgKey", length = 64)
-    private String cfgKey;
-    @Size(max = 256)
-    @Column(name = "cfgValue", length = 256)
-    private String cfgValue;
+    @Column(name = "positiv")
+    private Boolean positiv;
+    @Column(name = "active")
+    private Boolean active;
+    @Column(name = "dateCreated")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCreated;
+    @JoinColumn(name = "opw_protokol_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private OpwProtokol opwProtokolId;
+    @JoinColumn(name = "opw_user_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private OpwUser opwUserId;
 
-    public OpwConfig() {
+    public OpwRating() {
     }
 
-    public OpwConfig(Integer id) {
+    public OpwRating(Integer id) {
         this.id = id;
     }
 
@@ -78,20 +90,44 @@ public class OpwConfig implements Serializable {
         this.id = id;
     }
 
-    public String getCfgKey() {
-        return cfgKey;
+    public Boolean getPositiv() {
+        return positiv;
     }
 
-    public void setCfgKey(String cfgKey) {
-        this.cfgKey = cfgKey;
+    public void setPositiv(Boolean positiv) {
+        this.positiv = positiv;
     }
 
-    public String getCfgValue() {
-        return cfgValue;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setCfgValue(String cfgValue) {
-        this.cfgValue = cfgValue;
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public OpwProtokol getOpwProtokolId() {
+        return opwProtokolId;
+    }
+
+    public void setOpwProtokolId(OpwProtokol opwProtokolId) {
+        this.opwProtokolId = opwProtokolId;
+    }
+
+    public OpwUser getOpwUserId() {
+        return opwUserId;
+    }
+
+    public void setOpwUserId(OpwUser opwUserId) {
+        this.opwUserId = opwUserId;
     }
 
     @Override
@@ -104,10 +140,10 @@ public class OpwConfig implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OpwConfig)) {
+        if (!(object instanceof OpwRating)) {
             return false;
         }
-        OpwConfig other = (OpwConfig) object;
+        OpwRating other = (OpwRating) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -116,7 +152,7 @@ public class OpwConfig implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.otwartapw.opw.pre.entity.OpwConfig[ id=" + id + " ]";
+        return "pl.otwartapw.opw.pre.entity.OpwRating[ id=" + id + " ]";
     }
     
 }

@@ -39,14 +39,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_wynikkandydata", catalog = "opw_pre", schema = "")
+@Table(name = "opw_wynikkandydata", catalog = "opwpre", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OpwWynikkandydata.findAll", query = "SELECT o FROM OpwWynikkandydata o"),
     @NamedQuery(name = "OpwWynikkandydata.findByOpwKandydatId", query = "SELECT o FROM OpwWynikkandydata o WHERE o.opwWynikkandydataPK.opwKandydatId = :opwKandydatId"),
-    @NamedQuery(name = "OpwWynikkandydata.findByOpwWynikId", query = "SELECT o FROM OpwWynikkandydata o WHERE o.opwWynikkandydataPK.opwWynikId = :opwWynikId"),
+    @NamedQuery(name = "OpwWynikkandydata.findByOpwProtokolId", query = "SELECT o FROM OpwWynikkandydata o WHERE o.opwWynikkandydataPK.opwProtokolId = :opwProtokolId"),
     @NamedQuery(name = "OpwWynikkandydata.findByGlosow", query = "SELECT o FROM OpwWynikkandydata o WHERE o.glosow = :glosow")})
 public class OpwWynikkandydata implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected OpwWynikkandydataPK opwWynikkandydataPK;
@@ -55,9 +56,9 @@ public class OpwWynikkandydata implements Serializable {
     @JoinColumn(name = "opw_kandydat_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private OpwKandydat opwKandydat;
-    @JoinColumn(name = "opw_wynik_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "opw_protokol_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private OpwWynik opwWynik;
+    private OpwProtokol opwProtokol;
 
     public OpwWynikkandydata() {
     }
@@ -66,8 +67,8 @@ public class OpwWynikkandydata implements Serializable {
         this.opwWynikkandydataPK = opwWynikkandydataPK;
     }
 
-    public OpwWynikkandydata(int opwKandydatId, int opwWynikId) {
-        this.opwWynikkandydataPK = new OpwWynikkandydataPK(opwKandydatId, opwWynikId);
+    public OpwWynikkandydata(int opwKandydatId, int opwProtokolId) {
+        this.opwWynikkandydataPK = new OpwWynikkandydataPK(opwKandydatId, opwProtokolId);
     }
 
     public OpwWynikkandydataPK getOpwWynikkandydataPK() {
@@ -94,12 +95,12 @@ public class OpwWynikkandydata implements Serializable {
         this.opwKandydat = opwKandydat;
     }
 
-    public OpwWynik getOpwWynik() {
-        return opwWynik;
+    public OpwProtokol getOpwProtokol() {
+        return opwProtokol;
     }
 
-    public void setOpwWynik(OpwWynik opwWynik) {
-        this.opwWynik = opwWynik;
+    public void setOpwProtokol(OpwProtokol opwProtokol) {
+        this.opwProtokol = opwProtokol;
     }
 
     @Override

@@ -45,7 +45,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Adam Kowalewski
  */
 @Entity
-@Table(name = "opw_wojewodztwo", catalog = "opw_pre", schema = "")
+@Table(name = "opw_wojewodztwo", catalog = "opwpre", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OpwWojewodztwo.findAll", query = "SELECT o FROM OpwWojewodztwo o"),
@@ -53,6 +53,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "OpwWojewodztwo.findByName", query = "SELECT o FROM OpwWojewodztwo o WHERE o.name = :name"),
     @NamedQuery(name = "OpwWojewodztwo.findByTeryt", query = "SELECT o FROM OpwWojewodztwo o WHERE o.teryt = :teryt")})
 public class OpwWojewodztwo implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,9 +67,9 @@ public class OpwWojewodztwo implements Serializable {
     @Column(name = "teryt", length = 2)
     private String teryt;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwWojewodztwoId")
-    private List<OpwOkregowaKomisja> opwOkregowaKomisjaList;
+    private List<OpwOkregowa> opwOkregowaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwWojewodztwoId")
-    private List<OpwObwodowaKomisja> opwObwodowaKomisjaList;
+    private List<OpwObwodowa> opwObwodowaList;
 
     public OpwWojewodztwo() {
     }
@@ -102,21 +103,21 @@ public class OpwWojewodztwo implements Serializable {
     }
 
     @XmlTransient
-    public List<OpwOkregowaKomisja> getOpwOkregowaKomisjaList() {
-        return opwOkregowaKomisjaList;
+    public List<OpwOkregowa> getOpwOkregowaList() {
+        return opwOkregowaList;
     }
 
-    public void setOpwOkregowaKomisjaList(List<OpwOkregowaKomisja> opwOkregowaKomisjaList) {
-        this.opwOkregowaKomisjaList = opwOkregowaKomisjaList;
+    public void setOpwOkregowaList(List<OpwOkregowa> opwOkregowaList) {
+        this.opwOkregowaList = opwOkregowaList;
     }
 
     @XmlTransient
-    public List<OpwObwodowaKomisja> getOpwObwodowaKomisjaList() {
-        return opwObwodowaKomisjaList;
+    public List<OpwObwodowa> getOpwObwodowaList() {
+        return opwObwodowaList;
     }
 
-    public void setOpwObwodowaKomisjaList(List<OpwObwodowaKomisja> opwObwodowaKomisjaList) {
-        this.opwObwodowaKomisjaList = opwObwodowaKomisjaList;
+    public void setOpwObwodowaList(List<OpwObwodowa> opwObwodowaList) {
+        this.opwObwodowaList = opwObwodowaList;
     }
 
     @Override
