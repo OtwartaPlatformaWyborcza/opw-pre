@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package pl.otwartapw.opw.pre.management.bean;
+package pl.otwartapw.opw.pre.management.facade;
 
 import java.util.List;
 import javax.persistence.EntityManager;

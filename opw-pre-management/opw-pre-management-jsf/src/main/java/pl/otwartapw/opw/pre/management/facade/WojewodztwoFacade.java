@@ -21,42 +21,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.handler;
+package pl.otwartapw.opw.pre.management.facade;
 
-import java.io.Serializable;
-import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
+import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
 
 /**
  *
  * @author Adam Kowalewski
  */
-@Named
-@RequestScoped
-public class LoginHandler implements Serializable {
+@Stateless
+public class WojewodztwoFacade extends AbstractOpwFacade<OpwWojewodztwo> {
 
-  private static final long serialVersionUID = 1L;
-  private static final Logger logger = LoggerFactory.getLogger(LoginHandler.class);
+  private static final Logger logger = LoggerFactory.getLogger(WojewodztwoFacade.class);
 
-  private String testText = "aadada";
+  @PersistenceContext(unitName = PU_OPW)
+  private EntityManager em;
 
-  @EJB
-  WojewodztwoFacade wojewodztwoFacade;
-
-  public LoginHandler() {
-    logger.error("LoginHandler");
+  public WojewodztwoFacade() {
+    super(OpwWojewodztwo.class);
   }
 
-  public String getTestText() {
-    return testText + " test" + wojewodztwoFacade.count();
-  }
-
-  public void setTestText(String testText) {
-    this.testText = testText;
+  @Override
+  protected EntityManager getEntityManager() {
+    return em;
   }
 
 }
