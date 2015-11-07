@@ -83,13 +83,6 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <version>${wildfly.plugin.version}</version>
-                <configuration>
-                    <hostname>${wildfly.hostname}</hostname>
-                    <port>${wildfly.port}</port>
-                    <username>${wildfly.username}</username>
-                    <password>${wildfly.password}</password>
-                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -18,11 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>            
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>            
+            <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -34,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>            
+            <artifactId>javaee-web-api</artifactId>
         </dependency>
     </dependencies>
     
@@ -51,6 +47,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

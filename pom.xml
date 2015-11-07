@@ -33,18 +33,16 @@
     </scm>
 
     <properties>
+        <version.slf4j>1.7.7</version.slf4j>
+        <version.resteasy>3.0.12.Final</version.resteasy>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>        
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <slf4j.version>1.7.12</slf4j.version>
-        <resteasy.version>3.0.12.Final</resteasy.version>
         <wildfly.hostname>${server.wildfly.hostname}</wildfly.hostname>
         <wildfly.port>${server.wildfly.port}</wildfly.port>
         <wildfly.username>${server.wildfly.username}</wildfly.username>
         <wildfly.password>${server.wildfly.password}</wildfly.password>
-        
-        <wildfly.plugin.version>1.0.2.Final</wildfly.plugin.version>
     </properties>
 
     <developers>
@@ -92,13 +90,13 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>opw-pre-register-ws-api</artifactId>            
+                <artifactId>opw-pre-register-ws-api</artifactId>
                 <version>${project.version}</version>
                 <type>jar</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>opw-pre-management-ws-api</artifactId>            
+                <artifactId>opw-pre-management-ws-api</artifactId>
                 <version>${project.version}</version>
                 <type>jar</type>
             </dependency>
@@ -111,27 +109,23 @@
             <dependency>
                 <groupId>org.jboss.resteasy</groupId>
                 <artifactId>resteasy-client</artifactId>
-                <version>${resteasy.version}</version>
+                <version>${version.resteasy}</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.resteasy</groupId>
                 <artifactId>resteasy-jackson-provider</artifactId>
-                <version>${resteasy.version}</version>
+                <version>${version.resteasy}</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.resteasy</groupId>
                 <artifactId>resteasy-json-p-provider</artifactId>
-                <version>${resteasy.version}</version>
+                <version>${version.resteasy}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-jdk14</artifactId>
-                <version>${slf4j.version}</version>
+                <version>${version.slf4j}</version>
+                <scope>provided</scope>
             </dependency>
             
             <dependency>
@@ -185,14 +179,14 @@
                     <version>2.6</version>
                     <configuration>
                         <archive>
-                            <manifest>                                
+                            <manifest>
                                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                                 <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                                 <addClasspath>true</addClasspath>
                             </manifest>
                         </archive>
                     </configuration>
-                </plugin>                
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
@@ -217,7 +211,18 @@
                             </configuration>
                         </execution>
                     </executions>
-                </plugin>                
+                </plugin>
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>1.0.2.Final</version>
+                    <configuration>
+                        <hostname>${wildfly.hostname}</hostname>
+                        <port>${wildfly.port}</port>
+                        <username>${wildfly.username}</username>
+                        <password>${wildfly.password}</password>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
