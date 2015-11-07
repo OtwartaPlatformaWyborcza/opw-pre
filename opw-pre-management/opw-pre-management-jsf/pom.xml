@@ -18,8 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>opw-pre-base</artifactId>
-            <version>${project.version}</version>
+            <artifactId>opw-pre-base</artifactId>            
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -29,7 +28,10 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
         </dependency>
-                        
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -55,12 +57,5 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
             </plugin>
         </plugins>
-    </build>
-    <repositories>
-        <repository>
-            <id>unknown-jars-temp-repo</id>
-            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
-            <url>file:${project.basedir}/lib</url>
-        </repository>
-    </repositories>
+    </build>    
 </project>

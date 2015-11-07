@@ -24,11 +24,13 @@
 package pl.otwartapw.opw.pre.management.handler;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
 import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
 
 /**
@@ -36,27 +38,56 @@ import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
  * @author Adam Kowalewski
  */
 @Named
-@RequestScoped
-public class LoginHandler implements Serializable {
+@ViewScoped
+public class WojewodztwoHandler extends AbstractCrudHandler<OpwWojewodztwo> implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-  private String testText = "aadada";
-
   @EJB
-  WojewodztwoFacade wojewodztwoFacade;
+  WojewodztwoFacade facade;
 
-  public LoginHandler() {
-    logger.error("LoginHandler");
+  public WojewodztwoHandler() {
+    VIEW_ID = "wojewodztwo";
+    VIEW_ID_EDIT = "wojewodztwoEdit";
+    VIEW_ID_CREATE = "wojewodztwoCreate";
   }
 
-  public String getTestText() {
-    return testText + " test" + wojewodztwoFacade.count();
+  @Override
+  public List<OpwWojewodztwo> getInstanceList() {
+    return instanceList;
   }
 
-  public void setTestText(String testText) {
-    this.testText = testText;
+  @Override
+  public OpwWojewodztwo getInstance() {
+    return instance;
+  }
+
+  @Override
+  public void prepareList() {
+    instanceList = facade.findAll();
+  }
+
+  @Override
+  public void prepareCreate() {
+    instance = new OpwWojewodztwo();
+  }
+
+  @Override
+  public String create() {
+    facade.create(instance);
+    return VIEW_ID;
+  }
+
+  @Override
+  public String edit() {
+    facade.edit(instance);
+    return VIEW_ID;
+  }
+
+  @Override
+  public void prepareView() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
 }

@@ -23,40 +23,53 @@
  */
 package pl.otwartapw.opw.pre.management.handler;
 
-import java.io.Serializable;
-import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
-
 /**
+ * Represent common CRUD logic for an entity.
  *
  * @author Adam Kowalewski
+ * @version 2015.03.22
  */
-@Named
-@RequestScoped
-public class LoginHandler implements Serializable {
+public interface CrudHandler {
 
-  private static final long serialVersionUID = 1L;
-  private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    /**
+     * Retrieves current entity for viewing.
+     */
+    public void prepareView();
+    
+    /**
+     * Prepare current entity to be edited.
+     */
+    public void prepareEdit();
 
-  private String testText = "aadada";
+    /**
+     * Retrieves list of entities from database.
+     */
+    public void prepareList();
 
-  @EJB
-  WojewodztwoFacade wojewodztwoFacade;
+    /**
+     * Creates a new empty instance to work with.
+     */
+    public void prepareCreate();
 
-  public LoginHandler() {
-    logger.error("LoginHandler");
-  }
+    /**
+     * Persists a new entity in the database.
+     *
+     * @return JSF name of list page.
+     */
+    public String create();
 
-  public String getTestText() {
-    return testText + " test" + wojewodztwoFacade.count();
-  }
+    /**
+     * Edits an entity in the database.
+     *
+     * @return JSF name of list page.
+     */
+    public String edit();
 
-  public void setTestText(String testText) {
-    this.testText = testText;
-  }
+    /**
+     * Handles 'Cancel' button within editing form.
+     *
+     * @return name of list view.
+     */
+    public String cancel();
 
 }
