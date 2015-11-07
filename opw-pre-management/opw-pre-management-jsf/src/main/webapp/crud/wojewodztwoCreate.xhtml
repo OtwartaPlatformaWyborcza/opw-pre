@@ -1,0 +1,29 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="content">
+        <h1>#{messages.wojewodztwoCreateTitle}</h1>
+        #{wojewodztwoHandler.prepareCreate()}
+
+        <h:form id="create">
+            <h:panelGrid columns="2" cellspacing="7">
+                <h:outputLabel for="teryt" id="terytL" value="#{messages.teryt}" />
+                <p:inputText id="teryt" required="true" 
+                             value="#{wojewodztwoHandler.instance.teryt}"/>
+
+                <h:outputLabel for="name" id="nameL" value="#{messages.name}" />
+                <p:inputText id="name" required="true" 
+                             value="#{wojewodztwoHandler.instance.name}"/>
+
+                <h:commandLink value="#{messages.submit}"
+                               action="#{wojewodztwoHandler.create()}"/>
+
+            </h:panelGrid>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

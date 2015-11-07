@@ -30,11 +30,6 @@ package pl.otwartapw.opw.pre.management.handler;
  * @version 2015.03.22
  */
 public interface CrudHandler {
-
-    /**
-     * Retrieves current entity for viewing.
-     */
-    public void prepareView();
     
     /**
      * Prepare current entity to be edited.

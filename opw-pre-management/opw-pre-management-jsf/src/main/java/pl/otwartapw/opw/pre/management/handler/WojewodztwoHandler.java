@@ -26,7 +26,7 @@ package pl.otwartapw.opw.pre.management.handler;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,11 +34,13 @@ import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
 import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
 
 /**
- *
+ * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwWojewodztwo} related JSF sites.
+ * 
  * @author Adam Kowalewski
+ * @Version 2015.11.07
  */
 @Named
-@ViewScoped
+@SessionScoped
 public class WojewodztwoHandler extends AbstractCrudHandler<OpwWojewodztwo> implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -83,11 +85,6 @@ public class WojewodztwoHandler extends AbstractCrudHandler<OpwWojewodztwo> impl
   public String edit() {
     facade.edit(instance);
     return VIEW_ID;
-  }
-
-  @Override
-  public void prepareView() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
 }
