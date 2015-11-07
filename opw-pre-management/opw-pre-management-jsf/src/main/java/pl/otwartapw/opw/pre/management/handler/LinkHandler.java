@@ -23,48 +23,62 @@
  */
 package pl.otwartapw.opw.pre.management.handler;
 
+import java.io.Serializable;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.otwartapw.opw.pre.entity.OpwLink;
+import pl.otwartapw.opw.pre.management.facade.LinkFacade;
+
 /**
- * Represent common CRUD logic for an entity.
+ * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwLink} related JSF sites.
  *
  * @author Adam Kowalewski
- * @version 2015.03.22
+ * @Version 2015.11.07
  */
-public interface CrudHandler {
-    
-    /**
-     * Prepare current entity to be edited.
-     */
-    void prepareEdit();
+@Named
+@SessionScoped
+public class LinkHandler extends AbstractCrudHandler<OpwLink> implements Serializable {
 
-    /**
-     * Retrieves list of entities from database.
-     */
-    void prepareList();
+  private static final long serialVersionUID = 1L;
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    /**
-     * Creates a new empty instance to work with.
-     */
-    void prepareCreate();
+  @EJB
+  LinkFacade facade;
 
-    /**
-     * Persists a new entity in the database.
-     *
-     * @return JSF name of list page.
-     */
-    String create();
+  @Override
+  public List<OpwLink> getInstanceList() {
+    return instanceList;
+  }
 
-    /**
-     * Edits an entity in the database.
-     *
-     * @return JSF name of list page.
-     */
-    String edit();
+  @Override
+  public OpwLink getInstance() {
+    return instance;
+  }
 
-    /**
-     * Handles 'Cancel' button within editing form.
-     *
-     * @return name of list view.
-     */
-    String cancel();
+  @Override
+  public void prepareList() {
+    instanceList = facade.findAll();
+  }
+
+  @Override
+  public void prepareCreate() {
+    instance = new OpwLink();
+  }
+
+  @Override
+  public String create() {
+    facade.create(instance);
+    return VIEW_ID;
+  }
+
+  @Override
+  public String edit() {
+    facade.edit(instance);
+    return VIEW_ID;
+  }
 
 }

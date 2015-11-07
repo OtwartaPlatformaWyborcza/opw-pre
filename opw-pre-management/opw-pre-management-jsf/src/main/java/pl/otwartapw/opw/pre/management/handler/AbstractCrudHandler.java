@@ -31,88 +31,99 @@ import java.util.List;
  *
  * @param <T> DTO class to be used.
  * @author Adam Kowalewski
- * @version 2015.04.12
+ * @version 2015.11.08
  */
 public abstract class AbstractCrudHandler<T> implements CrudHandler {
 
-    boolean viewMode = true;
-    T instance;
-    List<T> instanceList;
-    List<T> instanceListFiltered;
+  final String PATTERN_DATE = "yyyy.MM.dd";
+  final String PATTERN_DATETIME = "yyyy.MM.dd HH:mm";
 
-    String VIEW_ID;
-    String VIEW_ID_EDIT;
-    String VIEW_ID_CREATE;
+  boolean viewMode = true;
+  T instance;
+  List<T> instanceList;
+  List<T> instanceListFiltered;
 
-    public AbstractCrudHandler() {
-        instanceList = new ArrayList<>();
-    }
+  String VIEW_ID;
+  String VIEW_ID_EDIT;
+  String VIEW_ID_CREATE;
 
-    /**
-     * TODO
-     *
-     * @param r instance of an entity to view.
-     * @return TODO
-     * @author Adam Kowalewski
-     * @version 2015.03.19
-     */
-    public String prepareView(T r) {
-        instance = r;
-        viewMode = true;
-        return VIEW_ID_EDIT + "?faces-redirect=true";
-    }
+  public AbstractCrudHandler() {
+    instanceList = new ArrayList<>();
+  }
 
-    public String prepareEdit(T r) {
-        instance = r;
-        viewMode = false;
-        return VIEW_ID_EDIT;
-    }
+  /**
+   * TODO
+   *
+   * @param r instance of an entity to view.
+   * @return TODO
+   * @author Adam Kowalewski
+   * @version 2015.03.19
+   */
+  public String prepareView(T r) {
+    instance = r;
+    viewMode = true;
+    return VIEW_ID_EDIT + "?faces-redirect=true";
+  }
 
-    @Override
-    public void prepareEdit() {
-        viewMode = false;
-    }
+  public String prepareEdit(T r) {
+    instance = r;
+    viewMode = false;
+    return VIEW_ID_EDIT;
+  }
 
-    @Override
-    public String cancel() {
-        viewMode = true;
-        return VIEW_ID + "?faces-redirect=true";
-    }
+  @Override
+  public void prepareEdit() {
+    viewMode = false;
+  }
 
-    public boolean isViewMode() {
-        return viewMode;
-    }
+  @Override
+  public String cancel() {
+    viewMode = true;
+    return VIEW_ID + "?faces-redirect=true";
+  }
 
-    public void setViewMode(boolean viewMode) {
-        this.viewMode = viewMode;
-    }
+  public boolean isViewMode() {
+    return viewMode;
+  }
 
-    public T getInstance() {
-        return instance;
-    }
+  public void setViewMode(boolean viewMode) {
+    this.viewMode = viewMode;
+  }
 
-    public void setInstance(T instance) {
-        this.instance = instance;
-    }
+  public T getInstance() {
+    return instance;
+  }
 
-    public List<T> getInstanceList() {
-        return instanceList;
-    }
+  public void setInstance(T instance) {
+    this.instance = instance;
+  }
 
-    public void setInstanceList(List<T> instanceList) {
-        this.instanceList = instanceList;
-    }
+  public List<T> getInstanceList() {
+    return instanceList;
+  }
 
-    public List<T> getInstanceListFiltered() {
-        return instanceListFiltered;
-    }
+  public void setInstanceList(List<T> instanceList) {
+    this.instanceList = instanceList;
+  }
 
-    public void setInstanceListFiltered(List<T> instanceListFiltered) {
-        this.instanceListFiltered = instanceListFiltered;
-    }
+  public List<T> getInstanceListFiltered() {
+    return instanceListFiltered;
+  }
 
-    public String getCreateLink() {
-        return VIEW_ID_CREATE;
-    }
+  public void setInstanceListFiltered(List<T> instanceListFiltered) {
+    this.instanceListFiltered = instanceListFiltered;
+  }
+
+  public String getCreateLink() {
+    return VIEW_ID_CREATE;
+  }
+
+  public String getPATTERN_DATE() {
+    return PATTERN_DATE;
+  }
+
+  public String getPATTERN_DATETIME() {
+    return PATTERN_DATETIME;
+  }
 
 }
