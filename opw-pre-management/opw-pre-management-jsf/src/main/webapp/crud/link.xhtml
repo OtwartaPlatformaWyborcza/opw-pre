@@ -21,18 +21,15 @@
                 <p:column headerText="#{messages.teryt}" sortBy="#{i.label}">
                     <h:outputText value="#{i.label}"/>
                 </p:column>
-                <p:column headerText="#{messages.name}" sortBy="#{i.url}">
+                <p:column headerText="#{messages.url}" sortBy="#{i.url}">
                     <h:outputText value="#{i.url}"/>
                 </p:column>                
                 <p:column headerText="#{messages.name}" sortBy="#{i.dateCreated}">
                     <h:outputText value="#{i.dateCreated}">
                         <f:convertDateTime pattern="#{linkHandler.PATTERN_DATE}" />
                     </h:outputText>
-                </p:column>                
-                <p:column headerText="#{messages.name}" sortBy="#{i.url}">
-                    <h:outputText value="#{i.url}"/>
-                </p:column>                
-                <p:column headerText="TBD action">
+                </p:column>
+                <p:column>
                     <h:commandLink value="#{messages.edit}" 
                                    action="#{linkHandler.prepareView(i)}" />
                 </p:column>

@@ -12,6 +12,8 @@
         <br />
         <h:link outcome="/crud/link" value="Show All OpwLink Items"/>        
         <br />
+        <h:link outcome="/crud/status" value="Show All OpwStatus Items"/>        
+        <br />
         #{wojewodztwoHandler.prepareList()}
         <h:selectOneMenu>
             <f:selectItems value="#{wojewodztwoHandler.instanceList}" var="i" itemLabel="#{i.name}"/>

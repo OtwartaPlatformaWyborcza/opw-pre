@@ -1,0 +1,25 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h1>#{messages.statusCreateTitle}</h1>
+        #{statusHandler.prepareCreate()}
+
+        <h:form id="create">
+            <h:panelGrid columns="2" cellspacing="7">
+                <h:outputLabel for="label" id="labelL" value="#{messages.name}" />
+                <p:inputText id="label" required="true" value="#{statusHandler.instance.name}"/>
+
+                <h:outputLabel for="url" id="urlL" value="#{messages.description}" />
+                <p:inputText id="url" value="#{statusHandler.instance.description}"/>
+            </h:panelGrid>
+
+            <h:commandLink value="#{messages.cancel}" immediate="true" action="#{statusHandler.cancel()}"/>
+            <h:commandLink value="#{messages.submit}" action="#{statusHandler.create()}"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
