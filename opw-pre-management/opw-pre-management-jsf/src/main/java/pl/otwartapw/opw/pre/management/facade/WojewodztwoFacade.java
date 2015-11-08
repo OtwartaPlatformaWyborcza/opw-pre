@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
 
 /**
+ * Facade for JPA operations on entity {@link pl.otwartapw.opw.pre.entity.OpwWojewodztwo}.
  *
  * @author Adam Kowalewski
  */

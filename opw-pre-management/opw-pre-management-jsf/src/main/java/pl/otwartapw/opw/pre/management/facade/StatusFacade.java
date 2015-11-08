@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.entity.OpwStatus;
 
 /**
+ * Facade for JPA operations on entity {@link pl.otwartapw.opw.pre.entity.OpwStatus}.
  *
  * @author Adam Kowalewski
  */

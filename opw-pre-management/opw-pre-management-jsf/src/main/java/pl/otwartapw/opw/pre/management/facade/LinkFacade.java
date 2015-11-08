@@ -34,6 +34,7 @@ import pl.otwartapw.opw.pre.entity.OpwLink;
 import pl.otwartapw.opw.pre.entity.OpwProtokol;
 
 /**
+ * Facade for JPA operations on entity {@link pl.otwartapw.opw.pre.entity.OpwLink}.
  *
  * @author Adam Kowalewski
  */
