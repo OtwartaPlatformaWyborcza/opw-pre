@@ -23,10 +23,65 @@
  */
 package pl.otwartapw.opw.pre.management.controller;
 
+import java.io.Serializable;
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+import javax.inject.Named;
+import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
+import pl.otwartapw.opw.pre.management.converter.AbstractOpwConverter;
+import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
+
 /**
- * TODO Reconsider if needed 
+ * TODO Reconsider if needed
+ *
  * @author Adam Kowalewski
  */
-public class WojewodztwoController {
-  
+@Named
+@RequestScoped
+public class WojewodztwoController implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+  @EJB
+  WojewodztwoFacade facade;
+
+  public WojewodztwoController() {
+  }
+
+  public OpwWojewodztwo find(int id) {
+    return facade.find(id);
+  }
+
+  @FacesConverter(forClass = OpwWojewodztwo.class)
+  public static class WojewodztwoConverter extends AbstractOpwConverter implements Converter {
+
+    @Override
+    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+      if (value == null || value.length() == 0) {
+        return null;
+      }
+      WojewodztwoController controller = (WojewodztwoController) context.getApplication().getELResolver().
+              getValue(context.getELContext(), null, "wojewodztwoController");
+      return controller.find(getKey(value));
+    }
+
+    @Override
+    public String getAsString(FacesContext context, UIComponent component, Object object) {
+      if (object == null) {
+        return null;
+      }
+      if (object instanceof OpwWojewodztwo) {
+        OpwWojewodztwo o = (OpwWojewodztwo) object;
+        return getStringKey(o.getId());
+      } else {
+        throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + OpwWojewodztwo.class.getName());
+      }
+    }
+  }
+
 }

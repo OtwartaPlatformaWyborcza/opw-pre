@@ -14,7 +14,7 @@
                          value="#{wojewodztwoHandler.instanceList}" var="i"
                          sortBy="#{i.id}">
 
-                <p:column headerText="#" sortBy="#{i.id}">
+                <p:column headerText="#{messages.id}" sortBy="#{i.id}">
                     <h:outputText value="#{i.id}"/>
                 </p:column>
                 <p:column headerText="#{messages.teryt}" sortBy="#{i.teryt}">

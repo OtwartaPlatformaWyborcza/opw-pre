@@ -7,13 +7,15 @@
     <ui:define name="content">
 
         Hello from Facelets #{loginHandler.testText}
-        <br />
+        <br /><br />
         <h:link outcome="/crud/wojewodztwo" value="Show All OpwWojewodztwo Items"/>        
-        <br />
+        <br /><br />
         <h:link outcome="/crud/link" value="Show All OpwLink Items"/>        
-        <br />
+        <br /><br />
         <h:link outcome="/crud/status" value="Show All OpwStatus Items"/>        
-        <br />
+        <br /><br />
+        <h:link outcome="/crud/okregowa" value="Show All OpwOkregowa Items"/>        
+        <br /><br />
         #{wojewodztwoHandler.prepareList()}
         <h:selectOneMenu>
             <f:selectItems value="#{wojewodztwoHandler.instanceList}" var="i" itemLabel="#{i.name}"/>

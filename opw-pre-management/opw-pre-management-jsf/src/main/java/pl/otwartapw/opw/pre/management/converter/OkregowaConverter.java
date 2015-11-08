@@ -28,28 +28,26 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
-import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
+import pl.otwartapw.opw.pre.entity.OpwOkregowa;
+import pl.otwartapw.opw.pre.management.facade.OkregowaFacade;
 
 /**
- * Default FacesConverter for {@link pl.otwartapw.opw.pre.entity.OpwWojewodztwo}.
+ * Default FacesConverter for {@link pl.otwartapw.opw.pre.entity.OpwOkregowa}.
  *
  * @author Adam Kowalewski
  * @version 2015.11.08
  */
-@FacesConverter(forClass = OpwWojewodztwo.class)
-public class WojewodztwoConverter extends AbstractOpwConverter implements Converter {
+@FacesConverter(forClass = OpwOkregowa.class)
+public class OkregowaConverter extends AbstractOpwConverter implements Converter {
 
   @EJB
-  WojewodztwoFacade facade;
+  OkregowaFacade facade;
 
   @Override
   public Object getAsObject(FacesContext context, UIComponent component, String value) {
     if (value == null || value.length() == 0) {
       return null;
     }
-//    WojewodztwoFacade facade = (WojewodztwoFacade) facesContext.getApplication().getELResolver().
-//            getValue(facesContext.getELContext(), null, "wojewodztwoFacade");
     return facade.find(getKey(value));
   }
 
@@ -58,11 +56,11 @@ public class WojewodztwoConverter extends AbstractOpwConverter implements Conver
     if (object == null) {
       return null;
     }
-    if (object instanceof OpwWojewodztwo) {
-      OpwWojewodztwo o = (OpwWojewodztwo) object;
+    if (object instanceof OpwOkregowa) {
+      OpwOkregowa o = (OpwOkregowa) object;
       return getStringKey(o.getId());
     } else {
-      throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + OpwWojewodztwo.class.getName());
+      throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + OpwOkregowa.class.getName());
     }
   }
 

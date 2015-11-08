@@ -27,15 +27,15 @@ package pl.otwartapw.opw.pre.management.converter;
  *
  * @author Adam Kowalewski
  */
-public class AbstractOpwConverter {
+public abstract class AbstractOpwConverter {
 
-  java.lang.Integer getKey(String value) {
+  public static java.lang.Integer getKey(String value) {
     java.lang.Integer key;
     key = Integer.valueOf(value);
     return key;
   }
 
-  String getStringKey(java.lang.Integer value) {
+  public static String getStringKey(java.lang.Integer value) {
     StringBuilder sb = new StringBuilder();
     sb.append(value);
     return sb.toString();

@@ -1,0 +1,42 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h1>#{messages.okregowaCreateTitle}</h1>
+        #{okregowaHandler.prepareCreate()}
+
+        <h:form id="create">
+            <h:panelGrid columns="2" cellspacing="7">
+                <h:outputLabel for="pkwid" id="pkwidL" value="#{messages.name}" />
+                <p:inputText id="pkwid" required="true" value="#{okregowaHandler.instance.pkwId}"/>
+
+                <h:outputLabel for="name" id="nameL" value="#{messages.name}" />
+                <p:inputText id="name" required="true" value="#{okregowaHandler.instance.name}"/>
+
+                <h:outputLabel for="address" id="addressL" value="#{messages.address}" />
+                <p:inputText id="address" required="true" value="#{okregowaHandler.instance.address}"/>
+
+                <h:outputLabel for="powiaty" id="powiatyL" value="#{messages.powiaty}" />
+                <p:inputText id="powiaty" required="true" value="#{okregowaHandler.instance.powiaty}"/>
+
+                <h:outputLabel for="miasta" id="miastaL" value="#{messages.cities}" />
+                <p:inputText id="miasta" required="true" value="#{okregowaHandler.instance.miasta}"/>
+
+                <h:outputLabel for="wojew" id="wojewL" value="#{messages.province}" />
+                <h:selectOneMenu id="wojew" value="#{okregowaHandler.instance.opwWojewodztwoId}">
+                    <f:selectItems value="#{okregowaHandler.wojewodztwoList}" var="w" 
+                                   itemLabel="#{w.name}"
+                                   itemValue="#{w.id}"/>
+                </h:selectOneMenu>
+
+            </h:panelGrid>
+
+            <h:commandLink value="#{messages.cancel}" immediate="true" action="#{okregowaHandler.cancel()}"/>
+            <h:commandLink value="#{messages.submit}" action="#{okregowaHandler.create()}"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

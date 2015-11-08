@@ -24,29 +24,27 @@
 package pl.otwartapw.opw.pre.management.facade;
 
 import javax.ejb.Stateless;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
+import pl.otwartapw.opw.pre.entity.OpwOkregowa;
 
 /**
- * Facade for JPA operations on entity {@link pl.otwartapw.opw.pre.entity.OpwWojewodztwo}.
+ * Facade for JPA operations on entity {@link pl.otwartapw.opw.pre.entity.OpwOkregowa}.
  *
  * @author Adam Kowalewski
  */
-@Named
 @Stateless
-public class WojewodztwoFacade extends AbstractOpwFacade<OpwWojewodztwo> {
+public class OkregowaFacade extends AbstractOpwFacade<OpwOkregowa> {
 
-  private static final Logger logger = LoggerFactory.getLogger(WojewodztwoFacade.class);
+  private static final Logger logger = LoggerFactory.getLogger(OkregowaFacade.class);
 
   @PersistenceContext(unitName = PU_OPW)
   private EntityManager em;
 
-  public WojewodztwoFacade() {
-    super(OpwWojewodztwo.class);
+  public OkregowaFacade() {
+    super(OpwOkregowa.class);
   }
 
   @Override
