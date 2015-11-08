@@ -32,12 +32,14 @@ import pl.otwartapw.opw.pre.entity.OpwStatus;
 import pl.otwartapw.opw.pre.management.facade.StatusFacade;
 
 /**
+ * Default FacesConverter for {@link pl.otwartapw.opw.pre.entity.OpwStatus}.
  *
  * @author Adam Kowalewski
+ * @version 2015.11.08
  */
 @FacesConverter(forClass = OpwStatus.class)
 public class StatusConverter extends AbstractOpwConverter implements Converter {
-  
+
   @EJB
   StatusFacade facade;
 

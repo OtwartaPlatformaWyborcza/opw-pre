@@ -32,12 +32,14 @@ import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
 import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
 
 /**
+ * Default FacesConverter for {@link pl.otwartapw.opw.pre.entity.OpwWojewodztwo}.
  *
  * @author Adam Kowalewski
+ * @version 2015.11.08
  */
 @FacesConverter(forClass = OpwWojewodztwo.class)
 public class WojewodztwoConverter extends AbstractOpwConverter implements Converter {
-  
+
   @EJB
   WojewodztwoFacade facade;
 
