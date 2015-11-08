@@ -33,7 +33,6 @@ import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 import pl.otwartapw.opw.pre.entity.OpwOkregowa;
 import pl.otwartapw.opw.pre.management.converter.AbstractOpwConverter;
-import static pl.otwartapw.opw.pre.management.converter.AbstractOpwConverter.getStringKey;
 import pl.otwartapw.opw.pre.management.facade.OkregowaFacade;
 
 /**
