@@ -31,32 +31,32 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
-import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
+import pl.otwartapw.opw.pre.entity.OpwOkregowa;
 import pl.otwartapw.opw.pre.management.converter.AbstractOpwConverter;
-import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
+import static pl.otwartapw.opw.pre.management.converter.AbstractOpwConverter.getStringKey;
+import pl.otwartapw.opw.pre.management.facade.OkregowaFacade;
 
 /**
- * 
  *
  * @author Adam Kowalewski
  */
 @Named
 @RequestScoped
-public class WojewodztwoController implements Serializable {
+public class OkregowaController implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   @EJB
-  WojewodztwoFacade facade;
+  OkregowaFacade facade;
 
-  public WojewodztwoController() {
+  public OkregowaController() {
   }
-
-  public OpwWojewodztwo find(int id) {
+  
+  public OpwOkregowa find(int id) {
     return facade.find(id);
   }
-
-  @FacesConverter(forClass = OpwWojewodztwo.class)
+  
+  @FacesConverter(forClass = OpwOkregowa.class)
   public static class WojewodztwoConverter extends AbstractOpwConverter implements Converter {
 
     @Override
@@ -64,8 +64,8 @@ public class WojewodztwoController implements Serializable {
       if (value == null || value.length() == 0) {
         return null;
       }
-      WojewodztwoController controller = (WojewodztwoController) context.getApplication().getELResolver().
-              getValue(context.getELContext(), null, "wojewodztwoController");
+      OkregowaController controller = (OkregowaController) context.getApplication().getELResolver().
+              getValue(context.getELContext(), null, "okregowaController");
       return controller.find(getKey(value));
     }
 
@@ -74,13 +74,12 @@ public class WojewodztwoController implements Serializable {
       if (object == null) {
         return null;
       }
-      if (object instanceof OpwWojewodztwo) {
-        OpwWojewodztwo o = (OpwWojewodztwo) object;
+      if (object instanceof OpwOkregowa) {
+        OpwOkregowa o = (OpwOkregowa) object;
         return getStringKey(o.getId());
       } else {
-        throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + OpwWojewodztwo.class.getName());
+        throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + OpwOkregowa.class.getName());
       }
     }
   }
-
 }
