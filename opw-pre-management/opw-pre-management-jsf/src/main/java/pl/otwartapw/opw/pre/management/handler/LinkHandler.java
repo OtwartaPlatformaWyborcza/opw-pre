@@ -49,6 +49,12 @@ public class LinkHandler extends AbstractCrudHandler<OpwLink> implements Seriali
   @EJB
   LinkFacade facade;
 
+  public LinkHandler() {
+    VIEW_ID = "link";
+    VIEW_ID_EDIT = "linkEdit";
+    VIEW_ID_CREATE = "linkCreate";
+  }
+
   @Override
   public List<OpwLink> getInstanceList() {
     return instanceList;
