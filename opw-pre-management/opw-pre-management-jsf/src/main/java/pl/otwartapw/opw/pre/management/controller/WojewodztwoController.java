@@ -32,11 +32,10 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
-import pl.otwartapw.opw.pre.management.converter.AbstractOpwConverter;
 import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
 
 /**
- * 
+ *
  *
  * @author Adam Kowalewski
  */
@@ -56,6 +55,12 @@ public class WojewodztwoController implements Serializable {
     return facade.find(id);
   }
 
+  /**
+   * Default FacesConverter for {@link pl.otwartapw.opw.pre.entity.OpwWojewodztwo}.
+   *
+   * @author Adam Kowalewski
+   * @version 2015.11.08
+   */
   @FacesConverter(forClass = OpwWojewodztwo.class)
   public static class WojewodztwoConverter extends AbstractOpwConverter implements Converter {
 

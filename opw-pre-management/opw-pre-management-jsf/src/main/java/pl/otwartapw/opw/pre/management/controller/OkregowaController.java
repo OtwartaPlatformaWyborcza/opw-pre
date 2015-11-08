@@ -32,7 +32,6 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 import pl.otwartapw.opw.pre.entity.OpwOkregowa;
-import pl.otwartapw.opw.pre.management.converter.AbstractOpwConverter;
 import pl.otwartapw.opw.pre.management.facade.OkregowaFacade;
 
 /**
@@ -50,11 +49,17 @@ public class OkregowaController implements Serializable {
 
   public OkregowaController() {
   }
-  
+
   public OpwOkregowa find(int id) {
     return facade.find(id);
   }
-  
+
+  /**
+   * Default FacesConverter for {@link pl.otwartapw.opw.pre.entity.OpwOkregowa}.
+   *
+   * @author Adam Kowalewski
+   * @version 2015.11.08
+   */
   @FacesConverter(forClass = OpwOkregowa.class)
   public static class WojewodztwoConverter extends AbstractOpwConverter implements Converter {
 
