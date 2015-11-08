@@ -21,6 +21,11 @@
             <artifactId>opw-pre-base</artifactId>            
         </dependency>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>opw-pre-commons</artifactId>
+        </dependency>
+        
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
