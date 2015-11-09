@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"                
+                xmlns:h="http://xmlns.jcp.org/jsf/html"                
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <h1>#{messages.kandydatCreateTitle}</h1>
+        #{kandydatHandler.prepareCreate()}
+
+        <h:form id="create">
+            <h:panelGrid columns="2" cellspacing="7">
+                <h:outputLabel for="pkwid" id="pkwidL" value="#{messages.pkwid}" />
+                <p:inputText id="pkwid" required="true" value="#{kandydatHandler.instance.pkwId}"/>
+
+                <h:outputLabel for="name" id="nameL" value="#{messages.firstname}" />
+                <p:inputText id="name" required="true" value="#{kandydatHandler.instance.firstname}"/>
+
+                <h:outputLabel for="address" id="addressL" value="#{messages.lastname}" />
+                <p:inputText id="address" required="true" value="#{kandydatHandler.instance.lastname}"/>
+            </h:panelGrid>
+
+            <h:commandLink value="#{messages.cancel}" immediate="true" action="#{kandydatHandler.cancel()}"/>
+            <h:commandLink value="#{messages.submit}" action="#{kandydatHandler.create()}"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
