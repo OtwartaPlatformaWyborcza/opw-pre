@@ -35,6 +35,7 @@
     <properties>
         <version.slf4j>1.7.7</version.slf4j>
         <version.resteasy>3.0.11.Final</version.resteasy>
+        <version.org.picketlink>2.7.0.Final</version.org.picketlink>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <maven.compiler.source>1.7</maven.compiler.source>
@@ -137,7 +138,14 @@
                 <version>4.3.10.Final</version>
                 <scope>provided</scope>
             </dependency>
-            
+                        
+            <dependency>
+                <groupId>org.picketlink</groupId>
+                <artifactId>picketlink-javaee-7.0</artifactId>
+                <version>${version.org.picketlink}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-web-api</artifactId>
