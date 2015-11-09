@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"                
+                xmlns:h="http://xmlns.jcp.org/jsf/html"                
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <h1>#{messages.configCreateTitle}</h1>
+        #{configHandler.prepareCreate()}
+
+        <h:form id="create">
+            <h:panelGrid columns="2" cellspacing="7">
+                <h:outputLabel for="key" id="keyL" value="#{messages.configKey}" />
+                <p:inputText id="key" required="true" value="#{configHandler.instance.cfgKey}"/>
+
+                <h:outputLabel for="value" id="valueL" value="#{messages.configValue}" />
+                <p:inputText id="value" required="true" value="#{configHandler.instance.cfgValue}"/>
+            </h:panelGrid>
+
+            <h:commandLink value="#{messages.cancel}" immediate="true" action="#{configHandler.cancel()}"/>
+            <h:commandLink value="#{messages.submit}" action="#{configHandler.create()}"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
