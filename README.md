@@ -19,24 +19,27 @@ Refactoring struktury projektu, architektury jak i podstawowych komponentów API
 
 ### Wersja 0.2.0
 Implementacja masek administracyjnych.  
-* [PRE-7](https://otwartapw.atlassian.net/browse/PRE-7) Maski administracyjne: Komisja Okregowa
-* [PRE-8](https://otwartapw.atlassian.net/browse/PRE-8) Maski administracyjne: Komisja Obwodowa
-* [PRE-9](https://otwartapw.atlassian.net/browse/PRE-9) Maski administracyjne: Województwo
+* [x] [PRE-7](https://otwartapw.atlassian.net/browse/PRE-7) Maski administracyjne: Komisja Okregowa
+* [x] [PRE-8](https://otwartapw.atlassian.net/browse/PRE-8) Maski administracyjne: Komisja Obwodowa
+* [x] [PRE-9](https://otwartapw.atlassian.net/browse/PRE-9) Maski administracyjne: Województwo
 * [PRE-10](https://otwartapw.atlassian.net/browse/PRE-10) Maski administracyjne: Wynik
 * [PRE-11](https://otwartapw.atlassian.net/browse/PRE-11) Maski administracyjne: Link
-* [PRE-12](https://otwartapw.atlassian.net/browse/PRE-12) Maski administracyjne: Konfiguracja
+* [x] [PRE-12](https://otwartapw.atlassian.net/browse/PRE-12) Maski administracyjne: Konfiguracja
 * [PRE-13](https://otwartapw.atlassian.net/browse/PRE-13) Maski administracyjne: Użytkownik
-* [PRE-14](https://otwartapw.atlassian.net/browse/PRE-14) Maski administracyjne: kandydat
+* [x] [PRE-14](https://otwartapw.atlassian.net/browse/PRE-14) Maski administracyjne: kandydat
 
 
 ### Wersja 0.3.0
 Integracja komisji obwodowej.  
-* [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD
+* [PRE-4]((https://otwartapw.atlassian.net/browse/PRE-4) TBD
+* Zabezpieczenie masek administracyjnych (Autoryzacja / Autentyfikacja)
+* Generator danych dla komisji obwodowej.  
 
 ### Wersja 0.4.0
 Rejestracja wolontariusza
 * [PRE-1](https://otwartapw.atlassian.net/browse/PRE-1) Formularz rejestracji wolontariusza
 * [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD
+* Dodanie
 
 ### Wersja 0.5.0
 Integracja docker'a.
