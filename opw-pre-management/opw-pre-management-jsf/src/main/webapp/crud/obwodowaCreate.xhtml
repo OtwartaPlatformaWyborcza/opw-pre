@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"                
+                xmlns:h="http://xmlns.jcp.org/jsf/html"                
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <h1>#{messages.obwodowaCreateTitle}</h1>
+        #{obwodowaHandler.prepareCreate()}
+
+        <h:form id="create">
+            <h:panelGrid columns="2" cellspacing="7">
+                <h:outputLabel for="pkwid" id="pkwidL" value="#{messages.pkwid}" />
+                <p:inputText id="pkwid" required="true" value="#{obwodowaHandler.instance.pkwId}"/>
+
+                <h:outputLabel for="obwodNr" id="obwodNrL" value="#{messages.obwod}" />
+                <p:inputText id="obwodNr" required="true" value="#{obwodowaHandler.instance.obwodNr}"/>
+                
+                <h:outputLabel for="name" id="nameL" value="#{messages.name}" />
+                <p:inputText id="name" required="true" value="#{obwodowaHandler.instance.name}"/>
+
+                <h:outputLabel for="address" id="addressL" value="#{messages.address}" />
+                <p:inputText id="address" required="true" value="#{obwodowaHandler.instance.address}"/>
+
+                <h:outputLabel for="allowed" id="allowedL" value="#{messages.obwodowaVoters}" />
+                <p:inputText id="allowed" required="true" value="#{obwodowaHandler.instance.allowedToVote}"/>
+
+                <h:outputLabel for="type" id="typeL" value="#{messages.obwodowaType}" />
+                <p:inputText id="type" required="true" value="#{obwodowaHandler.instance.type}"/>
+
+                <h:outputLabel for="wojew" id="wojewL" value="#{messages.province}" />
+                <h:selectOneMenu id="wojew" value="#{obwodowaHandler.instance.opwWojewodztwoId}">
+                    <f:selectItems value="#{obwodowaHandler.wojewodztwoList}" var="w" 
+                                   itemLabel="#{w.name}"/>
+                </h:selectOneMenu>
+
+            </h:panelGrid>
+
+            <h:commandLink value="#{messages.cancel}" immediate="true" action="#{obwodowaHandler.cancel()}"/>
+            <h:commandLink value="#{messages.submit}" action="#{obwodowaHandler.create()}"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

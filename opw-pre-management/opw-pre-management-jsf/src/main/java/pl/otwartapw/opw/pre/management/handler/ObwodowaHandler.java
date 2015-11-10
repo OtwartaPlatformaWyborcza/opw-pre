@@ -31,11 +31,13 @@ import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.entity.OpwObwodowa;
+import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
 import pl.otwartapw.opw.pre.management.facade.ObwodowaFacade;
+import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
 
 /**
  * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwObwodowa} related JSF sites.
- * 
+ *
  * @author Adam Kowalewski
  * @Version 2015.11.09
  */
@@ -49,10 +51,17 @@ public class ObwodowaHandler extends AbstractCrudHandler<OpwObwodowa> implements
   @EJB
   ObwodowaFacade facade;
 
+  @EJB
+  WojewodztwoFacade wojewodztwoFacade;
+
   public ObwodowaHandler() {
     VIEW_ID = "obwodowa";
     VIEW_ID_EDIT = "obwodowaEdit";
     VIEW_ID_CREATE = "obwodowaCreate";
+  }
+
+  public List<OpwWojewodztwo> getWojewodztwoList() {
+    return wojewodztwoFacade.findAll();
   }
 
   @Override

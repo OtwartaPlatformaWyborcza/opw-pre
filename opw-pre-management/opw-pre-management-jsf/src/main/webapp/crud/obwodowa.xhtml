@@ -22,16 +22,19 @@
                 <p:column headerText="#{messages.pkwid}" sortBy="#{i.pkwId}">
                     <h:outputText value="#{i.pkwId}"/>
                 </p:column>
-                <p:column headerText="#{messages.firstname}" sortBy="#{i.obwodNr}">
+                <p:column headerText="#{messages.obwod}" sortBy="#{i.obwodNr}">
                     <h:outputText value="#{i.obwodNr}"/>
                 </p:column>
-                <p:column headerText="#{messages.lastname}" sortBy="#{i.name}">
+                <p:column headerText="#{messages.name}" sortBy="#{i.name}">
                     <h:outputText value="#{i.name}"/>
                 </p:column>
                 <p:column headerText="#{messages.address}" sortBy="#{i.address}">
                     <h:outputText value="#{i.address}"/>
                 </p:column>
-                <p:column headerText="#{messages.wojewodztwo}">
+                <p:column headerText="#{messages.obwodowaVoters}" sortBy="#{i.allowedToVote}">
+                    <h:outputText value="#{i.allowedToVote}"/>
+                </p:column>
+                <p:column headerText="#{messages.province}">
                     <h:outputText value="#{i.opwWojewodztwoId.name}"/>
                 </p:column>
                 <p:column>
