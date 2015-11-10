@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"                
+                xmlns:h="http://xmlns.jcp.org/jsf/html"                
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <h1>#{messages.userEditTitle}</h1>
+
+        <h:form id="edit">
+            <h:panelGrid columns="2" cellspacing="7">
+
+                <h:outputLabel for="firstname" id="firstnameL" value="#{messages.firstname}" />
+                <p:inputText id="firstname" disabled="#{userHandler.viewMode}" 
+                             value="#{userHandler.instance.firstname}"/>
+
+                <h:outputLabel for="lastname" id="lastnameL" value="#{messages.lastname}" />
+                <p:inputText id="lastname" disabled="#{userHandler.viewMode}" 
+                             value="#{userHandler.instance.lastname}"/>
+
+                <h:outputLabel for="email" id="emailL" value="#{messages.email}" />
+                <p:inputText id="email" required="true" disabled="#{userHandler.viewMode}" 
+                             value="#{userHandler.instance.email}"/>
+
+                <h:outputLabel for="password" id="passwordL" value="#{messages.password}" />
+                <p:inputText id="password" required="true" disabled="#{userHandler.viewMode}" 
+                             value="#{userHandler.instance.password}"/>
+
+                <h:outputLabel for="salt" id="saltL" value="#{messages.salt}" />
+                <p:inputText id="salt" required="true" disabled="#{userHandler.viewMode}" 
+                             value="#{userHandler.instance.salt}"/>
+
+                <h:outputLabel for="type" id="typeL" value="#{messages.type}" />
+                <p:inputText id="type" disabled="#{userHandler.viewMode}" 
+                             value="#{userHandler.instance.type}"/>
+
+                <h:outputLabel for="token" id="tokenL" value="#{messages.token}" />
+                <p:inputText id="token" disabled="#{userHandler.viewMode}" 
+                             value="#{userHandler.instance.token}"/>
+
+                <h:outputLabel for="phone" id="phoneL" value="#{messages.phone}" />
+                <p:inputText id="phone" disabled="#{userHandler.viewMode}" 
+                             value="#{userHandler.instance.phone}"/>
+
+            </h:panelGrid>
+
+            <h:commandLink id="btnCancel" class="btn btn" immediate="true"
+                           value="#{messages.cancel}" 
+                           action="#{userHandler.cancel()}" 
+                           rendered="#{not userHandler.viewMode}"/>
+
+            <h:commandLink id="btnSave" class="btn" 
+                           value="#{messages.submit}" 
+                           action="#{userHandler.edit()}"
+                           rendered="#{not userHandler.viewMode}"/>
+
+            <h:commandLink id="btnEdit" class="btn" 
+                           value="#{messages.edit}"
+                           action="#{userHandler.prepareEdit()}"
+                           rendered="#{userHandler.viewMode}"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
