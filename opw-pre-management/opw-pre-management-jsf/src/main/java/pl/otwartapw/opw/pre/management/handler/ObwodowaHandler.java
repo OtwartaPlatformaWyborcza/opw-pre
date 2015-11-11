@@ -55,9 +55,7 @@ public class ObwodowaHandler extends AbstractCrudHandler<OpwObwodowa> implements
   WojewodztwoFacade wojewodztwoFacade;
 
   public ObwodowaHandler() {
-    VIEW_ID = "obwodowa";
-    VIEW_ID_EDIT = "obwodowaEdit";
-    VIEW_ID_CREATE = "obwodowaCreate";
+    initViews("obwodowa");    
   }
 
   public List<OpwWojewodztwo> getWojewodztwoList() {

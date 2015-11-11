@@ -50,9 +50,7 @@ public class LinkHandler extends AbstractCrudHandler<OpwLink> implements Seriali
   LinkFacade facade;
 
   public LinkHandler() {
-    VIEW_ID = "link";
-    VIEW_ID_EDIT = "linkEdit";
-    VIEW_ID_CREATE = "linkCreate";
+    initViews("link");
   }
 
   @Override

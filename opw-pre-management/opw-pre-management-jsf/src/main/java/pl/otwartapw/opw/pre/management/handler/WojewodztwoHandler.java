@@ -35,7 +35,7 @@ import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
 
 /**
  * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwWojewodztwo} related JSF sites.
- * 
+ *
  * @author Adam Kowalewski
  * @Version 2015.11.07
  */
@@ -50,9 +50,7 @@ public class WojewodztwoHandler extends AbstractCrudHandler<OpwWojewodztwo> impl
   WojewodztwoFacade facade;
 
   public WojewodztwoHandler() {
-    VIEW_ID = "wojewodztwo";
-    VIEW_ID_EDIT = "wojewodztwoEdit";
-    VIEW_ID_CREATE = "wojewodztwoCreate";
+    initViews("wojewodztwo");
   }
 
   @Override

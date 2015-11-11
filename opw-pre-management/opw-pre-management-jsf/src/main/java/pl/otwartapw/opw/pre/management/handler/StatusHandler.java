@@ -35,7 +35,7 @@ import pl.otwartapw.opw.pre.management.facade.StatusFacade;
 
 /**
  * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwStatus} related JSF sites.
- * 
+ *
  * @author Adam Kowalewski
  * @Version 2015.11.07
  */
@@ -50,9 +50,7 @@ public class StatusHandler extends AbstractCrudHandler<OpwStatus> implements Ser
   StatusFacade facade;
 
   public StatusHandler() {
-    VIEW_ID = "status";
-    VIEW_ID_EDIT = "statusEdit";
-    VIEW_ID_CREATE = "statusCreate";
+    initViews("status");
   }
 
   @Override

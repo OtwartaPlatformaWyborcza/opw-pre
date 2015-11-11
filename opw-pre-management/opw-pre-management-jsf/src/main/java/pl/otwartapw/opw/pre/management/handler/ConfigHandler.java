@@ -50,9 +50,7 @@ public class ConfigHandler extends AbstractCrudHandler<OpwConfig> implements Ser
   ConfigFacade facade;
 
   public ConfigHandler() {
-    VIEW_ID = "config";
-    VIEW_ID_EDIT = "configEdit";
-    VIEW_ID_CREATE = "configCreate";
+    initViews("config");    
   }
 
   @Override

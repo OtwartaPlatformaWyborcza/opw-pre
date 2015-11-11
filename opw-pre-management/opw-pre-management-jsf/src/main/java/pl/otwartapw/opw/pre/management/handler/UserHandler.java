@@ -51,9 +51,7 @@ public class UserHandler extends AbstractCrudHandler<OpwUser> implements Seriali
   UserFacade facade;
 
   public UserHandler() {
-    VIEW_ID = "user";
-    VIEW_ID_EDIT = "userEdit";
-    VIEW_ID_CREATE = "userCreate";
+    initViews("user");
   }
 
   @Override

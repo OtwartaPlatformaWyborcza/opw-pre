@@ -49,16 +49,13 @@ public class OkregowaHandler extends AbstractCrudHandler<OpwOkregowa> implements
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  OkregowaFacade facade;    
+  OkregowaFacade facade;
 
   @EJB
   WojewodztwoFacade wojewodztwoFacade;
 
   public OkregowaHandler() {
-    logger.trace("OkregowaHandler");
-    VIEW_ID = "okregowa";
-    VIEW_ID_EDIT = "okregowaEdit";
-    VIEW_ID_CREATE = "okregowaCreate";
+    initViews("okregowa");
   }
 
   public List<OpwWojewodztwo> getWojewodztwoList() {

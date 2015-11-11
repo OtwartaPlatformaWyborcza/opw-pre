@@ -50,9 +50,7 @@ public class KandydatHandler extends AbstractCrudHandler<OpwKandydat> implements
   KandydatFacade facade;
 
   public KandydatHandler() {
-    VIEW_ID = "kandydat";
-    VIEW_ID_EDIT = "kandydatEdit";
-    VIEW_ID_CREATE = "kandydatCreate";
+    initViews("kandydat");    
   }
 
   @Override
