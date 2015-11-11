@@ -6,14 +6,14 @@
                 template="./../WEB-INF/template.xhtml">
 
     <ui:define name="content">
-        <h1>#{messages.kandydatListTitle}</h1>
-        #{kandydatHandler.prepareList()}
+        <h1>#{messages.protokolListTitle}</h1>
+        #{protokolHandler.prepareList()}
 
-        <h:link outcome="#{kandydatHandler.createLink}" value="#{messages.add}"/>
+        <h:link outcome="#{protokolHandler.createLink}" value="#{messages.add}"/>
 
         <h:form id="list">
             <p:dataTable id="tbl" emptyMessage="#{messages.emptyList}"
-                         value="#{kandydatHandler.instanceList}" var="i"
+                         value="#{protokolHandler.instanceList}" var="i"
                          sortBy="#{i.id}">
 
                 <p:column headerText="#{messages.id}" sortBy="#{i.id}">
@@ -22,15 +22,26 @@
                 <p:column headerText="#{messages.pkwid}" sortBy="#{i.pkwId}">
                     <h:outputText value="#{i.pkwId}"/>
                 </p:column>
-                <p:column headerText="#{messages.firstname}" sortBy="#{i.firstname}">
-                    <h:outputText value="#{i.firstname}"/>
+                <p:column headerText="#{messages.obwodowa}" sortBy="#{i.opwObwodowaId.pkwId}">
+                    <h:outputText value="#{i.opwObwodowaId.pkwId}"/>
                 </p:column>
-                <p:column headerText="#{messages.lastname}" sortBy="#{i.lastname}">
-                    <h:outputText value="#{i.lastname}"/>
+                <p:column headerText="#{messages.uprawnionych}" sortBy="#{i.uprawnionych}">
+                    <h:outputText value="#{i.uprawnionych}"/>
+                </p:column>
+                <p:column headerText="#{messages.user}" sortBy="#{i.opwUserId.email}">
+                    <h:outputText value="#{i.opwUserId.email}"/>
+                </p:column>
+                <p:column headerText="#{messages.status}" sortBy="#{i.opwStatusId.name}">
+                    <h:outputText value="#{i.opwStatusId.name}"/>
+                </p:column>
+                <p:column headerText="#{messages.dateCreated}" sortBy="#{i.dateCreated}">
+                    <h:outputText value="#{i.dateCreated}">
+                        <f:convertDateTime pattern="#{protokolHandler.PATTERN_DATETIME}" />
+                    </h:outputText>
                 </p:column>
                 <p:column>
                     <h:commandLink value="#{messages.view}" 
-                                   action="#{kandydatHandler.prepareView(i)}" />
+                                   action="#{protokolHandler.prepareView(i)}" />
                 </p:column>
 
             </p:dataTable>

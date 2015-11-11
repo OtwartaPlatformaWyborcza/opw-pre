@@ -52,6 +52,21 @@ public abstract class AbstractCrudHandler<T> implements CrudHandler {
   }
 
   /**
+   * Configures default set of destinations for JSF navigation e.g. <code>user</code>,
+   * <code>userEdit</code> and <code>userCreate</code>.
+   *
+   *
+   * @param name entity name e.g. <code>user</code>.
+   * @author Adam Kowalewski
+   * @version 2015.11.11
+   */
+  public void initViews(String name) {
+    VIEW_ID = name;
+    VIEW_ID_EDIT = VIEW_ID + "Edit";
+    VIEW_ID_CREATE = VIEW_ID + "Create";
+  }
+
+  /**
    * TODO
    *
    * @param r instance of an entity to view.

@@ -30,38 +30,38 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.entity.OpwKandydat;
-import pl.otwartapw.opw.pre.management.facade.KandydatFacade;
+import pl.otwartapw.opw.pre.entity.OpwObwodowa;
+import pl.otwartapw.opw.pre.entity.OpwProtokol;
+import pl.otwartapw.opw.pre.management.facade.ObwodowaFacade;
+import pl.otwartapw.opw.pre.management.facade.ProtokolFacade;
 
 /**
- * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwKandydat} related JSF sites.
- * 
+ * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwProtokol} related JSF sites.
+ *
  * @author Adam Kowalewski
  * @Version 2015.11.07
  */
 @Named
 @SessionScoped
-public class KandydatHandler extends AbstractCrudHandler<OpwKandydat> implements Serializable {
+public class ProtokolHandler extends AbstractCrudHandler<OpwProtokol> implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  KandydatFacade facade;
+  ProtokolFacade facade;
 
-  public KandydatHandler() {
-    VIEW_ID = "kandydat";
-    VIEW_ID_EDIT = "kandydatEdit";
-    VIEW_ID_CREATE = "kandydatCreate";
+  public ProtokolHandler() {
+    initViews("protokol");
   }
 
   @Override
-  public List<OpwKandydat> getInstanceList() {
+  public List<OpwProtokol> getInstanceList() {
     return instanceList;
   }
 
   @Override
-  public OpwKandydat getInstance() {
+  public OpwProtokol getInstance() {
     return instance;
   }
 
@@ -72,7 +72,8 @@ public class KandydatHandler extends AbstractCrudHandler<OpwKandydat> implements
 
   @Override
   public void prepareCreate() {
-    instance = new OpwKandydat();
+    instance = new OpwProtokol();
+    instance.setActive(true);
   }
 
   @Override

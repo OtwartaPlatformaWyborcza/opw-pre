@@ -31,8 +31,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
-import pl.otwartapw.opw.pre.entity.OpwKandydat;
-import pl.otwartapw.opw.pre.management.facade.KandydatFacade;
+import pl.otwartapw.opw.pre.entity.OpwProtokol;
+import pl.otwartapw.opw.pre.management.facade.ProtokolFacade;
 
 /**
  *
@@ -40,27 +40,27 @@ import pl.otwartapw.opw.pre.management.facade.KandydatFacade;
  */
 @Named
 @RequestScoped
-public class KandydatController implements Serializable {
+public class ProtokolController implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   @EJB
-  KandydatFacade facade;
+  ProtokolFacade facade;
 
-  public KandydatController() {
+  public ProtokolController() {
   }
 
-  public OpwKandydat find(int id) {
+  public OpwProtokol find(int id) {
     return facade.find(id);
   }
 
   /**
-   * Default FacesConverter for {@link pl.otwartapw.opw.pre.entity.OpwKandydat}.
+   * Default FacesConverter for {@link pl.otwartapw.opw.pre.entity.OpwProtokol}.
    *
    * @author Adam Kowalewski
    * @version 2015.11.08
    */
-  @FacesConverter(forClass = OpwKandydat.class)
+  @FacesConverter(forClass = OpwProtokol.class)
   public static class WojewodztwoConverter extends AbstractOpwConverter implements Converter {
 
     @Override
@@ -68,8 +68,8 @@ public class KandydatController implements Serializable {
       if (value == null || value.length() == 0) {
         return null;
       }
-      KandydatController controller = (KandydatController) context.getApplication().getELResolver().
-              getValue(context.getELContext(), null, "kandydatController");
+      ProtokolController controller = (ProtokolController) context.getApplication().getELResolver().
+              getValue(context.getELContext(), null, "protokolController");
       return controller.find(getKey(value));
     }
 
@@ -78,11 +78,11 @@ public class KandydatController implements Serializable {
       if (object == null) {
         return null;
       }
-      if (object instanceof OpwKandydat) {
-        OpwKandydat o = (OpwKandydat) object;
+      if (object instanceof OpwProtokol) {
+        OpwProtokol o = (OpwProtokol) object;
         return getStringKey(o.getId());
       } else {
-        throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + OpwKandydat.class.getName());
+        throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + OpwProtokol.class.getName());
       }
     }
   }

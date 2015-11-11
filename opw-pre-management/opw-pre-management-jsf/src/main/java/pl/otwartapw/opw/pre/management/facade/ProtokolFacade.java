@@ -23,33 +23,46 @@
  */
 package pl.otwartapw.opw.pre.management.facade;
 
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.entity.OpwKandydat;
+import pl.otwartapw.opw.pre.entity.OpwProtokol;
 
 /**
- * Facade for JPA operations on entity {@link pl.otwartapw.opw.pre.entity.OpwKandydat}.
+ * Facade for JPA operations on entity {@link pl.otwartapw.opw.pre.entity.OpwProtokol}.
  *
  * @author Adam Kowalewski
  */
 @Stateless
-public class KandydatFacade extends AbstractOpwFacade<OpwKandydat> {
-
-  private static final Logger logger = LoggerFactory.getLogger(KandydatFacade.class);
-
+public class ProtokolFacade extends AbstractOpwFacade<OpwProtokol> {
+  
+  private static final Logger logger = LoggerFactory.getLogger(ProtokolFacade.class);
+  
   @PersistenceContext(unitName = PU_OPW)
   private EntityManager em;
-
-  public KandydatFacade() {
-    super(OpwKandydat.class);
+  
+  public ProtokolFacade() {
+    super(OpwProtokol.class);
   }
-
+  
   @Override
   protected EntityManager getEntityManager() {
     return em;
   }
-
+  
+  @Override
+  public void create(OpwProtokol entity) {
+    entity.setDateCreated(new Date());
+    super.create(entity);    
+  }
+  
+  @Override
+  public void edit(OpwProtokol entity) {
+    entity.setDateModified(new Date());
+    super.edit(entity);
+  }
+  
 }

@@ -31,9 +31,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
-import pl.otwartapw.opw.pre.entity.OpwStatus;
-import static pl.otwartapw.opw.pre.management.controller.AbstractOpwConverter.getStringKey;
-import pl.otwartapw.opw.pre.management.facade.StatusFacade;
+import pl.otwartapw.opw.pre.entity.OpwUser;
+import pl.otwartapw.opw.pre.management.facade.UserFacade;
 
 /**
  *
@@ -41,36 +40,36 @@ import pl.otwartapw.opw.pre.management.facade.StatusFacade;
  */
 @Named
 @RequestScoped
-public class StatusController implements Serializable {
+public class UserController implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   @EJB
-  StatusFacade facade;
+  UserFacade facade;
 
-  public StatusController() {
+  public UserController() {
   }
 
-  public OpwStatus find(int id) {
+  public OpwUser find(int id) {
     return facade.find(id);
   }
 
   /**
-   * Default FacesConverter for {@link pl.otwartapw.opw.pre.entity.OpwStatus}.
+   * Default FacesConverter for {@link pl.otwartapw.opw.pre.entity.OpwUser}.
    *
    * @author Adam Kowalewski
    * @version 2015.11.08
    */
-  @FacesConverter(forClass = OpwStatus.class)
-  public class StatusConverter extends AbstractOpwConverter implements Converter {
+  @FacesConverter(forClass = OpwUser.class)
+  public static class WojewodztwoConverter extends AbstractOpwConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
       if (value == null || value.length() == 0) {
         return null;
       }
-      StatusController controller = (StatusController) context.getApplication().getELResolver().
-              getValue(context.getELContext(), null, "statusController");
+      UserController controller = (UserController) context.getApplication().getELResolver().
+              getValue(context.getELContext(), null, "userController");
       return controller.find(getKey(value));
     }
 
@@ -79,11 +78,11 @@ public class StatusController implements Serializable {
       if (object == null) {
         return null;
       }
-      if (object instanceof OpwStatus) {
-        OpwStatus o = (OpwStatus) object;
+      if (object instanceof OpwUser) {
+        OpwUser o = (OpwUser) object;
         return getStringKey(o.getId());
       } else {
-        throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + OpwStatus.class.getName());
+        throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + OpwUser.class.getName());
       }
     }
   }

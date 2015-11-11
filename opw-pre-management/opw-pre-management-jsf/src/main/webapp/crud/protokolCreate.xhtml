@@ -6,23 +6,50 @@
                 template="./../WEB-INF/template.xhtml">
 
     <ui:define name="content">
-        <h1>#{messages.kandydatCreateTitle}</h1>
-        #{kandydatHandler.prepareCreate()}
+        <h1>#{messages.protokolCreateTitle}</h1>
+        #{protokolHandler.prepareCreate()}
 
         <h:form id="create">
             <h:panelGrid columns="2" cellspacing="7">
                 <h:outputLabel for="pkwid" id="pkwidL" value="#{messages.pkwid}" />
-                <p:inputText id="pkwid" required="true" value="#{kandydatHandler.instance.pkwId}"/>
+                <p:inputText id="pkwid" required="true" value="#{protokolHandler.instance.pkwId}"/>
 
-                <h:outputLabel for="name" id="nameL" value="#{messages.firstname}" />
-                <p:inputText id="name" required="true" value="#{kandydatHandler.instance.firstname}"/>
+                <h:outputLabel for="parent" id="parentL" value="#{messages.parent}" />
+                <p:inputText id="parent" value="#{protokolHandler.instance.parentId}"/>
 
-                <h:outputLabel for="address" id="addressL" value="#{messages.lastname}" />
-                <p:inputText id="address" required="true" value="#{kandydatHandler.instance.lastname}"/>
+                <h:outputLabel for="obwodowa" id="obwodowaL" value="#{messages.obwodowa}" />
+                <p:inputText id="obwodowa" required="true" value="#{protokolHandler.instance.opwObwodowaId}"/>
+                
+                <h:outputLabel for="user" id="userL" value="#{messages.user}" />
+                <p:inputText id="user" required="true" value="#{protokolHandler.instance.opwUserId}"/>
+                
+                <h:outputLabel for="uprawnionych" id="uprawnionychL" value="#{messages.uprawnionych}" />
+                <p:inputText id="uprawnionych" required="true" value="#{protokolHandler.instance.uprawnionych}"/>
+                
+                <h:outputLabel for="kartWaznych" id="kartWaznychL" value="#{messages.kartWaznych}" />
+                <p:inputText id="kartWaznych" required="true" value="#{protokolHandler.instance.kartWaznych}"/>
+                
+                <h:outputLabel for="kartNiewaznych" id="kartNiewaznychL" value="#{messages.kartNiewaznych}" />
+                <p:inputText id="kartNiewaznych" required="true" value="#{protokolHandler.instance.kartNiewaznych}"/>
+                
+                <h:outputLabel for="glosowWaznych" id="glosowWaznychL" value="#{messages.glosowWaznych}" />
+                <p:inputText id="glosowWaznych" required="true" value="#{protokolHandler.instance.glosowWaznych}"/>
+                
+                <h:outputLabel for="glosowNiewaznych" id="glosowNiewaznychL" value="#{messages.glosowNiewaznych}" />
+                <p:inputText id="glosowNiewaznych" required="true" value="#{protokolHandler.instance.glosowNiewaznych}"/>
+                
+                <h:outputLabel for="fileOrig" id="fileOrigL" value="#{messages.fileOriginal}" />
+                <p:inputText id="fileOrig" required="true" value="#{protokolHandler.instance.fileOriginal}"/>
+                
+                <h:outputLabel for="active" id="activeL" value="#{messages.active}" />
+                <p:inputText id="active" required="true" value="#{protokolHandler.instance.active}"/>
+                
+                <h:outputLabel for="status" id="statusL" value="#{messages.status}" />
+                <p:inputText id="status" value="#{protokolHandler.instance.opwStatusId}"/>
             </h:panelGrid>
 
-            <h:commandLink value="#{messages.cancel}" immediate="true" action="#{kandydatHandler.cancel()}"/>
-            <h:commandLink value="#{messages.submit}" action="#{kandydatHandler.create()}"/>
+            <h:commandLink value="#{messages.cancel}" immediate="true" action="#{protokolHandler.cancel()}"/>
+            <h:commandLink value="#{messages.submit}" action="#{protokolHandler.create()}"/>
         </h:form>
     </ui:define>
 
