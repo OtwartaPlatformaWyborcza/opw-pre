@@ -32,7 +32,6 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 import pl.otwartapw.opw.pre.entity.OpwStatus;
-import static pl.otwartapw.opw.pre.management.controller.AbstractOpwConverter.getStringKey;
 import pl.otwartapw.opw.pre.management.facade.StatusFacade;
 
 /**
@@ -62,7 +61,7 @@ public class StatusController implements Serializable {
    * @version 2015.11.08
    */
   @FacesConverter(forClass = OpwStatus.class)
-  public class StatusConverter extends AbstractOpwConverter implements Converter {
+  public static class StatusConverter extends AbstractOpwConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
