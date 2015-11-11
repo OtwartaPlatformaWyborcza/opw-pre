@@ -27,7 +27,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -53,245 +52,224 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "opw_protokol", catalog = "opwpre", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "OpwProtokol.findAll", query = "SELECT o FROM OpwProtokol o"),
-    @NamedQuery(name = "OpwProtokol.findById", query = "SELECT o FROM OpwProtokol o WHERE o.id = :id"),
-    @NamedQuery(name = "OpwProtokol.findByUprawnionych", query = "SELECT o FROM OpwProtokol o WHERE o.uprawnionych = :uprawnionych"),
-    @NamedQuery(name = "OpwProtokol.findByKartWaznych", query = "SELECT o FROM OpwProtokol o WHERE o.kartWaznych = :kartWaznych"),
-    @NamedQuery(name = "OpwProtokol.findByKartNiewaznych", query = "SELECT o FROM OpwProtokol o WHERE o.kartNiewaznych = :kartNiewaznych"),
-    @NamedQuery(name = "OpwProtokol.findByGlosowWaznych", query = "SELECT o FROM OpwProtokol o WHERE o.glosowWaznych = :glosowWaznych"),
-    @NamedQuery(name = "OpwProtokol.findByGlosowNiewaznych", query = "SELECT o FROM OpwProtokol o WHERE o.glosowNiewaznych = :glosowNiewaznych"),
-    @NamedQuery(name = "OpwProtokol.findByFileOriginal", query = "SELECT o FROM OpwProtokol o WHERE o.fileOriginal = :fileOriginal"),
-    @NamedQuery(name = "OpwProtokol.findByActive", query = "SELECT o FROM OpwProtokol o WHERE o.active = :active"),
-    @NamedQuery(name = "OpwProtokol.findByDateCreated", query = "SELECT o FROM OpwProtokol o WHERE o.dateCreated = :dateCreated"),
-    @NamedQuery(name = "OpwProtokol.findByDateModified", query = "SELECT o FROM OpwProtokol o WHERE o.dateModified = :dateModified")})
+  @NamedQuery(name = "OpwProtokol.findAll", query = "SELECT o FROM OpwProtokol o"),
+  @NamedQuery(name = "OpwProtokol.findById", query = "SELECT o FROM OpwProtokol o WHERE o.id = :id"),
+  @NamedQuery(name = "OpwProtokol.findByPkwId", query = "SELECT o FROM OpwProtokol o WHERE o.pkwId = :pkwId"),
+  @NamedQuery(name = "OpwProtokol.findByUprawnionych", query = "SELECT o FROM OpwProtokol o WHERE o.uprawnionych = :uprawnionych"),
+  @NamedQuery(name = "OpwProtokol.findByKartWaznych", query = "SELECT o FROM OpwProtokol o WHERE o.kartWaznych = :kartWaznych"),
+  @NamedQuery(name = "OpwProtokol.findByKartNiewaznych", query = "SELECT o FROM OpwProtokol o WHERE o.kartNiewaznych = :kartNiewaznych"),
+  @NamedQuery(name = "OpwProtokol.findByGlosowWaznych", query = "SELECT o FROM OpwProtokol o WHERE o.glosowWaznych = :glosowWaznych"),
+  @NamedQuery(name = "OpwProtokol.findByGlosowNiewaznych", query = "SELECT o FROM OpwProtokol o WHERE o.glosowNiewaznych = :glosowNiewaznych"),
+  @NamedQuery(name = "OpwProtokol.findByFileOriginal", query = "SELECT o FROM OpwProtokol o WHERE o.fileOriginal = :fileOriginal"),
+  @NamedQuery(name = "OpwProtokol.findByActive", query = "SELECT o FROM OpwProtokol o WHERE o.active = :active"),
+  @NamedQuery(name = "OpwProtokol.findByDateCreated", query = "SELECT o FROM OpwProtokol o WHERE o.dateCreated = :dateCreated"),
+  @NamedQuery(name = "OpwProtokol.findByDateModified", query = "SELECT o FROM OpwProtokol o WHERE o.dateModified = :dateModified")})
 public class OpwProtokol implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-    @Column(name = "uprawnionych")
-    private Integer uprawnionych;
-    @Column(name = "kartWaznych")
-    private Integer kartWaznych;
-    @Column(name = "kartNiewaznych")
-    private Integer kartNiewaznych;
-    @Column(name = "glosowWaznych")
-    private Integer glosowWaznych;
-    @Column(name = "glosowNiewaznych")
-    private Integer glosowNiewaznych;
-    @Size(max = 256)
-    @Column(name = "fileOriginal", length = 256)
-    private String fileOriginal;
-    @Column(name = "active")
-    private Boolean active;
-    @Column(name = "dateCreated")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateCreated;
-    @Column(name = "dateModified")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateModified;
-    @JoinColumn(name = "opw_obwodowa_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private OpwObwodowa opwObwodowaId;
-    @OneToMany(mappedBy = "parentId")
-    private List<OpwProtokol> opwProtokolList;
-    @JoinColumn(name = "parent_id", referencedColumnName = "id")
-    @ManyToOne
-    private OpwProtokol parentId;
-    @JoinColumn(name = "opw_status_id", referencedColumnName = "id")
-    @ManyToOne
-    private OpwStatus opwStatusId;
-    @JoinColumn(name = "opw_user_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private OpwUser opwUserId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwProtokol")
-    private List<OpwWynikkandydata> opwWynikkandydataList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwProtokolId")
-    private List<OpwLink> opwLinkList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opwProtokolId")
-    private List<OpwRating> opwRatingList;
+  private static final long serialVersionUID = 1L;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Basic(optional = false)
+  @Column(name = "id", nullable = false)
+  private Integer id;
+  @Size(max = 64)
+  @Column(name = "pkwId", length = 64)
+  private String pkwId;
+  @Column(name = "uprawnionych")
+  private Integer uprawnionych;
+  @Column(name = "kartWaznych")
+  private Integer kartWaznych;
+  @Column(name = "kartNiewaznych")
+  private Integer kartNiewaznych;
+  @Column(name = "glosowWaznych")
+  private Integer glosowWaznych;
+  @Column(name = "glosowNiewaznych")
+  private Integer glosowNiewaznych;
+  @Size(max = 256)
+  @Column(name = "fileOriginal", length = 256)
+  private String fileOriginal;
+  @Column(name = "active")
+  private Boolean active;
+  @Column(name = "dateCreated")
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date dateCreated;
+  @Column(name = "dateModified")
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date dateModified;
+  @JoinColumn(name = "opw_obwodowa_id", referencedColumnName = "id", nullable = false)
+  @ManyToOne(optional = false)
+  private OpwObwodowa opwObwodowaId;
+  @OneToMany(mappedBy = "parentId")
+  private List<OpwProtokol> opwProtokolList;
+  @JoinColumn(name = "parent_id", referencedColumnName = "id")
+  @ManyToOne
+  private OpwProtokol parentId;
+  @JoinColumn(name = "opw_status_id", referencedColumnName = "id")
+  @ManyToOne
+  private OpwStatus opwStatusId;
+  @JoinColumn(name = "opw_user_id", referencedColumnName = "id", nullable = false)
+  @ManyToOne(optional = false)
+  private OpwUser opwUserId;
 
-    public OpwProtokol() {
-    }
+  public OpwProtokol() {
+  }
 
-    public OpwProtokol(Integer id) {
-        this.id = id;
-    }
+  public OpwProtokol(Integer id) {
+    this.id = id;
+  }
 
-    public Integer getId() {
-        return id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public Integer getUprawnionych() {
-        return uprawnionych;
-    }
+  public String getPkwId() {
+    return pkwId;
+  }
 
-    public void setUprawnionych(Integer uprawnionych) {
-        this.uprawnionych = uprawnionych;
-    }
+  public void setPkwId(String pkwId) {
+    this.pkwId = pkwId;
+  }
 
-    public Integer getKartWaznych() {
-        return kartWaznych;
-    }
+  public Integer getUprawnionych() {
+    return uprawnionych;
+  }
 
-    public void setKartWaznych(Integer kartWaznych) {
-        this.kartWaznych = kartWaznych;
-    }
+  public void setUprawnionych(Integer uprawnionych) {
+    this.uprawnionych = uprawnionych;
+  }
 
-    public Integer getKartNiewaznych() {
-        return kartNiewaznych;
-    }
+  public Integer getKartWaznych() {
+    return kartWaznych;
+  }
 
-    public void setKartNiewaznych(Integer kartNiewaznych) {
-        this.kartNiewaznych = kartNiewaznych;
-    }
+  public void setKartWaznych(Integer kartWaznych) {
+    this.kartWaznych = kartWaznych;
+  }
 
-    public Integer getGlosowWaznych() {
-        return glosowWaznych;
-    }
+  public Integer getKartNiewaznych() {
+    return kartNiewaznych;
+  }
 
-    public void setGlosowWaznych(Integer glosowWaznych) {
-        this.glosowWaznych = glosowWaznych;
-    }
+  public void setKartNiewaznych(Integer kartNiewaznych) {
+    this.kartNiewaznych = kartNiewaznych;
+  }
 
-    public Integer getGlosowNiewaznych() {
-        return glosowNiewaznych;
-    }
+  public Integer getGlosowWaznych() {
+    return glosowWaznych;
+  }
 
-    public void setGlosowNiewaznych(Integer glosowNiewaznych) {
-        this.glosowNiewaznych = glosowNiewaznych;
-    }
+  public void setGlosowWaznych(Integer glosowWaznych) {
+    this.glosowWaznych = glosowWaznych;
+  }
 
-    public String getFileOriginal() {
-        return fileOriginal;
-    }
+  public Integer getGlosowNiewaznych() {
+    return glosowNiewaznych;
+  }
 
-    public void setFileOriginal(String fileOriginal) {
-        this.fileOriginal = fileOriginal;
-    }
+  public void setGlosowNiewaznych(Integer glosowNiewaznych) {
+    this.glosowNiewaznych = glosowNiewaznych;
+  }
 
-    public Boolean getActive() {
-        return active;
-    }
+  public String getFileOriginal() {
+    return fileOriginal;
+  }
 
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
+  public void setFileOriginal(String fileOriginal) {
+    this.fileOriginal = fileOriginal;
+  }
 
-    public Date getDateCreated() {
-        return dateCreated;
-    }
+  public Boolean getActive() {
+    return active;
+  }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
+  public void setActive(Boolean active) {
+    this.active = active;
+  }
 
-    public Date getDateModified() {
-        return dateModified;
-    }
+  public Date getDateCreated() {
+    return dateCreated;
+  }
 
-    public void setDateModified(Date dateModified) {
-        this.dateModified = dateModified;
-    }
+  public void setDateCreated(Date dateCreated) {
+    this.dateCreated = dateCreated;
+  }
 
-    public OpwObwodowa getOpwObwodowaId() {
-        return opwObwodowaId;
-    }
+  public Date getDateModified() {
+    return dateModified;
+  }
 
-    public void setOpwObwodowaId(OpwObwodowa opwObwodowaId) {
-        this.opwObwodowaId = opwObwodowaId;
-    }
+  public void setDateModified(Date dateModified) {
+    this.dateModified = dateModified;
+  }
 
-    @XmlTransient
-    public List<OpwProtokol> getOpwProtokolList() {
-        return opwProtokolList;
-    }
+  public OpwObwodowa getOpwObwodowaId() {
+    return opwObwodowaId;
+  }
 
-    public void setOpwProtokolList(List<OpwProtokol> opwProtokolList) {
-        this.opwProtokolList = opwProtokolList;
-    }
+  public void setOpwObwodowaId(OpwObwodowa opwObwodowaId) {
+    this.opwObwodowaId = opwObwodowaId;
+  }
 
-    public OpwProtokol getParentId() {
-        return parentId;
-    }
+  @XmlTransient
+  public List<OpwProtokol> getOpwProtokolList() {
+    return opwProtokolList;
+  }
 
-    public void setParentId(OpwProtokol parentId) {
-        this.parentId = parentId;
-    }
+  public void setOpwProtokolList(List<OpwProtokol> opwProtokolList) {
+    this.opwProtokolList = opwProtokolList;
+  }
 
-    public OpwStatus getOpwStatusId() {
-        return opwStatusId;
-    }
+  public OpwProtokol getParentId() {
+    return parentId;
+  }
 
-    public void setOpwStatusId(OpwStatus opwStatusId) {
-        this.opwStatusId = opwStatusId;
-    }
+  public void setParentId(OpwProtokol parentId) {
+    this.parentId = parentId;
+  }
 
-    public OpwUser getOpwUserId() {
-        return opwUserId;
-    }
+  public OpwStatus getOpwStatusId() {
+    return opwStatusId;
+  }
 
-    public void setOpwUserId(OpwUser opwUserId) {
-        this.opwUserId = opwUserId;
-    }
+  public void setOpwStatusId(OpwStatus opwStatusId) {
+    this.opwStatusId = opwStatusId;
+  }
 
-    @XmlTransient
-    public List<OpwWynikkandydata> getOpwWynikkandydataList() {
-        return opwWynikkandydataList;
-    }
+  public OpwUser getOpwUserId() {
+    return opwUserId;
+  }
 
-    public void setOpwWynikkandydataList(List<OpwWynikkandydata> opwWynikkandydataList) {
-        this.opwWynikkandydataList = opwWynikkandydataList;
-    }
+  public void setOpwUserId(OpwUser opwUserId) {
+    this.opwUserId = opwUserId;
+  }
 
-    @XmlTransient
-    public List<OpwLink> getOpwLinkList() {
-        return opwLinkList;
-    }
+  @Override
+  public int hashCode() {
+    int hash = 0;
+    hash += (id != null ? id.hashCode() : 0);
+    return hash;
+  }
 
-    public void setOpwLinkList(List<OpwLink> opwLinkList) {
-        this.opwLinkList = opwLinkList;
+  @Override
+  public boolean equals(Object object) {
+    // TODO: Warning - this method won't work in the case the id fields are not set
+    if (!(object instanceof OpwProtokol)) {
+      return false;
     }
+    OpwProtokol other = (OpwProtokol) object;
+    if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+      return false;
+    }
+    return true;
+  }
 
-    @XmlTransient
-    public List<OpwRating> getOpwRatingList() {
-        return opwRatingList;
-    }
-
-    public void setOpwRatingList(List<OpwRating> opwRatingList) {
-        this.opwRatingList = opwRatingList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OpwProtokol)) {
-            return false;
-        }
-        OpwProtokol other = (OpwProtokol) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "pl.otwartapw.opw.pre.entity.OpwProtokol[ id=" + id + " ]";
-    }
-    
+  @Override
+  public String toString() {
+    return "pl.otwartapw.opw.pre.entity.OpwProtokol[ id=" + id + " ]";
+  }
+  
 }
