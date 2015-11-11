@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"                
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <h1>#{messages.kandydatListTitle}</h1>
+        #{kandydatHandler.prepareList()}
+
+        <h:link outcome="#{kandydatHandler.createLink}" value="#{messages.add}"/>
+
+        <h:form id="list">
+            <p:dataTable id="tbl" emptyMessage="#{messages.emptyList}"
+                         value="#{kandydatHandler.instanceList}" var="i"
+                         sortBy="#{i.id}">
+
+                <p:column headerText="#{messages.id}" sortBy="#{i.id}">
+                    <h:outputText value="#{i.id}"/>
+                </p:column>
+                <p:column headerText="#{messages.pkwid}" sortBy="#{i.pkwId}">
+                    <h:outputText value="#{i.pkwId}"/>
+                </p:column>
+                <p:column headerText="#{messages.firstname}" sortBy="#{i.firstname}">
+                    <h:outputText value="#{i.firstname}"/>
+                </p:column>
+                <p:column headerText="#{messages.lastname}" sortBy="#{i.lastname}">
+                    <h:outputText value="#{i.lastname}"/>
+                </p:column>
+                <p:column>
+                    <h:commandLink value="#{messages.view}" 
+                                   action="#{kandydatHandler.prepareView(i)}" />
+                </p:column>
+
+            </p:dataTable>
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
