@@ -6,12 +6,12 @@
     <parent>
         <artifactId>opw-pre-outbound</artifactId>
         <groupId>pl.otwartapw.opw-pre</groupId>
-        <version>0.2.0</version>
+        <version>0.3.0-SNAPSHOT</version>
     </parent>
 
     <groupId>pl.otwartapw.opw-pre</groupId>
     <artifactId>opw-pre-outbound-ws</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>opw-pre-outbound-ws</name>
