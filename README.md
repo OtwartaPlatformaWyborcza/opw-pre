@@ -22,8 +22,8 @@ Implementacja masek administracyjnych.
 * [x] [PRE-7](https://otwartapw.atlassian.net/browse/PRE-7) Maski administracyjne: Komisja Okregowa
 * [x] [PRE-8](https://otwartapw.atlassian.net/browse/PRE-8) Maski administracyjne: Komisja Obwodowa
 * [x] [PRE-9](https://otwartapw.atlassian.net/browse/PRE-9) Maski administracyjne: Województwo
-* [PRE-10](https://otwartapw.atlassian.net/browse/PRE-10) Maski administracyjne: Protokół
-* [PRE-11](https://otwartapw.atlassian.net/browse/PRE-11) Maski administracyjne: Link
+* [x] [PRE-10](https://otwartapw.atlassian.net/browse/PRE-10) Maski administracyjne: Protokół
+* [x] [PRE-11](https://otwartapw.atlassian.net/browse/PRE-11) Maski administracyjne: Link
 * [x] [PRE-12](https://otwartapw.atlassian.net/browse/PRE-12) Maski administracyjne: Konfiguracja
 * [x] [PRE-13](https://otwartapw.atlassian.net/browse/PRE-13) Maski administracyjne: Użytkownik
 * [x] [PRE-15](https://otwartapw.atlassian.net/browse/PRE-15) Maski administracyjne: Kandydat
