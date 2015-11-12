@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.handler;
+package pl.otwartapw.opw.pre.management.handler.crud;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,38 +30,36 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.entity.OpwObwodowa;
-import pl.otwartapw.opw.pre.entity.OpwProtokol;
-import pl.otwartapw.opw.pre.management.facade.ObwodowaFacade;
-import pl.otwartapw.opw.pre.management.facade.ProtokolFacade;
+import pl.otwartapw.opw.pre.entity.OpwConfig;
+import pl.otwartapw.opw.pre.management.facade.ConfigFacade;
 
 /**
- * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwProtokol} related JSF sites.
+ * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwConfig} related JSF sites.
  *
  * @author Adam Kowalewski
  * @Version 2015.11.07
  */
 @Named
 @SessionScoped
-public class ProtokolHandler extends AbstractCrudHandler<OpwProtokol> implements Serializable {
+public class ConfigHandler extends AbstractCrudHandler<OpwConfig> implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  ProtokolFacade facade;
+  ConfigFacade facade;
 
-  public ProtokolHandler() {
-    initViews("protokol");
+  public ConfigHandler() {
+    initViews("config");    
   }
 
   @Override
-  public List<OpwProtokol> getInstanceList() {
+  public List<OpwConfig> getInstanceList() {
     return instanceList;
   }
 
   @Override
-  public OpwProtokol getInstance() {
+  public OpwConfig getInstance() {
     return instance;
   }
 
@@ -72,8 +70,7 @@ public class ProtokolHandler extends AbstractCrudHandler<OpwProtokol> implements
 
   @Override
   public void prepareCreate() {
-    instance = new OpwProtokol();
-    instance.setActive(true);
+    instance = new OpwConfig();
   }
 
   @Override

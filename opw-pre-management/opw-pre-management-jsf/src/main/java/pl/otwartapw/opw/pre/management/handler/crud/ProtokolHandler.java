@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.handler;
+package pl.otwartapw.opw.pre.management.handler.crud;
 
 import java.io.Serializable;
 import java.util.List;
@@ -31,44 +31,37 @@ import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.entity.OpwObwodowa;
-import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
+import pl.otwartapw.opw.pre.entity.OpwProtokol;
 import pl.otwartapw.opw.pre.management.facade.ObwodowaFacade;
-import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
+import pl.otwartapw.opw.pre.management.facade.ProtokolFacade;
 
 /**
- * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwObwodowa} related JSF sites.
+ * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwProtokol} related JSF sites.
  *
  * @author Adam Kowalewski
- * @Version 2015.11.09
+ * @Version 2015.11.07
  */
 @Named
 @SessionScoped
-public class ObwodowaHandler extends AbstractCrudHandler<OpwObwodowa> implements Serializable {
+public class ProtokolHandler extends AbstractCrudHandler<OpwProtokol> implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  ObwodowaFacade facade;
+  ProtokolFacade facade;
 
-  @EJB
-  WojewodztwoFacade wojewodztwoFacade;
-
-  public ObwodowaHandler() {
-    initViews("obwodowa");    
-  }
-
-  public List<OpwWojewodztwo> getWojewodztwoList() {
-    return wojewodztwoFacade.findAll();
+  public ProtokolHandler() {
+    initViews("protokol");
   }
 
   @Override
-  public List<OpwObwodowa> getInstanceList() {
+  public List<OpwProtokol> getInstanceList() {
     return instanceList;
   }
 
   @Override
-  public OpwObwodowa getInstance() {
+  public OpwProtokol getInstance() {
     return instance;
   }
 
@@ -79,7 +72,8 @@ public class ObwodowaHandler extends AbstractCrudHandler<OpwObwodowa> implements
 
   @Override
   public void prepareCreate() {
-    instance = new OpwObwodowa();
+    instance = new OpwProtokol();
+    instance.setActive(true);
   }
 
   @Override

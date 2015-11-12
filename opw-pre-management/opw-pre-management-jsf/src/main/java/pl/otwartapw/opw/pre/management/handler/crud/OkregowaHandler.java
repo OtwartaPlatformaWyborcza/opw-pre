@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.handler;
+package pl.otwartapw.opw.pre.management.handler.crud;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,36 +30,46 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.entity.OpwLink;
-import pl.otwartapw.opw.pre.management.facade.LinkFacade;
+import pl.otwartapw.opw.pre.entity.OpwOkregowa;
+import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
+import pl.otwartapw.opw.pre.management.facade.OkregowaFacade;
+import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
 
 /**
- * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwLink} related JSF sites.
+ * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwOkregowa} related JSF sites.
  *
  * @author Adam Kowalewski
- * @Version 2015.11.07
+ * @Version 2015.11.08
  */
 @Named
 @SessionScoped
-public class LinkHandler extends AbstractCrudHandler<OpwLink> implements Serializable {
+public class OkregowaHandler extends AbstractCrudHandler<OpwOkregowa> implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  LinkFacade facade;
+  OkregowaFacade facade;
 
-  public LinkHandler() {
-    initViews("link");
+  @EJB
+  WojewodztwoFacade wojewodztwoFacade;
+
+  public OkregowaHandler() {
+    initViews("okregowa");
+  }
+
+  public List<OpwWojewodztwo> getWojewodztwoList() {
+    return wojewodztwoFacade.findAll();
   }
 
   @Override
-  public List<OpwLink> getInstanceList() {
+  public List<OpwOkregowa> getInstanceList() {
     return instanceList;
   }
 
   @Override
-  public OpwLink getInstance() {
+  public OpwOkregowa getInstance() {
+    logger.trace("getInstance");
     return instance;
   }
 
@@ -70,17 +80,20 @@ public class LinkHandler extends AbstractCrudHandler<OpwLink> implements Seriali
 
   @Override
   public void prepareCreate() {
-    instance = new OpwLink();
+    logger.trace("prepareCreate");
+    instance = new OpwOkregowa();
   }
 
   @Override
   public String create() {
+    logger.trace("create {}", instance);
     facade.create(instance);
     return VIEW_ID;
   }
 
   @Override
   public String edit() {
+    logger.trace("edit {}", instance);
     facade.edit(instance);
     return VIEW_ID;
   }

@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.handler;
+package pl.otwartapw.opw.pre.management.handler.crud;
 
 /**
  * Represent common CRUD logic for an entity.

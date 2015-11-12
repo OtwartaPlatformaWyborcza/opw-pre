@@ -21,46 +21,45 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.handler;
+package pl.otwartapw.opw.pre.management.handler.crud;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.entity.OpwUser;
-import pl.otwartapw.opw.pre.management.facade.UserFacade;
+import pl.otwartapw.opw.pre.entity.OpwKandydat;
+import pl.otwartapw.opw.pre.management.facade.KandydatFacade;
 
 /**
- * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwUser} related JSF sites.
+ * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwKandydat} related JSF sites.
  * 
  * @author Adam Kowalewski
- * @Version 2015.11.10
+ * @Version 2015.11.07
  */
 @Named
 @SessionScoped
-public class UserHandler extends AbstractCrudHandler<OpwUser> implements Serializable {
+public class KandydatHandler extends AbstractCrudHandler<OpwKandydat> implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  UserFacade facade;
+  KandydatFacade facade;
 
-  public UserHandler() {
-    initViews("user");
+  public KandydatHandler() {
+    initViews("kandydat");    
   }
 
   @Override
-  public List<OpwUser> getInstanceList() {
+  public List<OpwKandydat> getInstanceList() {
     return instanceList;
   }
 
   @Override
-  public OpwUser getInstance() {
+  public OpwKandydat getInstance() {
     return instance;
   }
 
@@ -71,8 +70,7 @@ public class UserHandler extends AbstractCrudHandler<OpwUser> implements Seriali
 
   @Override
   public void prepareCreate() {
-    instance = new OpwUser();
-    instance.setOrigin("CRUD");
+    instance = new OpwKandydat();
   }
 
   @Override

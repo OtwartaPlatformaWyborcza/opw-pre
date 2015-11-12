@@ -16,18 +16,23 @@
                              value="#{linkHandler.instance.label}"/>
 
                 <h:outputLabel for="url" id="urlL" value="#{messages.url}" />
-                <p:inputText id="url" required="true" 
-                             value="#{linkHandler.instance.url}"/>
+                <p:inputText id="url" required="true" value="#{linkHandler.instance.url}"/>
 
                 <h:outputLabel for="comment" id="commentL" value="#{messages.comment}" />
-                <p:inputText id="comment" required="true" 
-                             value="#{linkHandler.instance.comment}"/>
-                active, date, user, protokol
-
+                <p:inputText id="comment" required="true" value="#{linkHandler.instance.comment}"/>
+                
+                <h:outputLabel for="active" id="activeL" value="#{messages.active}" />
+                <p:inputText id="active" required="true" value="#{linkHandler.instance.active}"/>
+                
+                <h:outputLabel for="user" id="userL" value="#{messages.user}" />
+                <p:inputText id="user" required="true" value="#{linkHandler.instance.opwUserId}"/>
+                
+                <h:outputLabel for="protokol" id="protokolL" value="#{messages.protokol}" />
+                <p:inputText id="protokol" required="true" value="#{linkHandler.instance.opwProtokolId}"/>
             </h:panelGrid>
             
-            <h:commandLink value="#{messages.submit}"
-                           action="#{linkHandler.create()}"/>
+            <h:commandLink value="#{messages.cancel}" immediate="true" action="#{linkHandler.cancel()}"/>
+            <h:commandLink value="#{messages.submit}" action="#{linkHandler.create()}"/>
 
         </h:form>
     </ui:define>

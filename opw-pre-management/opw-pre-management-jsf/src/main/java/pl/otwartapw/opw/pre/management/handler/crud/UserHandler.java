@@ -21,45 +21,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.handler;
+package pl.otwartapw.opw.pre.management.handler.crud;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.entity.OpwConfig;
-import pl.otwartapw.opw.pre.management.facade.ConfigFacade;
+import pl.otwartapw.opw.pre.entity.OpwUser;
+import pl.otwartapw.opw.pre.management.facade.UserFacade;
 
 /**
- * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwConfig} related JSF sites.
- *
+ * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwUser} related JSF sites.
+ * 
  * @author Adam Kowalewski
- * @Version 2015.11.07
+ * @Version 2015.11.10
  */
 @Named
 @SessionScoped
-public class ConfigHandler extends AbstractCrudHandler<OpwConfig> implements Serializable {
+public class UserHandler extends AbstractCrudHandler<OpwUser> implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  ConfigFacade facade;
+  UserFacade facade;
 
-  public ConfigHandler() {
-    initViews("config");    
+  public UserHandler() {
+    initViews("user");
   }
 
   @Override
-  public List<OpwConfig> getInstanceList() {
+  public List<OpwUser> getInstanceList() {
     return instanceList;
   }
 
   @Override
-  public OpwConfig getInstance() {
+  public OpwUser getInstance() {
     return instance;
   }
 
@@ -70,7 +71,8 @@ public class ConfigHandler extends AbstractCrudHandler<OpwConfig> implements Ser
 
   @Override
   public void prepareCreate() {
-    instance = new OpwConfig();
+    instance = new OpwUser();
+    instance.setOrigin("CRUD");
   }
 
   @Override

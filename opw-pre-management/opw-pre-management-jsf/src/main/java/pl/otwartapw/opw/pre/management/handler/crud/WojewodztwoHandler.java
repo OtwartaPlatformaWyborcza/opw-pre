@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.handler;
+package pl.otwartapw.opw.pre.management.handler.crud;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,46 +30,36 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.entity.OpwOkregowa;
 import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
-import pl.otwartapw.opw.pre.management.facade.OkregowaFacade;
 import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
 
 /**
- * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwOkregowa} related JSF sites.
+ * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwWojewodztwo} related JSF sites.
  *
  * @author Adam Kowalewski
- * @Version 2015.11.08
+ * @Version 2015.11.07
  */
 @Named
 @SessionScoped
-public class OkregowaHandler extends AbstractCrudHandler<OpwOkregowa> implements Serializable {
+public class WojewodztwoHandler extends AbstractCrudHandler<OpwWojewodztwo> implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  OkregowaFacade facade;
+  WojewodztwoFacade facade;
 
-  @EJB
-  WojewodztwoFacade wojewodztwoFacade;
-
-  public OkregowaHandler() {
-    initViews("okregowa");
-  }
-
-  public List<OpwWojewodztwo> getWojewodztwoList() {
-    return wojewodztwoFacade.findAll();
+  public WojewodztwoHandler() {
+    initViews("wojewodztwo");
   }
 
   @Override
-  public List<OpwOkregowa> getInstanceList() {
+  public List<OpwWojewodztwo> getInstanceList() {
     return instanceList;
   }
 
   @Override
-  public OpwOkregowa getInstance() {
-    logger.trace("getInstance");
+  public OpwWojewodztwo getInstance() {
     return instance;
   }
 
@@ -80,20 +70,17 @@ public class OkregowaHandler extends AbstractCrudHandler<OpwOkregowa> implements
 
   @Override
   public void prepareCreate() {
-    logger.trace("prepareCreate");
-    instance = new OpwOkregowa();
+    instance = new OpwWojewodztwo();
   }
 
   @Override
   public String create() {
-    logger.trace("create {}", instance);
     facade.create(instance);
     return VIEW_ID;
   }
 
   @Override
   public String edit() {
-    logger.trace("edit {}", instance);
     facade.edit(instance);
     return VIEW_ID;
   }

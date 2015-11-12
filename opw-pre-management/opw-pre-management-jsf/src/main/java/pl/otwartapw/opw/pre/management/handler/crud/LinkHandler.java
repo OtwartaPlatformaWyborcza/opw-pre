@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.management.handler;
+package pl.otwartapw.opw.pre.management.handler.crud;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,36 +30,36 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.entity.OpwWojewodztwo;
-import pl.otwartapw.opw.pre.management.facade.WojewodztwoFacade;
+import pl.otwartapw.opw.pre.entity.OpwLink;
+import pl.otwartapw.opw.pre.management.facade.LinkFacade;
 
 /**
- * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwWojewodztwo} related JSF sites.
+ * CRUD-Handler for all {@link pl.otwartapw.opw.pre.entity.OpwLink} related JSF sites.
  *
  * @author Adam Kowalewski
  * @Version 2015.11.07
  */
 @Named
 @SessionScoped
-public class WojewodztwoHandler extends AbstractCrudHandler<OpwWojewodztwo> implements Serializable {
+public class LinkHandler extends AbstractCrudHandler<OpwLink> implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  WojewodztwoFacade facade;
+  LinkFacade facade;
 
-  public WojewodztwoHandler() {
-    initViews("wojewodztwo");
+  public LinkHandler() {
+    initViews("link");
   }
 
   @Override
-  public List<OpwWojewodztwo> getInstanceList() {
+  public List<OpwLink> getInstanceList() {
     return instanceList;
   }
 
   @Override
-  public OpwWojewodztwo getInstance() {
+  public OpwLink getInstance() {
     return instance;
   }
 
@@ -70,7 +70,7 @@ public class WojewodztwoHandler extends AbstractCrudHandler<OpwWojewodztwo> impl
 
   @Override
   public void prepareCreate() {
-    instance = new OpwWojewodztwo();
+    instance = new OpwLink();
   }
 
   @Override

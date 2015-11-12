@@ -19,16 +19,21 @@
                 <p:column headerText="#{messages.id}" sortBy="#{i.id}">
                     <h:outputText value="#{i.id}"/>
                 </p:column>
-                <p:column headerText="#{messages.label}" sortBy="#{i.label}">
-                    <h:outputText value="#{i.label}"/>
+                <p:column headerText="#{messages.protokol}" sortBy="#{i.opwProtokolId.pkwId}">
+                    <h:outputText value="#{i.opwProtokolId.pkwId}"/>
                 </p:column>
-                <p:column headerText="#{messages.url}" sortBy="#{i.url}">
-                    <h:outputText value="#{i.url}"/>
-                </p:column>                
-                <p:column headerText="#{messages.name}" sortBy="#{i.dateCreated}">
+                <p:column headerText="#{messages.link}" sortBy="#{i.label}">
+                    <a href="#{i.url}" target="_blank">
+                        <h:outputText value="#{i.label}"/>
+                    </a>
+                </p:column>
+                <p:column headerText="#{messages.dateCreated}" sortBy="#{i.dateCreated}">
                     <h:outputText value="#{i.dateCreated}">
-                        <f:convertDateTime pattern="#{linkHandler.PATTERN_DATE}" />
+                        <f:convertDateTime pattern="#{linkHandler.PATTERN_DATETIME}" />
                     </h:outputText>
+                </p:column>
+                <p:column headerText="#{messages.user}" sortBy="#{i.opwUserId.email}">
+                    <h:outputText value="#{i.opwUserId.email}"/>
                 </p:column>
                 <p:column>
                     <h:commandLink value="#{messages.edit}" 

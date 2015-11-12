@@ -23,6 +23,7 @@
  */
 package pl.otwartapw.opw.pre.management.facade;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -53,6 +54,12 @@ public class LinkFacade extends AbstractOpwFacade<OpwLink> {
   @Override
   protected EntityManager getEntityManager() {
     return em;
+  }
+
+  @Override
+  public void create(OpwLink entity) {
+    entity.setDateCreated(new Date());
+    super.create(entity);
   }
 
   /**
