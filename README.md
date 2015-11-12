@@ -17,7 +17,7 @@ Refactoring struktury projektu, architektury jak i podstawowych komponentów API
 * [x] [PRE-5](https://otwartapw.atlassian.net/browse/PRE-5) Koncepcja serwisu GET Version
 * [x] [PRE-6](https://otwartapw.atlassian.net/browse/PRE-6) Definicja artefaktu commons
 
-### Wersja 0.2.0
+### Wersja 0.2.0 [wydana 2015.11.12]
 Implementacja masek administracyjnych.  
 * [x] [PRE-7](https://otwartapw.atlassian.net/browse/PRE-7) Maski administracyjne: Komisja Okregowa
 * [x] [PRE-8](https://otwartapw.atlassian.net/browse/PRE-8) Maski administracyjne: Komisja Obwodowa
