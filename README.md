@@ -7,6 +7,18 @@
 # OPW-PRE
 Wybory prezydenckie
 
+# Linki
+
+| Środowisko | Element  | Link  |
+| -------------| ------------- | ------------- |
+| - | JIRA | https://otwartapw.atlassian.net/  |
+| DEV | Maski administracyjne | http://dev.otwartapw.pl/mgmt/  |
+| DEV | Serwis inbound | http://dev.otwartapw.pl/inbound |
+| DEV | Serwis outbound | http://dev.otwartapw.pl/outbound |
+| TEST | Maski administracyjne | http://test.otwartapw.pl/mgmt/  |
+| TEST | Serwis inbound | http://test.otwartapw.pl/inbound |
+| TEST | Serwis outbound | http://test.otwartapw.pl/outbound |
+
 # Roadmap
 Plan realizacji systemu OPW-PRE.
 
