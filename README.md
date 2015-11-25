@@ -22,25 +22,6 @@ Wybory prezydenckie
 # Roadmap
 Plan realizacji systemu OPW-PRE.
 
-### Wersja 0.1.0 [wydana 2015.10.22]
-Refactoring struktury projektu, architektury jak i podstawowych komponentów API.  
-* [x] [PRE-2](https://otwartapw.atlassian.net/browse/PRE-2) Refactoring struktury projektu
-* [x] [PRE-3](https://otwartapw.atlassian.net/browse/PRE-3) DB limit kandydatów
-* [x] [PRE-5](https://otwartapw.atlassian.net/browse/PRE-5) Koncepcja serwisu GET Version
-* [x] [PRE-6](https://otwartapw.atlassian.net/browse/PRE-6) Definicja artefaktu commons
-
-### Wersja 0.2.0 [wydana 2015.11.12]
-Implementacja masek administracyjnych.  
-* [x] [PRE-7](https://otwartapw.atlassian.net/browse/PRE-7) Maski administracyjne: Komisja Okregowa
-* [x] [PRE-8](https://otwartapw.atlassian.net/browse/PRE-8) Maski administracyjne: Komisja Obwodowa
-* [x] [PRE-9](https://otwartapw.atlassian.net/browse/PRE-9) Maski administracyjne: Województwo
-* [x] [PRE-10](https://otwartapw.atlassian.net/browse/PRE-10) Maski administracyjne: Protokół
-* [x] [PRE-11](https://otwartapw.atlassian.net/browse/PRE-11) Maski administracyjne: Link
-* [x] [PRE-12](https://otwartapw.atlassian.net/browse/PRE-12) Maski administracyjne: Konfiguracja
-* [x] [PRE-13](https://otwartapw.atlassian.net/browse/PRE-13) Maski administracyjne: Użytkownik
-* [x] [PRE-15](https://otwartapw.atlassian.net/browse/PRE-15) Maski administracyjne: Kandydat
-
-
 ### Wersja 0.3.0
 Integracja komisji obwodowej.  
 * [PRE-4]((https://otwartapw.atlassian.net/browse/PRE-4) TBD
@@ -68,7 +49,6 @@ Nowe funkcje TBD.
 * tagowanie błędnych protokołów
 
 
-
 ### Wersja 0.7.0
 Nowe funkcje TBD.
 * [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD Implementacja monitoringu serwisów
@@ -93,3 +73,23 @@ RC2 (automatyczna symulacja wyborów)
 
 ### Wersja 1.0.0
 stable release
+
+# Changelog
+
+### Wersja 0.2.0 [wydana 2015.11.12]
+Implementacja masek administracyjnych.  
+* [x] [PRE-7](https://otwartapw.atlassian.net/browse/PRE-7) Maski administracyjne: Komisja Okregowa
+* [x] [PRE-8](https://otwartapw.atlassian.net/browse/PRE-8) Maski administracyjne: Komisja Obwodowa
+* [x] [PRE-9](https://otwartapw.atlassian.net/browse/PRE-9) Maski administracyjne: Województwo
+* [x] [PRE-10](https://otwartapw.atlassian.net/browse/PRE-10) Maski administracyjne: Protokół
+* [x] [PRE-11](https://otwartapw.atlassian.net/browse/PRE-11) Maski administracyjne: Link
+* [x] [PRE-12](https://otwartapw.atlassian.net/browse/PRE-12) Maski administracyjne: Konfiguracja
+* [x] [PRE-13](https://otwartapw.atlassian.net/browse/PRE-13) Maski administracyjne: Użytkownik
+* [x] [PRE-15](https://otwartapw.atlassian.net/browse/PRE-15) Maski administracyjne: Kandydat
+
+### Wersja 0.1.0 [wydana 2015.10.22]
+Refactoring struktury projektu, architektury jak i podstawowych komponentów API.  
+* [x] [PRE-2](https://otwartapw.atlassian.net/browse/PRE-2) Refactoring struktury projektu
+* [x] [PRE-3](https://otwartapw.atlassian.net/browse/PRE-3) DB limit kandydatów
+* [x] [PRE-5](https://otwartapw.atlassian.net/browse/PRE-5) Koncepcja serwisu GET Version
+* [x] [PRE-6](https://otwartapw.atlassian.net/browse/PRE-6) Definicja artefaktu commons
