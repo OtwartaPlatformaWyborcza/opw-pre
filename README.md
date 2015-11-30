@@ -19,6 +19,34 @@ Wybory prezydenckie
 | TEST | Serwis inbound | http://test.otwartapw.pl/inbound |
 | TEST | Serwis outbound | http://test.otwartapw.pl/outbound |
 
+# Proces
+
+**Przygotowanie wyborów**  
+1. Administrator definiuje / importuje oficjalną listę Komisji Okręgowych  (51)  
+2. Administrator definiuje / importuje oficjalną listę Kandydatów (11)  
+3. Administrator definiuje / importuje oficjalną listę Komisji Obwodowych (około 27 000)
+4. Administrator zakłada / importuje konta użytkowników (wolentariusze, mężowie zaufania, około 25 000)  
+5. System automatycznie rozsyła hasła użytkowikom, wraz z linkiem do aktywacji konta, na podany adres E-Mail.  
+6. Administrator systemu ma możliwość edycji i weryfikacji kont użytkownków wraz ich danymi (możliwa fluktuacja użytkowników tuż przed wyborami)  
+
+**Dzień wyborczy - perspektywa użytkownika**  
+1. Użytkownik loguje się na stronie OPW i wybiera z listy jedną z przypisanych mu Komisji Obwodowych.  
+2. Użytkownik widzi na okrenie dokładne informacje dotyczące wybranej Komisji Obwodowej.  
+3. Użytkownik wpisuje dane / liczby wyborcze z protokołu do aplikacji OPW.  
+4. Walidacja protokołu po stronie klienta (JavaScript/HTML5) dla błędów twardych.  
+5. Użytkownik wysyła dane/liczby wyborcze na serwer OPW.
+
+**Dzień wyborczy - perspektywa serwera**  
+1. Liczby wyborcze spływają na serwer.
+2. Każdy protokół jest walidowany, w przypadku identyfikacji błędu miękkiego protokół protokół zostanie otagowany.  
+3. Protokoły są zapisywane w bazie danych.  
+4. Aktualny wynik wyborów jest publikowany co 5 minut.  
+
+**Dzień wyborczy / perspektywa gościa**  
+1. Gość wchodzi na stronę główną aplikacji OPW-dashboard  
+2. OPW/dashboard zapewnia dostęp do aktualnych wyników w skali kraju jak i gminy.
+
+
 # Roadmap
 Plan realizacji systemu OPW-PRE.
 
@@ -27,6 +55,8 @@ Integracja komisji obwodowej.
 * [PRE-4]((https://otwartapw.atlassian.net/browse/PRE-4) TBD
 * Zabezpieczenie masek administracyjnych (Autoryzacja / Autentyfikacja)
 * Generator danych dla komisji obwodowej.  
+* Standardowy theme bootstrap.
+
 
 ### Wersja 0.4.0
 Rejestracja wolontariusza
