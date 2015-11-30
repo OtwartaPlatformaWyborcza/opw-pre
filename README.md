@@ -46,6 +46,50 @@ Wybory prezydenckie
 1. Gość wchodzi na stronę główną aplikacji OPW-dashboard  
 2. OPW/dashboard zapewnia dostęp do aktualnych wyników w skali kraju jak i gminy.
 
+# Specyfikacja
+
+## Grupy użytkowników
+1. Administrator (admin)
+2. Użytkownik (user)
+3. Gość (guest)
+
+## Software stack
+### Backend
+1. Java 8 / Java EE 7 (JPA2, CDI, EJB, JSF 2.2 (PrimeFaces), JAX-RS, JavaMail)
+2. MySQL 5.5 (UTF8, InnoDB, MySQL Workbench)
+3. REST (RESTEasy)
+4. HTML5
+5. CSS3
+6. Maven 3
+
+### Frontend
+1. HTML5
+2. JavaScript (AngularJS)
+3. CSS3
+4. Bootstrap
+
+
+## REST
+Proces wgrywania protokołu z perspektywy użytkownika.  
+
+| Numer | Metoda | Opis |
+| -------------| ------------- | ------------- |
+| 1 | `POST` | Zalogowanie |
+| 2 | `GET` | Lista komisji obwodowych które użytkownik dodał do własnego profilu  |
+| 3 | `GET` | Detale wybranej komisji obwodowej (dane podstawowe, lista kandydatów, lista protokołów) |
+| 4 | `POST` | Upload liczb wyborczych |
+| 5 | `GET` | Wylogowanie |
+
+
+### Headers
+Jako prefix `X-OPW`
+* `X-OPW-login`
+* `X-OPW-password`
+* `X-OPW-token`
+* `X-OPW-API-client`
+* `X-OPW-API-token`
+* `X-OPW-debug-500`
+
 
 # Roadmap
 Plan realizacji systemu OPW-PRE.
