@@ -95,12 +95,12 @@ Jako prefix `X-OPW`
 Plan realizacji systemu OPW-PRE.
 
 ### Wersja 0.3.0
-Integracja komisji obwodowej.  
+Integracja komisji obwodowej. Zabezpieczenie masek administracyjnych. Integracja standardowego theme [bootstrap](getbootstrap.com).  
 * [PRE-4]((https://otwartapw.atlassian.net/browse/PRE-4) TBD
 * Zabezpieczenie masek administracyjnych (Autoryzacja / Autentyfikacja)
 * Generator danych dla komisji obwodowej.  
-* Standardowy theme bootstrap.
-
+* [PRE-18]((https://otwartapw.atlassian.net/browse/PRE-18) Integracja bootstrap
+* [PRE-19]((https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
 
 ### Wersja 0.4.0
 Rejestracja wolontariusza
