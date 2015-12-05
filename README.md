@@ -97,6 +97,7 @@ Plan realizacji systemu OPW-PRE.
 ### Wersja 0.3.0
 Rejestracja wolontariusza
 * [PRE-1](https://otwartapw.atlassian.net/browse/PRE-1) Formularz rejestracji wolontariusza JSF
+* [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
 * [PRE-21](https://otwartapw.atlassian.net/browse/PRE-21) Definicja serwisu rejestracji REST
 * [PRE-20](https://otwartapw.atlassian.net/browse/PRE-20) Integracja [bootstrap](getbootstrap.com)
 
@@ -106,7 +107,6 @@ Integracja komisji obwodowej. Zabezpieczenie masek administracyjnych. Integracja
 * Zabezpieczenie masek administracyjnych (Autoryzacja / Autentyfikacja)
 * Generator danych dla komisji obwodowej.  
 * [PRE-18](https://otwartapw.atlassian.net/browse/PRE-18) Integracja bootstrap
-* [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
 * Dodanie
 
 ### Wersja 0.5.0
