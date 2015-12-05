@@ -43,6 +43,12 @@ import javax.ws.rs.core.Response;
  */
 public interface RegisterApi {
 
+  /**
+   * Register a new user. 
+   * 
+   * @param personDto user information. 
+   * @return 
+   */
     @POST
     @Path("/register")
     @Consumes({APPLICATION_JSON, APPLICATION_XML})
