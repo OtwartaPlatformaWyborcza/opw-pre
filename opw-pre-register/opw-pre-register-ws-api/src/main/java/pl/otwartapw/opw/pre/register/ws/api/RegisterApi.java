@@ -44,20 +44,20 @@ import javax.ws.rs.core.Response;
 public interface RegisterApi {
 
   /**
-   * Register a new user. 
-   * 
-   * @param personDto user information. 
-   * @return 
+   * Register a new user.
+   *
+   * @param personDto user information.
+   * @return
    */
-    @POST
-    @Path("/register")
-    @Consumes({APPLICATION_JSON, APPLICATION_XML})
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    Response register(@NotNull @Valid PersonDto personDto);
+  @POST
+  @Path("/register")
+  @Consumes({APPLICATION_JSON, APPLICATION_XML})
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  Response register(@NotNull @Valid PersonDto personDto);
 
-    @GET
-    @Path("/version")
-    @Produces({APPLICATION_JSON, APPLICATION_XML, TEXT_PLAIN})
-    Response version();
+  @GET
+  @Path("/version")
+  @Produces({APPLICATION_JSON, APPLICATION_XML, TEXT_PLAIN})
+  Response version();
 
 }

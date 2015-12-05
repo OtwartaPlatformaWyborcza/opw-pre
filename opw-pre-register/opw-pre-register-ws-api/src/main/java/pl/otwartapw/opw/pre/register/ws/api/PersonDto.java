@@ -41,82 +41,84 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PersonDto implements Serializable {
 
-    @Size(max = 64)
-    @NotNull
-    private String firstname;
-    @Size(max = 64)
-    @NotNull
-    private String lastname;
-    @Size(max = 64)
-    private String phone;
-    @Size(max = 64)
-    @NotNull
-    private String password;
-    @NotNull
-    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
-    private String email;
+  private static final long serialVersionUID = 1L;
 
-    public PersonDto() {
-    }
+  @Size(max = 64)
+  @NotNull
+  private String firstname;
+  @Size(max = 64)
+  @NotNull
+  private String lastname;
+  @Size(max = 64)
+  private String phone;
+  @Size(max = 64)
+  @NotNull
+  private String password;
+  @NotNull
+  @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
+  private String email;
 
-    public PersonDto(String firstname, String lastname,
-            String phone, String password, String email) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.phone = phone;
-        this.password = password;
-        this.email = email;
-    }
+  public PersonDto() {
+  }
 
-    public String getFirstname() {
-        return firstname;
-    }
+  public PersonDto(String firstname, String lastname,
+          String phone, String password, String email) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.phone = phone;
+    this.password = password;
+    this.email = email;
+  }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
+  public String getFirstname() {
+    return firstname;
+  }
 
-    public String getLastname() {
-        return lastname;
-    }
+  public void setFirstname(String firstname) {
+    this.firstname = firstname;
+  }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
+  public String getLastname() {
+    return lastname;
+  }
 
-    public String getPhone() {
-        return phone;
-    }
+  public void setLastname(String lastname) {
+    this.lastname = lastname;
+  }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+  public String getPhone() {
+    return phone;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public String getPassword() {
+    return password;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    @Override
-    public String toString() {
-        return "PersonDto{"
-                + "firstname=" + firstname
-                + ", lastname=" + lastname
-                + ", phone=" + phone
-                + ", password=" + password
-                + ", email=" + email
-                + '}';
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  @Override
+  public String toString() {
+    return "PersonDto{"
+            + "firstname=" + firstname
+            + ", lastname=" + lastname
+            + ", phone=" + phone
+            + ", password=" + password
+            + ", email=" + email
+            + '}';
+  }
 
 }
