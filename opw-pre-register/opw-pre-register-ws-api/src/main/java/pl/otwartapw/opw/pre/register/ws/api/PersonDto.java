@@ -46,14 +46,18 @@ public class PersonDto implements Serializable {
   @Size(max = 64)
   @NotNull
   private String firstname;
+
   @Size(max = 64)
   @NotNull
   private String lastname;
+
   @Size(max = 64)
   private String phone;
+
   @Size(max = 64)
   @NotNull
   private String password;
+
   @NotNull
   @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
   private String email;
