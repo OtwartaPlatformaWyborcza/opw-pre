@@ -25,7 +25,11 @@ package pl.otwartapw.opw.pre.register.ws;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.Properties;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,56 +38,69 @@ import org.slf4j.LoggerFactory;
  *
  * @author Adam Kowalewski
  */
-public class Version {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Version implements Serializable {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  private static final long serialVersionUID = 1L;
+  private final static Logger logger = LoggerFactory.getLogger(Version.class);
+  private final static String VERSION = "version";
+  private final static String ID = "artifactId";
 
-    private final String URI = "/META-INF/maven/pl.otwartapw.opw/opw-pre-ws-register/pom.properties";
-    private final String VERSION = "version";
-    private final String ID = "artifactId";
+  private String artifactId;
+  private String version;
 
-    private Properties properties;
+  private Version() {
 
-    public Version() {
-        properties = new Properties();
-        InputStream resourceAsStream = this.getClass().getResourceAsStream(URI);
-        try {
-            properties.load(resourceAsStream);
-        } catch (IOException ex) {
-            logger.error("Artifact version could not be read.", ex);
-        }
+  }
+
+  /**
+   * Method used to build Version instances that contain all version data.
+   *
+   * @param uri complete URI to <code>pom.properties</code>.
+   * @return complete instance with version data.
+   *
+   * @author Adam Kowalewski
+   * @version 2015.12.07
+   */
+  public static Version VersionBuilder(String uri) {
+    Version result = new Version();
+
+    Properties properties = new Properties();
+    try {
+      InputStream resourceAsStream = Version.class.getResourceAsStream(uri);
+      properties.load(resourceAsStream);
+      result.setArtifactId(properties.getProperty(ID));
+      result.setVersion(properties.getProperty(VERSION));
+
+    } catch (IOException e) {
+      logger.error("Properties could not be read.", e);
+    } catch (NullPointerException e) {
+      logger.error("Resource could not be read. ", e);
     }
 
-    /**
-     * Returns version number as specified in <code>pom.properties</code>.
-     *
-     * @return current version number.
-     * @author Adam Kowalewski
-     * @version 2015.09.28
-     */
-    public String getVersion() {
-        return properties.getProperty(VERSION);
-    }
+    return result;
+  }
 
-    /**
-     * Returns ID of the artefact as specified in <code>pom.properties</code>.
-     *
-     * @return artefactId.
-     * @author Adam Kowalewski
-     * @version 2015.09.28
-     */
-    public String getName() {
-        return properties.getProperty(ID);
-    }
+  public String getArtifactId() {
+    return artifactId;
+  }
 
-    /**
-     * Returns version number in format ID-VERSION.
-     *
-     * @return full version.
-     * @author Adam Kowalewski
-     * @version 2015.09.28
-     */
-    public String getVersionFull() {
-        return getName() + "-" + getVersion();
-    }
+  public void setArtifactId(String artifactId) {
+    this.artifactId = artifactId;
+  }
+
+  public String getVersion() {
+    return version;
+  }
+
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
+  @Override
+  public String toString() {
+    return artifactId + "-" + version;
+  }
+
 }

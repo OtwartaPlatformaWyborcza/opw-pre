@@ -48,8 +48,9 @@ public class RegisterResource implements RegisterApi {
 
     @Override
     public Response version() {
-        Version version = new Version();
-        return Response.ok().entity(version.getVersionFull()).build();
+      String uri = "/META-INF/maven/pl.otwartapw.opw-pre/opw-pre-register-ws/pom.properties";
+        Version version = Version.VersionBuilder(uri);
+        return Response.ok().entity(version).build();
     }
 
 }
