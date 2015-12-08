@@ -38,19 +38,19 @@ import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 @Path("/")
 public class RegisterResource implements RegisterApi {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Override
-    public Response register(PersonDto personDto) {
-        logger.info("register WiP {} ", personDto.toString());
-        return Response.ok().build();
-    }
+  @Override
+  public Response register(PersonDto personDto) {
+    logger.info("register WiP {} ", personDto.toString());
+    return Response.ok().build();
+  }
 
-    @Override
-    public Response version() {
-      String uri = "/META-INF/maven/pl.otwartapw.opw-pre/opw-pre-register-ws/pom.properties";
-        Version version = Version.VersionBuilder(uri);
-        return Response.ok().entity(version).build();
-    }
+  @Override
+  public Response version() {
+    String uri = "/META-INF/maven/pl.otwartapw.opw-pre/opw-pre-register-ws/pom.properties";
+    Version version = Version.VersionBuilder(uri);
+    return Response.ok().entity(version).build();
+  }
 
 }

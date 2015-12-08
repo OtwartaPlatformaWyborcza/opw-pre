@@ -40,27 +40,27 @@ import org.slf4j.LoggerFactory;
 @Provider
 public class FilterContainerRequest implements ContainerRequestFilter {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public FilterContainerRequest() {
-        logger.info("FilterRequest()");
+  public FilterContainerRequest() {
+    logger.info("FilterRequest()");
+  }
+
+  @Override
+  public void filter(ContainerRequestContext requestContext) throws IOException {
+    logger.info("filter()");
+
+    if (logger.isDebugEnabled()) {
+      printHttpHeaders(requestContext.getHeaders());
     }
 
-    @Override
-    public void filter(ContainerRequestContext requestContext) throws IOException {
-        logger.info("filter()");
+  }
 
-        if (logger.isDebugEnabled()) {
-            printHttpHeaders(requestContext.getHeaders());
-        }
-
+  private void printHttpHeaders(MultivaluedMap<String, String> headers) {
+    logger.debug("printHttpHeaders");
+    for (Entry<String, List<String>> entry : headers.entrySet()) {
+      logger.debug("{}: {}", entry.getKey(), entry.getValue());
     }
-
-    private void printHttpHeaders(MultivaluedMap<String, String> headers) {
-        logger.debug("printHttpHeaders");
-        for (Entry<String, List<String>> entry : headers.entrySet()) {
-            logger.debug("{}: {}", entry.getKey(), entry.getValue());
-        }
-    }
+  }
 
 }
