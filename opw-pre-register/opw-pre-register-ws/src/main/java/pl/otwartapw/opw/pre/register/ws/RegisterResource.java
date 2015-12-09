@@ -23,6 +23,8 @@
  */
 package pl.otwartapw.opw.pre.register.ws;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
@@ -39,6 +41,11 @@ import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 public class RegisterResource implements RegisterApi {
 
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  
+  @PersistenceContext(unitName = "opwprePU")
+  private EntityManager em;
+
+  
 
   @Override
   public Response register(PersonDto personDto) {

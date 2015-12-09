@@ -24,11 +24,23 @@
 package pl.otwartapw.opw.pre.register.ws;
 
 import java.io.Serializable;
+import javax.ejb.Stateless;
+import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
 
 /**
  *
  * @author Adam Kowalewski
  */
+@Stateless
 public class RegisterService implements Serializable {
 
+  private static final long serialVersionUID = 1L;
+
+  public RegisterService() {
+  }
+
+  public boolean register(PersonDto person){    
+    return true;
+  }
+  
 }
