@@ -23,6 +23,7 @@
  */
 package pl.otwartapw.opw.pre.register.ws;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Path;
@@ -41,20 +42,27 @@ import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 public class RegisterResource implements RegisterApi {
 
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
-  
+
   @PersistenceContext(unitName = "opwprePU")
   private EntityManager em;
 
-  
+  @Inject
+  private RegisterService service;
 
   @Override
   public Response register(PersonDto personDto) {
-    logger.info("register WiP {} ", personDto.toString());
-    return Response.ok().build();
+    logger.info("Register a new user");
+    logger.trace("register {} ", personDto.toString());
+    
+    if (service.register(personDto)) {
+      return Response.ok().build();
+    }
+    return Response.serverError().build();
   }
 
   @Override
   public Response version() {
+    logger.info("Read artefact version");    
     String uri = "/META-INF/maven/pl.otwartapw.opw-pre/opw-pre-register-ws/pom.properties";
     Version version = Version.VersionBuilder(uri);
     return Response.ok().entity(version).build();

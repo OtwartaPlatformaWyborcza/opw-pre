@@ -39,8 +39,11 @@ public class RegisterService implements Serializable {
   public RegisterService() {
   }
 
-  public boolean register(PersonDto person){    
+  public boolean register(PersonDto person) {
+    if (person.getFirstname().equalsIgnoreCase("adam")) {
+      return false;
+    }
     return true;
   }
-  
+
 }
