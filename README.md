@@ -98,22 +98,40 @@ Plan realizacji systemu OPW-PRE.
 Rejestracja wolontariusza
 * [PRE-1](https://otwartapw.atlassian.net/browse/PRE-1) Formularz rejestracji wolontariusza JSF
 * [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
-* [PRE-21](https://otwartapw.atlassian.net/browse/PRE-21) REST serwis rejestracji definicja API
-* [PRE-20](https://otwartapw.atlassian.net/browse/PRE-20) Integracja [bootstrap](getbootstrap.com)
-* [PRE-21](https://otwartapw.atlassian.net/browse/PRE-21) REST serwis rejestracji implementacja
+* [PRE-21](https://otwartapw.atlassian.net/browse/PRE-21) Definicja API serwisu REST rejestracji wolontariusza
+* [PRE-20](https://otwartapw.atlassian.net/browse/PRE-20) Integracja [bootstrap](getbootstrap.com) w formularzu rejestracji wolontariusza
+* [PRE-21](https://otwartapw.atlassian.net/browse/PRE-21) Implementacja serwisu REST rejestracji wolontariusza
 * [x] [PRE-22](https://otwartapw.atlassian.net/browse/PRE-22) VersionBuilder
+
 
 ### Wersja 0.4.0
 Integracja komisji obwodowej. Zabezpieczenie masek administracyjnych. Integracja standardowego theme [bootstrap](getbootstrap.com).  
 * [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD
 * Zabezpieczenie masek administracyjnych (Autoryzacja / Autentyfikacja)
+* Definicja API serwisu REST dla komisji obwodowej
+* Implementacja serwisu REST dla komisji obwodowej
 * Generator danych dla komisji obwodowej.  
-* [PRE-18](https://otwartapw.atlassian.net/browse/PRE-18) Integracja bootstrap
-* Dodanie
+* [PRE-18](https://otwartapw.atlassian.net/browse/PRE-18) Integracja bootstrap w panelu administracyjnym
+* Reset hasła wolontariusza
+* Aktywacja i deaktywacja konta wolontariusza w panelu administracyjnym
+* Aktywacja konta wolontariusza poprzez link
+* Samodzielny reset hasła
+* Dane dostępowe wolontariusza poprzez E-Mail  
+* Zamknięcie listy kandydatów w panelu administracyjnym
+* Lista komisji wolontariusza
+* Zarządzanie listą komisji obwodowych wolontariusza
+* Upload liczb wyborczych
+
 
 ### Wersja 0.5.0
-Integracja docker'a.
+Integracja docker'a. Import z plików CSV.
 * [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD
+* Import CSV dla kont użytkowników
+* Import CSV dla kandydatów
+* Import CSV dla województw
+* Import CSV dla komisji okręgowych
+* Import CSV dla komisji obwodowych
+* Import CSV dla komisji obwodowych
 
 ### Wersja 0.6.0
 Nowe funkcje TBD.
