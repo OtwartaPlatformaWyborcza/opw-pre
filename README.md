@@ -100,7 +100,7 @@ Rejestracja wolontariusza
 * [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
 * [PRE-21](https://otwartapw.atlassian.net/browse/PRE-21) Definicja API serwisu REST rejestracji wolontariusza
 * [PRE-20](https://otwartapw.atlassian.net/browse/PRE-20) Integracja [bootstrap](getbootstrap.com) w formularzu rejestracji wolontariusza
-* [PRE-21](https://otwartapw.atlassian.net/browse/PRE-21) Implementacja serwisu REST rejestracji wolontariusza
+* [PRE-23](https://otwartapw.atlassian.net/browse/PRE-23) Implementacja serwisu REST rejestracji wolontariusza
 * [x] [PRE-22](https://otwartapw.atlassian.net/browse/PRE-22) VersionBuilder
 
 
