@@ -106,13 +106,12 @@ Rejestracja wolontariusza
 
 ### Wersja 0.4.0
 Integracja komisji obwodowej. Zabezpieczenie masek administracyjnych. Integracja standardowego theme [bootstrap](getbootstrap.com).  
-* [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD
-* Zabezpieczenie masek administracyjnych (Autoryzacja / Autentyfikacja)
-* Definicja API serwisu REST dla komisji obwodowej
-* Implementacja serwisu REST dla komisji obwodowej
-* Generator danych dla komisji obwodowej.  
+* [PRE-24](https://otwartapw.atlassian.net/browse/PRE-24) Zabezpieczenie masek administracyjnych
+* [PRE-25](https://otwartapw.atlassian.net/browse/PRE-25) Definicja API serwisu REST dla komisji obwodowej
+* [PRE-26](https://otwartapw.atlassian.net/browse/PRE-26) Implementacja serwisu REST dla komisji obwodowej
+* [PRE-27](https://otwartapw.atlassian.net/browse/PRE-27) Generator danych dla komisji obwodowej  
 * [PRE-18](https://otwartapw.atlassian.net/browse/PRE-18) Integracja bootstrap w panelu administracyjnym
-* Reset hasła wolontariusza
+* [PRE-28](https://otwartapw.atlassian.net/browse/PRE-28) Reset hasła wolontariusza
 * Aktywacja i deaktywacja konta wolontariusza w panelu administracyjnym
 * Aktywacja konta wolontariusza poprzez link
 * Samodzielny reset hasła
