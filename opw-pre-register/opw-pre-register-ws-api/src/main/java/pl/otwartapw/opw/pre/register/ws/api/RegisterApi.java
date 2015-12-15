@@ -39,8 +39,9 @@ import javax.ws.rs.core.Response;
  * REST API definition for OPW-PRE registration.
  *
  * @author Adam Kowalewski
- * @version 2015.09.19
+ * @version 2015.12.15
  */
+@Path("/user")
 public interface RegisterApi {
 
   /**
@@ -54,6 +55,18 @@ public interface RegisterApi {
   @Consumes({APPLICATION_JSON, APPLICATION_XML})
   @Produces({APPLICATION_JSON, APPLICATION_XML})
   Response register(@NotNull @Valid PersonDto personDto);
+
+  /**
+   * Dry run verification if usec can be registered.
+   *
+   * @param personDto user information.
+   * @return
+   */
+  @POST
+  @Path("/validate")
+  @Consumes({APPLICATION_JSON, APPLICATION_XML})
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  String validate(@NotNull @Valid PersonDto personDto);
 
   @GET
   @Path("/version")
