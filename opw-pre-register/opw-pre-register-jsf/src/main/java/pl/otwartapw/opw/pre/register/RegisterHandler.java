@@ -26,6 +26,7 @@ package pl.otwartapw.opw.pre.register;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.json.JsonObject;
 import javax.ws.rs.core.Response;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
@@ -73,7 +74,7 @@ public class RegisterHandler implements Serializable {
 
     RegisterApi buildClient() {
         ResteasyClient reClient = new ResteasyClientBuilder().build();
-        ResteasyWebTarget target = reClient.target("http://localhost:8080/opw-pre-ws-register/service");
+        ResteasyWebTarget target = reClient.target("http://localhost:8080/opw-pre-register-ws/service");
         RegisterApi api = target.proxy(RegisterApi.class);
         return api;
     }
