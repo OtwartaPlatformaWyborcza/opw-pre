@@ -34,6 +34,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Adam Kowalewski
  */
+@Deprecated
 public class Version {
 
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
