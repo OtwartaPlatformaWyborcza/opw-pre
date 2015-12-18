@@ -23,9 +23,7 @@
  */
 package pl.otwartapw.opw.pre.register.ws;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.ejb.EJB;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
@@ -38,31 +36,38 @@ import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
  *
  * @author Adam Kowalewski
  */
-@Path("/")
+@Path("/user")
 public class RegisterResource implements RegisterApi {
 
-  private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  private static final Logger logger = LoggerFactory.getLogger(RegisterResource.class);
 
-  @PersistenceContext(unitName = "opwprePU")
-  private EntityManager em;
+  @EJB
+  RegisterService registerService;
 
-  @Inject
-  private RegisterService service;
+  public RegisterResource() {
+    logger.info("RegisterResource");
+
+  }
 
   @Override
   public Response register(PersonDto personDto) {
     logger.info("Register a new user");
     logger.trace("register {} ", personDto.toString());
-    
-    if (service.register(personDto)) {
+
+    if (registerService.register(personDto)) {
       return Response.ok().build();
     }
     return Response.serverError().build();
   }
 
   @Override
+  public String validate(PersonDto personDto) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
   public Response version() {
-    logger.info("Read artefact version");    
+    logger.info("Read artefact version");
     String uri = "/META-INF/maven/pl.otwartapw.opw-pre/opw-pre-register-ws/pom.properties";
     Version version = Version.VersionBuilder(uri);
     return Response.ok().entity(version).build();

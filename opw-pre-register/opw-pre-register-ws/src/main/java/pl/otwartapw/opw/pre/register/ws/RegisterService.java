@@ -25,6 +25,10 @@ package pl.otwartapw.opw.pre.register.ws;
 
 import java.io.Serializable;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
 
 /**
@@ -35,8 +39,14 @@ import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
 public class RegisterService implements Serializable {
 
   private static final long serialVersionUID = 1L;
+  private static final Logger logger = LoggerFactory.getLogger(RegisterService.class);
+
+
+  @PersistenceContext(unitName = "opwprePU")
+  private EntityManager em;
 
   public RegisterService() {
+    logger.info("RegisterService");
   }
 
   public boolean register(PersonDto person) {
