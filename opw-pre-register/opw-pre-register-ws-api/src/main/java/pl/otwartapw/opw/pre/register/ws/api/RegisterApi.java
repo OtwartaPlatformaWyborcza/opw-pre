@@ -41,8 +41,10 @@ import javax.ws.rs.core.Response;
  * @author Adam Kowalewski
  * @version 2015.12.15
  */
-@Path("/user")
+@Path(RegisterApi.SERVICE_PATH)
 public interface RegisterApi {
+
+  static final String SERVICE_PATH = "/user";
 
   /**
    * Register a new user.
@@ -66,7 +68,23 @@ public interface RegisterApi {
   @Path("/validate")
   @Consumes({APPLICATION_JSON, APPLICATION_XML})
   @Produces({APPLICATION_JSON, APPLICATION_XML})
-  String validate(@NotNull @Valid PersonDto personDto);
+  Response validate(@NotNull @Valid PersonDto personDto);
+
+  /**
+   * Generates a random password.
+   *
+   * @return random password.
+   */
+  @GET
+  @Path("/password")
+  @Produces({TEXT_PLAIN})
+  String generatePassword();
+
+  @POST
+  @Path("/password/complexity")
+  @Consumes(TEXT_PLAIN)
+  @Produces(TEXT_PLAIN)
+  Response checkPasswordComplexity(String password);
 
   @GET
   @Path("/version")

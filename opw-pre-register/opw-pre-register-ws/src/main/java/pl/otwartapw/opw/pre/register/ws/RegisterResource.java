@@ -36,7 +36,7 @@ import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
  *
  * @author Adam Kowalewski
  */
-@Path("/user")
+@Path(RegisterApi.SERVICE_PATH)
 public class RegisterResource implements RegisterApi {
 
   private static final Logger logger = LoggerFactory.getLogger(RegisterResource.class);
@@ -60,10 +60,6 @@ public class RegisterResource implements RegisterApi {
     return Response.serverError().build();
   }
 
-  @Override
-  public String validate(PersonDto personDto) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
 
   @Override
   public Response version() {
@@ -71,6 +67,21 @@ public class RegisterResource implements RegisterApi {
     String uri = "/META-INF/maven/pl.otwartapw.opw-pre/opw-pre-register-ws/pom.properties";
     Version version = Version.VersionBuilder(uri);
     return Response.ok().entity(version).build();
+  }
+
+  @Override
+  public Response validate(PersonDto personDto) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public String generatePassword() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public Response checkPasswordComplexity(String password) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
 }
