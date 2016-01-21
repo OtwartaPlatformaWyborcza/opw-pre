@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.commons.dto;
+package pl.otwartapw.opw.pre.commons.version;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -29,49 +29,41 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * DTO represents artifact version.
+ * Version information.
  *
  * @author Adam Kowalewski
- * @version 2015.10.23
+ * @version 2015.12.10
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class VersionDto implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    private String artifact;
-    private String version;
+  private static final long serialVersionUID = 1L;
 
-    public VersionDto() {
-    }
+  private String artifactId;
+  private String version;
 
-    public VersionDto(String artifact, String version) {
-        this.artifact = artifact;
-        this.version = version;
-    }
+  public VersionDto() {
+  }
 
-    public String getArtifact() {
-        return artifact;
-    }
+  public String getArtifactId() {
+    return artifactId;
+  }
 
-    public void setArtifact(String artifact) {
-        this.artifact = artifact;
-    }
+  public void setArtifactId(String artifactId) {
+    this.artifactId = artifactId;
+  }
 
-    public String getVersion() {
-        return version;
-    }
+  public String getVersion() {
+    return version;
+  }
 
-    public void setVersion(String version) {
-        this.version = version;
-    }
+  public void setVersion(String version) {
+    this.version = version;
+  }
 
-    @Override
-    public String toString() {
-        return "VersionDto{"
-                + "artifact=" + artifact
-                + ", version=" + version
-                + '}';
-    }
-
+  @Override
+  public String toString() {
+    return artifactId + "-" + version;
+  }
 }
