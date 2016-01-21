@@ -28,6 +28,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.otwartapw.opw.pre.commons.version.VersionBuilder;
+import pl.otwartapw.opw.pre.commons.version.VersionDto;
 import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
 import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 
@@ -65,7 +67,7 @@ public class RegisterResource implements RegisterApi {
   public Response version() {
     logger.info("Read artefact version");
     String uri = "/META-INF/maven/pl.otwartapw.opw-pre/opw-pre-register-ws/pom.properties";
-    Version version = Version.VersionBuilder(uri);
+    VersionDto version = VersionBuilder.build(uri);
     return Response.ok().entity(version).build();
   }
 
