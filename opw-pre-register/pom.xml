@@ -13,6 +13,7 @@
     <modules>
         <module>opw-pre-register-ws-api</module>
         <module>opw-pre-register-ws</module>
-        <module>opw-pre-register-jsf</module>            
+        <module>opw-pre-register-jsf</module>
+        <module>opw-pre-register-ws-client</module>
     </modules>
 </project>
