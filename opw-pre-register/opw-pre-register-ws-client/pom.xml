@@ -13,6 +13,10 @@
     <!-- OPW -->
     <dependency>
       <groupId>${project.groupId}</groupId>
+      <artifactId>opw-pre-commons</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
       <artifactId>opw-pre-register-ws-api</artifactId>
     </dependency>
     
@@ -20,6 +24,12 @@
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-client</artifactId>
+      <version>3.0.14.Final</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
     </dependency>
   </dependencies>
 </project>

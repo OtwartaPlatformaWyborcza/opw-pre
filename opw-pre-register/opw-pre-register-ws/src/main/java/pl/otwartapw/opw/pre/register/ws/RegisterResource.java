@@ -24,6 +24,7 @@
 package pl.otwartapw.opw.pre.register.ws;
 
 import javax.ejb.EJB;
+import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
@@ -52,38 +53,22 @@ public class RegisterResource implements RegisterApi {
   }
 
   @Override
-  public Response register(PersonDto personDto) {
+  public void register(PersonDto personDto) {
     logger.info("Register a new user");
     logger.trace("register {} ", personDto.toString());
 
-    if (registerService.register(personDto)) {
-      return Response.ok().build();
+    try {
+      registerService.register(personDto);
+    } catch (Exception e) {
+      throw new InternalServerErrorException();
     }
-    return Response.serverError().build();
   }
 
-
   @Override
-  public Response version() {
+  public VersionDto version() {
     logger.info("Read artefact version");
     String uri = "/META-INF/maven/pl.otwartapw.opw-pre/opw-pre-register-ws/pom.properties";
-    VersionDto version = VersionBuilder.build(uri);
-    return Response.ok().entity(version).build();
-  }
-
-  @Override
-  public Response validate(PersonDto personDto) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public String generatePassword() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public Response checkPasswordComplexity(String password) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return VersionBuilder.build(uri);
   }
 
 }

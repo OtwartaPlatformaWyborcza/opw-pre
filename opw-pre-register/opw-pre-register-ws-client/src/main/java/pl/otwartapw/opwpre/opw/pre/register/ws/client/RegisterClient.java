@@ -23,7 +23,9 @@
  */
 package pl.otwartapw.opwpre.opw.pre.register.ws.client;
 
+import java.io.Serializable;
 import javax.ws.rs.core.Response;
+import pl.otwartapw.opw.pre.commons.version.VersionDto;
 import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
 import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 
@@ -31,31 +33,26 @@ import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
  *
  * @author Adam Kowalewski
  */
-public class RegisterClient implements RegisterApi{
+public class RegisterClient implements RegisterApi, Serializable {
 
-  @Override
-  public Response register(PersonDto personDto) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  private static final long serialVersionUID = 1L;
+
+  private final ClientFactory clientFactory;
+  private String serviceUrl;
+
+  public RegisterClient(String serviceUrl) {
+    clientFactory = new ClientFactory();
+    this.serviceUrl = "http://localhost:8080/opw-pre-register-ws/service";
   }
 
   @Override
-  public Response validate(PersonDto personDto) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public void register(PersonDto person) {
+    clientFactory.getClient(serviceUrl).register(person);
   }
 
   @Override
-  public String generatePassword() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public VersionDto version() {
+    return clientFactory.getClient(serviceUrl).version();
   }
 
-  @Override
-  public Response checkPasswordComplexity(String password) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public Response version() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-  
 }

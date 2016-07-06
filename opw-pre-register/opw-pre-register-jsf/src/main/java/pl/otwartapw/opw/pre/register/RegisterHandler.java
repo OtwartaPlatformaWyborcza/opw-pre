@@ -26,8 +26,6 @@ package pl.otwartapw.opw.pre.register;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.json.JsonObject;
-import javax.ws.rs.core.Response;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
@@ -35,6 +33,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
 import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
+import pl.otwartapw.opwpre.opw.pre.register.ws.client.RegisterClient;
 
 /**
  *
@@ -44,39 +43,39 @@ import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 @ViewScoped
 public class RegisterHandler implements Serializable {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  private static final long serialVersionUID = 1L;
 
-    private PersonDto person;
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public RegisterHandler() {
-        person = new PersonDto();
-    }
+  private PersonDto person;
+  
+  private RegisterClient registerClient;
 
-    public PersonDto getPerson() {
-        return person;
-    }
+  public RegisterHandler() {
+    person = new PersonDto();
+    registerClient = new RegisterClient("http://localhost:8080/opw-pre-register-ws/service");
+  }
 
-    public void setPerson(PersonDto person) {
-        this.person = person;
-    }
+  public PersonDto getPerson() {
+    return person;
+  }
 
-    public void register() throws Exception {
+  public void setPerson(PersonDto person) {
+    this.person = person;
+  }
 
-        Response r = buildClient().register(person);
+  public void register() throws Exception {
 
-        logger.info("resp {}", r.getStatus());
-        logger.info("register WiP {}" + person.toString());
-    }
+    registerClient.register(person);
 
-    public String loadBackendVersion() {
-        return buildClient().version().readEntity(String.class);
-    }
+//        logger.info("resp {}", r.getStatus());
+    logger.info("register WiP {}" + person.toString());
+  }
 
-    RegisterApi buildClient() {
-        ResteasyClient reClient = new ResteasyClientBuilder().build();
-        ResteasyWebTarget target = reClient.target("http://localhost:8080/opw-pre-register-ws/service");
-        RegisterApi api = target.proxy(RegisterApi.class);
-        return api;
-    }
+  public String loadBackendVersion() {
+    return registerClient.version().getVersion();
+  }
+
+  
 
 }

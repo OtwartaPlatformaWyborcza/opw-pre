@@ -100,6 +100,12 @@
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
+        <artifactId>opw-pre-register-ws-client</artifactId>
+        <version>${project.version}</version>
+        <type>jar</type>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
         <artifactId>opw-pre-management-ws-api</artifactId>
         <version>${project.version}</version>
         <type>jar</type>

@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Adam Kowalewski.
+ * Copyright 2016 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,46 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.register.ws.api;
+package pl.otwartapw.opwpre.opw.pre.register.ws.client;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.MediaType.APPLICATION_XML;
-import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
-import javax.ws.rs.core.Response;
-import pl.otwartapw.opw.pre.commons.version.VersionDto;
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
+import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 
 /**
- * REST API definition for OPW-PRE registration.
  *
  * @author Adam Kowalewski
- * @version 2015.12.15
  */
-@Path(RegisterApi.SERVICE_PATH)
-public interface RegisterApi {
+public class ClientFactory {
 
-  static final String SERVICE_PATH = "/user";
-
-  /**
-   * Register a new user.
-   *
-   * @param person user information.
-   */
-  @POST
-  @Path("/register")
-  @Consumes({APPLICATION_JSON, APPLICATION_XML})
-  @Produces({APPLICATION_JSON, APPLICATION_XML})
-  void register(@NotNull @Valid PersonDto person);
-
-  @GET
-  @Path("/version")
-  @Produces({APPLICATION_JSON, APPLICATION_XML, TEXT_PLAIN})
-  VersionDto version();
+  public RegisterApi getClient(String baseUrl) {
+    return new ResteasyClientBuilder()
+            .build()
+            .target(baseUrl)
+            .proxy(RegisterApi.class);
+  }
 
 }
