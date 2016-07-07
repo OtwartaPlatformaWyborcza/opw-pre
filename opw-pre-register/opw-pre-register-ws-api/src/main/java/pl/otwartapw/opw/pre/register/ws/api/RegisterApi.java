@@ -51,12 +51,13 @@ public interface RegisterApi {
    * Register a new user.
    *
    * @param person user information.
+   * @return proper HTTP status code. 
    */
   @POST
   @Path("/register")
   @Consumes({APPLICATION_JSON, APPLICATION_XML})
   @Produces({APPLICATION_JSON, APPLICATION_XML})
-  void register(@NotNull @Valid PersonDto person);
+  Response.Status register(@NotNull @Valid PersonDto person);
 
   @GET
   @Path("/version")

@@ -30,24 +30,31 @@ import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
 import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 
 /**
+ * REST Client.
  *
  * @author Adam Kowalewski
+ * @version 2016.07.07
  */
 public class RegisterClient implements RegisterApi, Serializable {
 
   private static final long serialVersionUID = 1L;
 
   private final ClientFactory clientFactory;
-  private String serviceUrl;
+  private final String serviceUrl;
 
   public RegisterClient(String serviceUrl) {
-    clientFactory = new ClientFactory();
-    this.serviceUrl = "http://localhost:8080/opw-pre-register-ws/service";
+    this.clientFactory = new ClientFactory();
+    this.serviceUrl = serviceUrl;
+  }
+
+  public RegisterClient(String serviceUrl, ClientFactory clientFactory) {
+    this.clientFactory = clientFactory;
+    this.serviceUrl = serviceUrl;
   }
 
   @Override
-  public void register(PersonDto person) {
-    clientFactory.getClient(serviceUrl).register(person);
+  public Response.Status register(PersonDto person) {
+    return clientFactory.getClient(serviceUrl).register(person);
   }
 
   @Override

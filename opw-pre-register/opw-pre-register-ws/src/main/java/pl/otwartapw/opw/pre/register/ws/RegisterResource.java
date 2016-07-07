@@ -53,14 +53,15 @@ public class RegisterResource implements RegisterApi {
   }
 
   @Override
-  public void register(PersonDto personDto) {
+  public Response.Status register(PersonDto personDto) {
     logger.info("Register a new user");
     logger.trace("register {} ", personDto.toString());
 
     try {
       registerService.register(personDto);
+      return Response.Status.OK;
     } catch (Exception e) {
-      throw new InternalServerErrorException();
+      throw new InternalServerErrorException(e.getMessage());
     }
   }
 
