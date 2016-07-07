@@ -46,6 +46,11 @@ public class VersionDto implements Serializable {
   public VersionDto() {
   }
 
+  public VersionDto(String artifactId, String version) {
+    this.artifactId = artifactId;
+    this.version = version;
+  }
+
   public String getArtifactId() {
     return artifactId;
   }
