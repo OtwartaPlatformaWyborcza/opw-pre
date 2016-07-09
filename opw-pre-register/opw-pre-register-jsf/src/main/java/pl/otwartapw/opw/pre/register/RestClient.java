@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Adam Kowalewski.
+ * Copyright 2016 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,49 +24,53 @@
 package pl.otwartapw.opw.pre.register;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
+import javax.ejb.Stateless;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
+import pl.otwartapw.opwpre.opw.pre.register.ws.client.RegisterClient;
 
 /**
+ * Adapter for all REST based clients.
  *
  * @author Adam Kowalewski
  */
-@Named
-@ViewScoped
-public class RegisterHandler implements Serializable {
-
+@Stateless
+public class RestClient implements Serializable {
+  
   private static final long serialVersionUID = 1L;
-
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-  private PersonDto person;
+  
+  private RegisterClient registerClient;
   
   @EJB
-  RestClient restClient;
-
-  public RegisterHandler() {
-    person = new PersonDto();    
+  Configuration configuration;
+  
+  public RestClient() {
+    
   }
-
-  public PersonDto getPerson() {
-    return person;
+  
+  @PostConstruct
+  public void init() {
+    logger.debug("init");
+    registerClient = new RegisterClient(configuration.getRegisterBackendBaseUrl());
   }
-
-  public void setPerson(PersonDto person) {
-    this.person = person;
+  
+  public void registerNewPerson(PersonDto person){
+    logger.trace("registerNewPerson {}", person);    
+    registerClient.register(person);
   }
-
-  public void register() throws Exception {
-    restClient.registerNewPerson(person);
-    logger.info("register WiP {}" + person.toString());
-  }
-
-  public String loadBackendVersion() {
-    return restClient.readRegisterBackendVersion();    
+  
+  public String readRegisterBackendVersion() {
+    logger.trace("readRegisterBackendVersion");
+    try {
+      return registerClient.version().getVersion();
+    } catch (Exception e) {
+      logger.error("readRegisterBackendVersion {}", e.getMessage());
+      return "Backend offline";
+    }
   }
   
 }

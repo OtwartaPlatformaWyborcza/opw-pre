@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Adam Kowalewski.
+ * Copyright 2016 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +23,21 @@
  */
 package pl.otwartapw.opw.pre.register;
 
-import java.io.Serializable;
+import javax.ejb.Stateless;
 
 /**
- * still thinking if I need it 
+ * Provides access to all configuration parameters.
+ *
  * @author Adam Kowalewski
  */
-@Deprecated
-public class RegisterBean implements Serializable{
-    
-    
-    public static void main(String[] args) throws Exception{
+@Stateless
+public class Configuration {
 
-    }
+  // TODO Extract to JNDI
+  private final String registerBackendBaseUrl = "http://localhost:8080/opw-pre-register-ws/service";
+
+  public String getRegisterBackendBaseUrl() {
+    return registerBackendBaseUrl;
+  }
+
 }
