@@ -3,27 +3,31 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
-        <h:outputStylesheet library="webjars" name="bootstrap/3.3.6/css/bootstrap.min-jsf.css" />
-        <h:outputScript library="primefaces" name="jquery/jquery.js"/>
-        <title>#{messages.appTitle}</title>
-    </h:head>
+  <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+    <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+    <h:outputStylesheet library="webjars" name="bootstrap/3.3.6/css/bootstrap.min-jsf.css" />
+    <link type="text/css" rel="stylesheet" href="./resources/css/css-style.css" />
+    <title>#{messages.appTitle}</title>
+  </h:head>
 
-    <h:body>
+  <h:body>
+    <div id="header" class="container-fluid">
+      <ui:insert name="header">Header</ui:insert>
+    </div>
 
-        <div id="top">
-            <ui:insert name="top">Top</ui:insert>
+    <div id="content" class="container-fluid">
+      <ui:insert name="content">Content</ui:insert>
+    </div>
+
+    <div id="bottom" class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <span>Wersja API #{registerHandler.loadBackendVersion()}</span>
         </div>
+      </div>
+    </div>
 
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
-        </div>
-
-        <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
-        </div>
-
-    </h:body>
+  </h:body>
 
 </html>

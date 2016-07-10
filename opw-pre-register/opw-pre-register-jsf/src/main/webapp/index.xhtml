@@ -3,32 +3,69 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="./WEB-INF/template.xhtml">
 
-    <ui:define name="content">
-        <h1>#{messages.registerTitle}</h1>
+  <ui:define name="header">
+    <div class="row">
+      <h1>#{messages.registerTitle}</h1>
+    </div>
+  </ui:define>
+
+  <ui:define name="content">    
+    <div class="row">
+      <div class="col-md-10">
         <h:form id="frmRegister">
-            
-            <h:panelGrid columns="2" cellspacing="7">
-                <h:outputLabel for="fn" id="fnL" value="#{messages.firstname}" />
-                <p:inputText id="fn" value="#{registerHandler.person.firstname}"/>
 
-                <h:outputLabel for="ln" id="lnL" value="#{messages.lastname}" />
-                <p:inputText id="ln" value="#{registerHandler.person.lastname}"/>
+          <div class="row">
+            <div class="col-xs-12 col-sm-2">
+              <h:outputLabel for="fn" id="fnL" value="#{messages.firstname}" />
+            </div>
+            <div class="col-xs-12 col-sm-10">
+              <p:inputText id="fn" value="#{registerHandler.person.firstname}"/>    
+            </div>
+          </div>
+          <div class="row margin-top-xs">
+            <div class="col-xs-12 col-sm-2">
+              <h:outputLabel for="ln" id="lnL" value="#{messages.lastname}" />
+            </div>
+            <div class="col-xs-12 col-sm-10">
+              <p:inputText id="ln" value="#{registerHandler.person.lastname}"/>
+            </div>
+          </div>
+          <div class="row margin-top-xs">
+            <div class="col-xs-12 col-sm-2">
+              <h:outputLabel for="em" id="emL" value="#{messages.email}" />
+            </div>
+            <div class="col-xs-12 col-sm-10">
+              <p:inputText id="em" value="#{registerHandler.person.email}"/>
+            </div>
+          </div>
+          <div class="row margin-top-xs">
+            <div class="col-xs-12 col-sm-2">
+              <h:outputLabel for="ph" id="phL" value="#{messages.phone}" />
+            </div>
+            <div class="col-xs-12 col-sm-10">
+              <p:inputText id="ph" value="#{registerHandler.person.phone}"/>
+            </div>
+          </div>
+          <div class="row margin-top-xs">
+            <div class="col-xs-2">
+              <h:outputLabel for="pwd" id="pwdL" value="#{messages.password}" />
+            </div>
+            <div class="col-xs-12 col-sm-10">
+              <p:inputText id="pwd" value="#{registerHandler.person.password}"/>
+            </div>
+          </div>
+          <div class="row margin-top-xs">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-12 col-sm-10">
+              <h:commandButton id="submit" class="btn btn-success"
+                               action="#{registerHandler.register()}" 
+                               value="#{messages.submit}"/>
+            </div>
+          </div>
 
-                <h:outputLabel for="em" id="emL" value="#{messages.email}" />
-                <p:inputText id="em" value="#{registerHandler.person.email}"/>
-
-                <h:outputLabel for="ph" id="phL" value="#{messages.phone}" />
-                <p:inputText id="ph" value="#{registerHandler.person.phone}"/>
-
-                <h:outputLabel for="pwd" id="pwdL" value="#{messages.password}" />
-                <p:inputText id="pwd" value="#{registerHandler.person.password}"/>
-            </h:panelGrid>
-
-            <h:commandButton id="submit" 
-                             action="#{registerHandler.register()}" 
-                             value="#{messages.submit}"/>
-        </h:form>        
-    </ui:define>
-    <ui:define name="bottom">Wersja API #{registerHandler.loadBackendVersion()}</ui:define>
+        </h:form>
+      </div>
+    </div>
+  </ui:define>
 
 </ui:composition>
