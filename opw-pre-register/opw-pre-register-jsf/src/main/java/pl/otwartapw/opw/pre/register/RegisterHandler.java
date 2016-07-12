@@ -44,12 +44,12 @@ public class RegisterHandler implements Serializable {
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   private PersonDto person;
-  
+
   @EJB
   RestClient restClient;
 
   public RegisterHandler() {
-    person = new PersonDto();    
+    person = new PersonDto();
   }
 
   public PersonDto getPerson() {
@@ -60,13 +60,14 @@ public class RegisterHandler implements Serializable {
     this.person = person;
   }
 
-  public void register() throws Exception {
+  public void register() {
+    logger.trace("register");
     restClient.registerNewPerson(person);
-    logger.info("register WiP {}" + person.toString());
   }
 
   public String loadBackendVersion() {
-    return restClient.readRegisterBackendVersion();    
+    logger.trace("loadBackendVersion");
+    return restClient.readRegisterBackendVersion();
   }
-  
+
 }
