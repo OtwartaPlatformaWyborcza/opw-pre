@@ -59,6 +59,11 @@ public interface RegisterApi {
   @Produces({APPLICATION_JSON, APPLICATION_XML})
   Response.Status register(@NotNull @Valid PersonDto person);
 
+  /**
+   * Returns version of the artifact. 
+   * 
+   * @return artifacts version.
+   */
   @GET
   @Path("/version")
   @Produces({APPLICATION_JSON, APPLICATION_XML, TEXT_PLAIN})
