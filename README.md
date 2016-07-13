@@ -68,7 +68,15 @@ Wybory prezydenckie
 3. CSS3
 4. Bootstrap
 
+## Konfiguracja
+Konfiguracja systemu OPW-PRE bazuje w całości na podsystemie `naming` kontenera JEE. Poszczególne parametry konfiguracyjne  umieszczone są bezpośrednio w typowanych parametrach JNDI wedle schematu `java:global/opw-pre/<MODUŁ>/<OPCJA>`. Poszczególne moduły OPW-PRE nie implementują `cache` dla parametrów JNDI. Zmiana konfiguracji nie wymaga restartu kontenera JEE.
 
+
+| Parametr | Wartość | Opis |
+| -------------| ------------- | ------------- |
+| /opw-pre/register/baseUrl | http://localhost:8080/opw-pre-register-ws/service | Absolutne URI serwisu rejestracji |
+| /opw-pre/inbound/baseUrl | http://localhost:8080/opw-pre-inbound-ws/service | Absolutne URI serwisu zapisu danych |
+| /opw-pre/outbound/baseUrl | http://localhost:8080/opw-pre-outbound-ws/service | Absolutne URI serwisu odczytu danych |
 ## REST
 Proces wgrywania protokołu z perspektywy użytkownika.  
 
@@ -99,9 +107,10 @@ Rejestracja wolontariusza
 * [x] [PRE-1](https://otwartapw.atlassian.net/browse/PRE-1) Formularz rejestracji wolontariusza JSF
 * [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
 * [x] [PRE-21](https://otwartapw.atlassian.net/browse/PRE-21) Definicja API serwisu REST rejestracji wolontariusza
-* [PRE-20](https://otwartapw.atlassian.net/browse/PRE-20) Integracja [bootstrap](getbootstrap.com) w formularzu rejestracji wolontariusza
+* [x] [PRE-20](https://otwartapw.atlassian.net/browse/PRE-20) Integracja [bootstrap](getbootstrap.com) w formularzu rejestracji wolontariusza
 * [PRE-23](https://otwartapw.atlassian.net/browse/PRE-23) Implementacja serwisu REST rejestracji wolontariusza
 * [x] [PRE-22](https://otwartapw.atlassian.net/browse/PRE-22) VersionBuilder
+* [] [PRE-29](https://otwartapw.atlassian.net/browse/PRE-29) Definicja struktury JNDI  
 
 
 ### Wersja 0.4.0
