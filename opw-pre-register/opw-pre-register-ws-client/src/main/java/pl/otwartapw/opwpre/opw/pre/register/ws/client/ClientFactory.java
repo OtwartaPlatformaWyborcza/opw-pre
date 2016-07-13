@@ -27,11 +27,18 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 
 /**
+ * Provides access to REST Client implementations. 
  *
  * @author Adam Kowalewski
  */
 public class ClientFactory {
 
+  /**
+   * Builds RESTEasy proxy for register service. 
+   * 
+   * @param baseUrl absolute URI to service. 
+   * @return proxy instance.
+   */
   public RegisterApi getClient(String baseUrl) {
     return new ResteasyClientBuilder()
             .build()
