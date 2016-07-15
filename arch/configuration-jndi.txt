@@ -1,0 +1,5 @@
+<!-- OPW-PRE -->
+<simple name="java:global/opw-pre/register/baseUrl" value="http://localhost:8080/opw-pre-register-ws/service" type="java.lang.String"/>
+<simple name="java:global/opw-pre/inbound/baseUrl" value="http://localhost:8080/opw-pre-inbound-ws/service" type="java.lang.String"/>
+<simple name="java:global/opw-pre/outbound/baseUrl" value="http://localhost:8080/opw-pre-outbound-ws/service" type="java.lang.String"/>
+
