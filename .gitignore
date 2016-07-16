@@ -21,6 +21,7 @@ hs_err_pid*
 .project
 .idea/
 *.iml
+nbproject/
 nb-configuration.xml
 nbactions.xml
 
@@ -28,3 +29,4 @@ nbactions.xml
 target/
 
 
+/opw-pre-register/opw-pre-register-ws/
