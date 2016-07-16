@@ -49,7 +49,6 @@ public class RegisterResource implements RegisterApi {
 
   public RegisterResource() {
     logger.info("RegisterResource");
-
   }
 
   @Override

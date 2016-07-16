@@ -41,7 +41,7 @@ public class RegisterService implements Serializable {
   private static final long serialVersionUID = 1L;
   private static final Logger logger = LoggerFactory.getLogger(RegisterService.class);
 
-  @PersistenceContext(unitName = "opwprePU")
+  @PersistenceContext(unitName = "opwpreDS")
   private EntityManager em;
 
   public RegisterService() {
@@ -50,6 +50,10 @@ public class RegisterService implements Serializable {
 
   public boolean register(PersonDto person) {
     logger.trace("register {}", person);
+    OpwUser user = new OpwUser();
+    
+    em.persist(user);
+    
     if (person.getFirstname().equalsIgnoreCase("adam")) {
       return false;
     }
