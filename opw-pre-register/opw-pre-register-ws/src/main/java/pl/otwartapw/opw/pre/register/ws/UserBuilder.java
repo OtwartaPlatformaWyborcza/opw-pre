@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Adam Kowalewski.
+ * Copyright 2016 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,37 +23,30 @@
  */
 package pl.otwartapw.opw.pre.register.ws;
 
-import java.io.Serializable;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Date;
 import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
 
 /**
  *
  * @author Adam Kowalewski
  */
-@Stateless
-public class RegisterService implements Serializable {
+public class UserBuilder {
 
-  private static final long serialVersionUID = 1L;
-  private static final Logger logger = LoggerFactory.getLogger(RegisterService.class);
-
-  @PersistenceContext(unitName = "opwpreDS")
-  private EntityManager em;
-
-  UserBuilder userBuilder = new UserBuilder();
-
-  public RegisterService() {
-    logger.info("RegisterService");
+  public UserBuilder() {
   }
 
-  public void register(PersonDto person) {
-    logger.trace("register {}", person);
-    OpwUser user = userBuilder.fromPerson(person);
-    em.persist(user);
+  public OpwUser fromPerson(PersonDto person) {
+    OpwUser user = new OpwUser();
+    user.setFirstname(person.getFirstname());
+    user.setLastname(person.getLastname());
+    user.setEmail(person.getEmail());
+    user.setPhone(person.getPhone());
+    user.setPassword(person.getPassword());
+    user.setOrigin(Configuration.ORIGIN);
+    user.setDateCreated(new Date());
+    user.setActive(Boolean.TRUE);
+    
+    return user;
   }
 
 }
