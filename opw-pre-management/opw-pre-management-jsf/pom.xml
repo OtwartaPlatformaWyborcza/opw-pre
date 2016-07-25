@@ -6,11 +6,11 @@
     <parent>
         <artifactId>opw-pre-management</artifactId>
         <groupId>pl.otwartapw.opw-pre</groupId>
-        <version>0.3.0</version>
+        <version>0.4.0-SNAPSHOT</version>
     </parent>
     
     <artifactId>opw-pre-management-jsf</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>opw-pre-management-jsf</name>
