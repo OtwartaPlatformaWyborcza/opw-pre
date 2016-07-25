@@ -30,6 +30,7 @@ import javax.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
+import pl.otwartapw.opw.pre.register.ws.entity.OpwUser;
 
 /**
  *
@@ -39,7 +40,7 @@ import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
 public class RegisterService implements Serializable {
 
   private static final long serialVersionUID = 1L;
-  private static final Logger logger = LoggerFactory.getLogger(RegisterService.class);
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @PersistenceContext(unitName = "opwpreDS")
   private EntityManager em;
@@ -47,7 +48,7 @@ public class RegisterService implements Serializable {
   UserBuilder userBuilder = new UserBuilder();
 
   public RegisterService() {
-    logger.info("RegisterService");
+    logger.debug("RegisterService");
   }
 
   public void register(PersonDto person) {

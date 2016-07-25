@@ -42,7 +42,10 @@ public class VersionBuilder {
   private static final String VERSION = "version";
   private static final String ID = "artifactId";
 
-  public static VersionDto build(String uri) {
+  public VersionBuilder() {
+  }
+
+  public VersionDto build(String uri) {
     logger.trace("build {}", uri);
     VersionDto result = new VersionDto();
 

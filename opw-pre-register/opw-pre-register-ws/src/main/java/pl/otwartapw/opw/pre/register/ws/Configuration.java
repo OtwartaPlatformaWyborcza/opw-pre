@@ -31,4 +31,13 @@ public class Configuration {
   
   public final static String ORIGIN = "REGISTER";
   
+  private String appSalt = "wip";
+
+  public Configuration() {
+  }
+
+  public String getAppSalt() {
+    return appSalt;
+  }
+  
 }

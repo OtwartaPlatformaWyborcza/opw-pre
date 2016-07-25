@@ -23,29 +23,49 @@
  */
 package pl.otwartapw.opw.pre.register.ws;
 
+import java.io.Serializable;
 import java.util.Date;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.otwartapw.opw.pre.commons.UserHelper;
 import pl.otwartapw.opw.pre.register.ws.api.PersonDto;
+import pl.otwartapw.opw.pre.register.ws.entity.OpwUser;
 
 /**
  *
  * @author Adam Kowalewski
  */
-public class UserBuilder {
+public class UserBuilder implements Serializable{
+  
+  private static final long serialVersionUID = 1L;
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+  UserHelper userHelper = new UserHelper();
+  Configuration configuration = new Configuration();
 
   public UserBuilder() {
+    logger.debug("UserBuilder");
   }
 
   public OpwUser fromPerson(PersonDto person) {
+    logger.trace("fromPerson {}", person);
     OpwUser user = new OpwUser();
+
     user.setFirstname(person.getFirstname());
     user.setLastname(person.getLastname());
     user.setEmail(person.getEmail());
     user.setPhone(person.getPhone());
-    user.setPassword(person.getPassword());
+
+    String userSalt = userHelper.generatePassword(8);
+    user.setSalt(userSalt);
+
+    user.setPassword(userHelper.saltPassword(configuration.getAppSalt(), userSalt,
+            person.getPassword()));
+
     user.setOrigin(Configuration.ORIGIN);
     user.setDateCreated(new Date());
     user.setActive(Boolean.TRUE);
-    
+
     return user;
   }
 

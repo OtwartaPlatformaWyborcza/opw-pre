@@ -42,13 +42,15 @@ import pl.otwartapw.opw.pre.register.ws.api.RegisterApi;
 @Path(RegisterApi.SERVICE_PATH)
 public class RegisterResource implements RegisterApi {
 
-  private static final Logger logger = LoggerFactory.getLogger(RegisterResource.class);
-
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  
+  VersionBuilder versionBuilder = new VersionBuilder();
+  
   @EJB
   RegisterService registerService;
 
   public RegisterResource() {
-    logger.info("RegisterResource");
+    logger.debug("RegisterResource");
   }
 
   @Override
@@ -59,16 +61,17 @@ public class RegisterResource implements RegisterApi {
     try {
       registerService.register(personDto);
       return Response.Status.OK;
-    } catch (Exception e) {
+    }
+    catch (Exception e) {
       throw new InternalServerErrorException(e.getMessage());
     }
   }
 
   @Override
   public VersionDto version() {
-    logger.info("Read artefact version");
+    logger.info("Read artifact version");
     String uri = "/META-INF/maven/pl.otwartapw.opw-pre/opw-pre-register-ws/pom.properties";
-    return VersionBuilder.build(uri);
+    return versionBuilder.build(uri);
   }
 
 }
