@@ -105,16 +105,16 @@ Plan realizacji systemu OPW-PRE.
 ### Wersja 0.3.0
 Rejestracja wolontariusza
 * [x] [PRE-1](https://otwartapw.atlassian.net/browse/PRE-1) Formularz rejestracji wolontariusza JSF
-* [ ] [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
 * [x] [PRE-21](https://otwartapw.atlassian.net/browse/PRE-21) Definicja API serwisu REST rejestracji wolontariusza
 * [x] [PRE-20](https://otwartapw.atlassian.net/browse/PRE-20) Integracja [bootstrap](getbootstrap.com) w formularzu rejestracji wolontariusza
-* [ ] [PRE-23](https://otwartapw.atlassian.net/browse/PRE-23) Implementacja serwisu REST rejestracji wolontariusza
+* [x] [PRE-23](https://otwartapw.atlassian.net/browse/PRE-23) Implementacja serwisu REST rejestracji wolontariusza
 * [x] [PRE-22](https://otwartapw.atlassian.net/browse/PRE-22) VersionBuilder
 * [x] [PRE-29](https://otwartapw.atlassian.net/browse/PRE-29) Definicja struktury JNDI  
 
 
 ### Wersja 0.4.0
 Integracja komisji obwodowej. Zabezpieczenie masek administracyjnych. Integracja standardowego theme [bootstrap](getbootstrap.com).  
+* [ ] [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
 * [PRE-24](https://otwartapw.atlassian.net/browse/PRE-24) Zabezpieczenie masek administracyjnych
 * [PRE-25](https://otwartapw.atlassian.net/browse/PRE-25) Definicja API serwisu REST dla komisji obwodowej
 * [PRE-26](https://otwartapw.atlassian.net/browse/PRE-26) Implementacja serwisu REST dla komisji obwodowej
