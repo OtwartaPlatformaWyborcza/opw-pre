@@ -35,8 +35,6 @@
 
   <properties>
     <version.slf4j>1.7.7</version.slf4j>
-    <version.resteasy>3.0.11.Final</version.resteasy>
-    <version.hibernate>4.3.10.Final</version.hibernate>
     <version.org.picketlink>2.7.0.Final</version.org.picketlink>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -114,6 +112,14 @@
 
       <!-- external -->
       <dependency>
+        <groupId>org.wildfly.bom</groupId>
+        <artifactId>wildfly-javaee7</artifactId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version>10.0.0.Final</version>
+      </dependency>
+      
+      <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>bootstrap</artifactId>
         <version>3.3.6</version>
@@ -130,33 +136,9 @@
         <version>5.3</version>
       </dependency>
       <dependency>
-        <groupId>org.jboss.resteasy</groupId>
-        <artifactId>resteasy-client</artifactId>
-        <version>${version.resteasy}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.resteasy</groupId>
-        <artifactId>resteasy-jackson-provider</artifactId>
-        <version>${version.resteasy}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.resteasy</groupId>
-        <artifactId>resteasy-json-p-provider</artifactId>
-        <version>${version.resteasy}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
         <version>${version.slf4j}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-entitymanager</artifactId>
-        <version>${version.hibernate}</version>
         <scope>provided</scope>
       </dependency>
       <dependency>
@@ -198,7 +180,7 @@
           <artifactId>maven-release-plugin</artifactId>
           <version>2.5.3</version>
           <configuration>
-            <tagNameFormat>release/v1/${project.version}</tagNameFormat>
+            <tagNameFormat>release/v1/opw-pre-@{project.version}</tagNameFormat>
             <autoVersionSubmodules>true</autoVersionSubmodules>
           </configuration>
         </plugin>
