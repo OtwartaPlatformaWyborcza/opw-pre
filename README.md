@@ -104,6 +104,7 @@ Plan realizacji systemu OPW-PRE.
 
 ### Wersja 0.4.0
 Integracja komisji obwodowej. Zabezpieczenie masek administracyjnych. Integracja standardowego theme [bootstrap](getbootstrap.com).  
+* [ ] [PRE-30](https://otwartapw.atlassian.net/browse/PRE-19) Migracja WildFly 10.0.0.Final
 * [ ] [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
 * [PRE-24](https://otwartapw.atlassian.net/browse/PRE-24) Zabezpieczenie masek administracyjnych
 * [PRE-25](https://otwartapw.atlassian.net/browse/PRE-25) Definicja API serwisu REST dla komisji obwodowej
