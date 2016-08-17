@@ -103,23 +103,25 @@ Jako prefix `X-OPW`
 Plan realizacji systemu OPW-PRE.
 
 ### Wersja 0.4.0
-Integracja komisji obwodowej. Zabezpieczenie masek administracyjnych. Integracja standardowego theme [bootstrap](getbootstrap.com).  
-* [ ] [PRE-30](https://otwartapw.atlassian.net/browse/PRE-19) Migracja WildFly 10.0.0.Final
+Integracja komisji obwodowej. Integracja standardowego theme [bootstrap](getbootstrap.com).  
+* [x] [PRE-30](https://otwartapw.atlassian.net/browse/PRE-30) Migracja WildFly 10.0.0.Final
 * [ ] [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
-* [PRE-24](https://otwartapw.atlassian.net/browse/PRE-24) Zabezpieczenie masek administracyjnych
-* [PRE-25](https://otwartapw.atlassian.net/browse/PRE-25) Definicja API serwisu REST dla komisji obwodowej
-* [PRE-26](https://otwartapw.atlassian.net/browse/PRE-26) Implementacja serwisu REST dla komisji obwodowej
-* [PRE-27](https://otwartapw.atlassian.net/browse/PRE-27) Generator danych dla komisji obwodowej  
-* [PRE-18](https://otwartapw.atlassian.net/browse/PRE-18) Integracja bootstrap w panelu administracyjnym
-* [PRE-28](https://otwartapw.atlassian.net/browse/PRE-28) Reset hasła wolontariusza
-* Aktywacja i deaktywacja konta wolontariusza w panelu administracyjnym
-* Aktywacja konta wolontariusza poprzez link
+* [ ] [PRE-25](https://otwartapw.atlassian.net/browse/PRE-25) Definicja API serwisu REST dla komisji obwodowej
+* [ ] [PRE-26](https://otwartapw.atlassian.net/browse/PRE-26) Implementacja serwisu REST dla komisji obwodowej
+* [ ] [PRE-27](https://otwartapw.atlassian.net/browse/PRE-27) Generator danych dla komisji obwodowej  
+* [ ] [PRE-18](https://otwartapw.atlassian.net/browse/PRE-18) Integracja bootstrap w panelu administracyjnym
+* [ ] [PRE-28](https://otwartapw.atlassian.net/browse/PRE-28) Reset hasła wolontariusza
+* [ ]  [PRE-34](https://otwartapw.atlassian.net/browse/PRE-34) Aktywacja i deaktywacja konta wolontariusza w panelu administracyjnym
+* [ ]  [PRE-35](https://otwartapw.atlassian.net/browse/PRE-35) Zamknięcie listy kandydatów w panelu administracyjnym
+* Lista komisji wolontariusza w panelu administracyjnym
+* Zarządzanie listą komisji obwodowych wolontariusza w panelu administracyjnym
+* Upload liczb wyborczych w panelu administracyjnym
+* [ ]  Aktywacja konta wolontariusza poprzez link
+
+
 * Samodzielny reset hasła
 * Dane dostępowe wolontariusza poprzez E-Mail  
-* Zamknięcie listy kandydatów w panelu administracyjnym
-* Lista komisji wolontariusza
-* Zarządzanie listą komisji obwodowych wolontariusza
-* Upload liczb wyborczych
+
 
 
 ### Wersja 0.5.0
@@ -133,7 +135,8 @@ Integracja docker'a. Import z plików CSV.
 * Import CSV dla komisji obwodowych
 
 ### Wersja 0.6.0
-Nowe funkcje TBD.
+Zabezpieczenie masek administracyjnych.
+* [PRE-24](https://otwartapw.atlassian.net/browse/PRE-24) Zabezpieczenie masek administracyjnych
 * [PRE-4](https://otwartapw.atlassian.net/browse/PRE-4) TBD Koncepcja monitoringu serwisów
 * Definicja szablonu SMS
 * Podbieranie protokołów przesłanych na skrzynke pocztową
