@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
-    <modelVersion>4.0.0</modelVersion>
-    
-    <parent>
-        <groupId>pl.otwartapw.opw-pre</groupId>
-        <artifactId>opw-pre-inbound</artifactId>
-        <version>0.4.0-SNAPSHOT</version>
-    </parent>
-    
-    <artifactId>opw-pre-inbound-ws-api</artifactId>    
-    
-    <packaging>jar</packaging>    
-    
-    <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>            
-        </dependency>
-    </dependencies>
-    
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>pl.otwartapw.opw-pre</groupId>
+    <artifactId>opw-pre-inbound</artifactId>
+    <version>0.4.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>opw-pre-inbound-ws-api</artifactId>
+  <packaging>jar</packaging>
+
+  <dependencies>
+    <!-- OPW -->
+    <dependency>
+      <groupId>pl.otwartapw.opw-pre</groupId>
+      <artifactId>opw-pre-commons</artifactId>
+    </dependency>
+
+    <!-- external -->
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-web-api</artifactId>
+    </dependency>
+  </dependencies>
+
 </project>

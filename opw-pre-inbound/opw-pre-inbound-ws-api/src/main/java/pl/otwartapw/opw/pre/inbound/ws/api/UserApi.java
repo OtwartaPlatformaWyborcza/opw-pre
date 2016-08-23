@@ -23,34 +23,87 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws.api;
 
+import java.util.List;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
-import javax.ws.rs.core.Response;
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.LoginDto;
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaShortDto;
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.UserDto;
 
 /**
+ * REST API definition for OPW-PRE user.
  *
  * @author Adam Kowalewski
+ * @version 2016.08.23
  */
 @Path("/user")
 public interface UserApi {
 
-    public static final String PP_UID = "userId";
+  public static final String PP_USER_ID = "userId";
+  public static final String PP_PKW_ID = "pkwId";
 
-    @GET
-    @Path("/")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getUserList();
+  /**
+   * Returns a list of all Komisja Obwodowa attached to given user.
+   *
+   * @param userId unique ID of user.
+   * @return if successful all Komisja Obwodowa attached to user, otherwise proper HTTP status code.
+   */
+  @GET
+  @Path("/{" + PP_USER_ID + "}/obwodowa")
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  List<ObwodowaShortDto> loadObwodowaShortList(@NotNull @PathParam(PP_USER_ID) int userId);
 
-    @GET
-    @Path("/{" + PP_UID + "}")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getUser(@NotNull @PathParam(PP_UID) String userId);
+  /**
+   * Adds a given Komisja Obwodowa to users list.
+   *
+   * @param userId unique ID of user.
+   * @param pkwId unique ID of Komisja Obwodowa.
+   */
+  @PUT
+  @Path("/{" + PP_USER_ID + "}/obwodowa/{" + PP_PKW_ID + "}")
+  void putObwodowa(
+          @NotNull @PathParam(PP_USER_ID) int userId,
+          @NotNull @PathParam(PP_PKW_ID) String pkwId);
+
+  /**
+   * Deletes given Komisja Obwodowa from users list.
+   *
+   * @param userId unique ID of user.
+   * @param pkwId unique ID of Komisja Obwodowa.
+   */
+  @DELETE
+  @Path("/{" + PP_USER_ID + "}/obwodowa/{" + PP_PKW_ID + "}")
+  void deleteObwodowa(
+          @NotNull @PathParam(PP_USER_ID) int userId,
+          @NotNull @PathParam(PP_PKW_ID) String pkwId);
+
+  /**
+   * Authenticates user against OPW.
+   *
+   * @param login credentials.
+   * @return if successful instance of user, otherwise proper HTTP status code.
+   */
+  @POST
+  @Path("/login")
+  @Consumes({APPLICATION_JSON, APPLICATION_XML})
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  UserDto login(@NotNull @Valid LoginDto login);
+
+  /**
+   * Ends user session.
+   */
+  @GET
+  @Path("/logout")
+  void logout();
 
 }
