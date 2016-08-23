@@ -25,7 +25,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-    
+
   <scm>
     <connection>scm:git:git@github.com:OtwartaPlatformaWyborcza/opw-pre.git</connection>
     <url>scm:git:git@github.com:OtwartaPlatformaWyborcza/opw-pre.git</url>
@@ -52,7 +52,7 @@
       <email />
     </developer>
   </developers>
-    
+
   <modules>
     <module>opw-pre-base</module>
     <module>opw-pre-commons</module>
@@ -60,11 +60,12 @@
     <module>opw-pre-outbound</module>
     <module>opw-pre-management</module>
     <module>opw-pre-register</module>
+    <module>opw-pre-server</module>
   </modules>
-    
+
   <dependencyManagement>
     <dependencies>
-      
+
       <!-- OPW -->
       <dependency>
         <groupId>${project.groupId}</groupId>
@@ -124,7 +125,7 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      
+
       <dependency>
         <groupId>javax</groupId>
         <artifactId>javaee-web-api</artifactId>
@@ -147,7 +148,7 @@
         <version>${version.slf4j}</version>
         <scope>provided</scope>
       </dependency>
-      
+
       <!-- test -->
       <dependency>
         <groupId>junit</groupId>
@@ -167,10 +168,10 @@
         <version>1.9.5</version>
         <scope>test</scope>
       </dependency>
-            
+
     </dependencies>
   </dependencyManagement>
-    
+
   <build>
     <pluginManagement>
       <plugins>
@@ -241,6 +242,11 @@
               </configuration>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.1</version>
         </plugin>
         <plugin>
           <groupId>org.wildfly.plugins</groupId>
