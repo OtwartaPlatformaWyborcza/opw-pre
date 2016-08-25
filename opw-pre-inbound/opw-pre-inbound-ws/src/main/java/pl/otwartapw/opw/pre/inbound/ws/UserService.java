@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Otwarta Platforma Wyborcza.
+ * Copyright 2016 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,19 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import java.io.Serializable;
+import javax.ejb.Stateless;
 
 /**
- * REST activation.
  *
  * @author Adam Kowalewski
- * @version 2015.10.16
  */
-@ApplicationPath("/service")
-public class OutboundWsApplication extends Application {
+@Stateless
+public class UserService implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+  public UserService() {
+  }
 
 }

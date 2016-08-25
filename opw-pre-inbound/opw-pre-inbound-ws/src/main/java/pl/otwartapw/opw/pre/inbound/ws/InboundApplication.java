@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2016 Otwarta Platforma Wyborcza.
+ * Copyright 2015 Otwarta Platforma Wyborcza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,58 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package pl.otwartapw.opw.pre.inbound.ws.api.dto;
+package pl.otwartapw.opw.pre.inbound.ws;
 
-import java.io.Serializable;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
 /**
- * DTO represents login credentials.
+ * REST activation.
  *
  * @author Adam Kowalewski
- * @version 2016.08.24
+ * @version 2015.10.16
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
-public class LoginDto implements Serializable {
-
-  private static final long serialVersionUID = 1L;
-
-  @NotNull
-  private String login;
-  @NotNull
-  private String password;
-
-  public LoginDto() {
-  }
-
-  public LoginDto(String login, String password) {
-    this.login = login;
-    this.password = password;
-  }
-
-  public String getLogin() {
-    return login;
-  }
-
-  public void setLogin(String login) {
-    this.login = login;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  @Override
-  public String toString() {
-    return "LoginDto{" + "login=" + login + ", password=" + password + '}';
-  }
+@ApplicationPath("/service")
+public class InboundApplication extends Application {
 
 }

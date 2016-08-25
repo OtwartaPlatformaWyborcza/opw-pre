@@ -100,10 +100,13 @@ public interface UserApi {
   UserDto login(@NotNull @Valid LoginDto login);
 
   /**
-   * Ends user session.
+   * Invalidates user session.
+   *
+   * @param userId unique ID of user.
    */
   @GET
-  @Path("/logout")
-  void logout();
+  @Path("/{" + PP_USER_ID + "}/logout")
+  @Consumes({APPLICATION_JSON, APPLICATION_XML})
+  void logout(@NotNull @PathParam(PP_USER_ID) int userId);
 
 }
