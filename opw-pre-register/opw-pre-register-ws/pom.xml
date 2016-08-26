@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -8,15 +8,14 @@
     <artifactId>opw-pre-register</artifactId>
     <version>0.4.0-SNAPSHOT</version>
   </parent>
-    
+
   <artifactId>opw-pre-register-ws</artifactId>
   <version>0.4.0-SNAPSHOT</version>
-    
-  <packaging>war</packaging>    
-   
+  <packaging>war</packaging>
+
   <dependencies>
-    
-    <!-- OPW --> 
+
+    <!-- OPW -->
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>opw-pre-commons</artifactId>
@@ -25,7 +24,7 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>opw-pre-register-ws-api</artifactId>
     </dependency>
-      
+
     <!-- external -->
     <dependency>
       <groupId>javax</groupId>
@@ -39,7 +38,7 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
     </dependency>
-    
+
     <!-- test -->
     <dependency>
       <groupId>junit</groupId>
@@ -55,17 +54,25 @@
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
       <scope>test</scope>
-    </dependency>      
-        
+    </dependency>
+
   </dependencies>
 
   <build>
-    <plugins>            
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+      </plugin>
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
         <artifactId>wildfly-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
-    
+
 </project>
