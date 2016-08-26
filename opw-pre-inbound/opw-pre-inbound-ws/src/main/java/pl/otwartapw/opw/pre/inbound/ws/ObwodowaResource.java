@@ -23,50 +23,50 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws;
 
+import java.util.List;
 import javax.ejb.EJB;
-import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.inbound.ws.api.ObwodowaApi;
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaDto;
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaShortDto;
 import pl.otwartapw.opw.pre.inbound.ws.api.dto.ProtokolDto;
 
 /**
- * Komisja Obwodowa REST resource implementation. 
+ * Komisja Obwodowa REST resource implementation.
  *
  * @author Adam Kowalewski
  */
-public class ObwodowaResource implements ObwodowaApi{
-    
-    private static final Logger log = LoggerFactory.getLogger(ObwodowaResource.class);
-    
-    @EJB
-    ObwodowaService service;
+public class ObwodowaResource implements ObwodowaApi {
 
-    @Override
-    public Response getObwodowaList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  private static final Logger log = LoggerFactory.getLogger(ObwodowaResource.class);
 
-    @Override
-    public Response getObwodowaShortList() {
-        log.info("getObwodowaShortList");
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  @EJB
+  ObwodowaService service;
 
-    @Override
-    public Response getObwodowa(String pkwId) {
-        log.info("getObwodowa {}", pkwId);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  @Override
+  public List<ObwodowaDto> getObwodowaList() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
 
-    @Override
-    public Response getObwodowaProtokolList(String pkwId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  @Override
+  public List<ObwodowaShortDto> getObwodowaShortList() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
 
-    @Override
-    public Response postObwodowaProtokol(String pkwId, ProtokolDto protokolDto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+  @Override
+  public ObwodowaDto getObwodowa(String pkwId) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public List<ProtokolDto> getObwodowaProtokolList(String pkwId) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public ProtokolDto postObwodowaProtokol(String pkwId, ProtokolDto protokolDto) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
 }

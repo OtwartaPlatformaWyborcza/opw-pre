@@ -46,9 +46,10 @@ import pl.otwartapw.opw.pre.inbound.ws.api.dto.UserDto;
  * @author Adam Kowalewski
  * @version 2016.08.23
  */
-@Path("/user")
+@Path(UserApi.SERVICE_PATH)
 public interface UserApi {
 
+  public static final String SERVICE_PATH = "/user";
   public static final String PP_USER_ID = "userId";
   public static final String PP_PKW_ID = "pkwId";
 

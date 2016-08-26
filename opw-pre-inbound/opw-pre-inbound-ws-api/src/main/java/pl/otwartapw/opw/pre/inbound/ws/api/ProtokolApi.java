@@ -42,9 +42,10 @@ import static javax.ws.rs.core.MediaType.APPLICATION_XML;
  *
  * @author Adam Kowalewski
  */
-@Path("/protokol")
+@Path(ProtokolApi.SERVICE_PATH)
 public interface ProtokolApi {
 
+  public static final String SERVICE_PATH = "/protokol";
   public static final String PP_PID = "protokolId";
 
   @GET

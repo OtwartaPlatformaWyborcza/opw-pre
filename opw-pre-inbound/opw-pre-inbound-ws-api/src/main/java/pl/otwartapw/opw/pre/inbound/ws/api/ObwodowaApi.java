@@ -23,6 +23,7 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws.api;
 
+import java.util.List;
 import pl.otwartapw.opw.pre.inbound.ws.api.dto.ProtokolDto;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -34,44 +35,46 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
-import javax.ws.rs.core.Response;
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaDto;
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaShortDto;
 
 /**
  * API definition for Komisja Obwodowa resource.
  *
  * @author Adam Kowalewski
  */
-@Path("/obwodowa")
+@Path(ObwodowaApi.SERVICE_PATH)
 public interface ObwodowaApi {
 
-    public static final String PP_PKWID = "pkwId";
+  public static final String SERVICE_PATH = "/obwodowa";
+  public static final String PP_PKWID = "pkwId";
 
-    @GET
-    @Path("/")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getObwodowaList();
-    
-    @GET
-    @Path("/short")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getObwodowaShortList();
+  @GET
+  @Path("/")
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  List<ObwodowaDto> getObwodowaList();
 
-    @GET
-    @Path("/{" + PP_PKWID + "}")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getObwodowa(@NotNull @PathParam(PP_PKWID) String pkwId);
+  @GET
+  @Path("/short")
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  List<ObwodowaShortDto> getObwodowaShortList();
 
-    @GET
-    @Path("/{" + PP_PKWID + "}/protokol")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getObwodowaProtokolList(@NotNull @PathParam(PP_PKWID) String pkwId);
+  @GET
+  @Path("/{" + PP_PKWID + "}")
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  ObwodowaDto getObwodowa(@NotNull @PathParam(PP_PKWID) String pkwId);
 
-    @POST
-    @Path("/{" + PP_PKWID + "}/protokol")
-    @Consumes({APPLICATION_JSON, APPLICATION_XML})
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response postObwodowaProtokol(
-            @NotNull @PathParam(PP_PKWID) String pkwId,
-            @NotNull @Valid ProtokolDto protokolDto);
+  @GET
+  @Path("/{" + PP_PKWID + "}/protokol")
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  List<ProtokolDto> getObwodowaProtokolList(@NotNull @PathParam(PP_PKWID) String pkwId);
+
+  @POST
+  @Path("/{" + PP_PKWID + "}/protokol")
+  @Consumes({APPLICATION_JSON, APPLICATION_XML})
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  ProtokolDto postObwodowaProtokol(
+          @NotNull @PathParam(PP_PKWID) String pkwId,
+          @NotNull @Valid ProtokolDto protokolDto);
 
 }
