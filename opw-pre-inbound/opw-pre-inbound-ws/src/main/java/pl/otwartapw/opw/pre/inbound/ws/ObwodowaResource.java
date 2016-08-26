@@ -37,7 +37,7 @@ import pl.otwartapw.opw.pre.inbound.ws.api.dto.ProtokolDto;
  */
 public class ObwodowaResource implements ObwodowaApi{
     
-    private static final Logger logger = LoggerFactory.getLogger(ObwodowaResource.class);
+    private static final Logger log = LoggerFactory.getLogger(ObwodowaResource.class);
     
     @EJB
     ObwodowaService service;
@@ -49,13 +49,13 @@ public class ObwodowaResource implements ObwodowaApi{
 
     @Override
     public Response getObwodowaShortList() {
-        logger.info("getObwodowaShortList");
+        log.info("getObwodowaShortList");
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Response getObwodowa(String pkwId) {
-        logger.info("getObwodowa {}", pkwId);
+        log.info("getObwodowa {}", pkwId);
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

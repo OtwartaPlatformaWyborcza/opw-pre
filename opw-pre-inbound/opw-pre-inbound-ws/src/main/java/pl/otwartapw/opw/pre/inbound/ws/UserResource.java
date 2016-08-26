@@ -40,38 +40,38 @@ import pl.otwartapw.opw.pre.inbound.ws.api.dto.UserDto;
 public class UserResource implements UserApi, Serializable {
 
   private static final long serialVersionUID = 1L;
-  private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  private final Logger log = LoggerFactory.getLogger(this.getClass());
 
   @EJB
   private UserService userService;
 
   @Override
   public List<ObwodowaShortDto> loadObwodowaShortList(int userId) {
-    logger.info("Load list of Komisja Obwodowa for user {}", userId);
+    log.info("Load list of Komisja Obwodowa for user {}", userId);
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
   @Override
   public void putObwodowa(int userId, String pkwId) {
-    logger.info("Add Komisja Obwodowa {} to user {} list.", pkwId, userId);
+    log.info("Add Komisja Obwodowa {} to user {} list.", pkwId, userId);
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
   @Override
   public void deleteObwodowa(int userId, String pkwId) {
-    logger.info("Remove Komisja Obwodowa {} from user {} list.", pkwId, userId);
+    log.info("Remove Komisja Obwodowa {} from user {} list.", pkwId, userId);
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
   @Override
   public UserDto login(LoginDto login) {
-    logger.info("Login {}", login.getLogin());
+    log.info("Login {}", login.getLogin());
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
   @Override
   public void logout(int userId) {
-    logger.info("Logout user {}", userId);
+    log.info("Logout user {}", userId);
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 

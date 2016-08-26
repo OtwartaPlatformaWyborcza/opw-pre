@@ -37,7 +37,7 @@ import pl.otwartapw.opw.pre.inbound.ws.api.dto.ProtokolDto;
 public class ProtokolResource implements ProtokolApi, Serializable {
 
   private static final long serialVersionUID = 1L;
-  private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  private final Logger log = LoggerFactory.getLogger(this.getClass());
 
   @Override
   public List<ProtokolDto> getProtokolList() {
