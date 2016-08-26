@@ -25,54 +25,39 @@ package pl.otwartapw.opw.pre.inbound.ws;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.inbound.ws.api.UserApi;
-import pl.otwartapw.opw.pre.inbound.ws.api.dto.LoginDto;
-import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaShortDto;
-import pl.otwartapw.opw.pre.inbound.ws.api.dto.UserDto;
+import pl.otwartapw.opw.pre.inbound.ws.api.ProtokolApi;
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.ProtokolDto;
 
 /**
  *
  * @author Adam Kowalewski
  */
-public class UserResource implements UserApi, Serializable {
+public class ProtokolResource implements ProtokolApi, Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-  @EJB
-  private UserService userService;
-
   @Override
-  public List<ObwodowaShortDto> loadObwodowaShortList(int userId) {
-    logger.info("Load list of Komisja Obwodowa for user {}", userId);
+  public List<ProtokolDto> getProtokolList() {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
   @Override
-  public void putObwodowa(int userId, String pkwId) {
-    logger.info("Add Komisja Obwodowa {} to user {} list.", pkwId, userId);
+  public ProtokolDto postProtokol(ProtokolDto dto) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
   @Override
-  public void deleteObwodowa(int userId, String pkwId) {
-    logger.info("Remove Komisja Obwodowa {} from user {} list.", pkwId, userId);
+  public ProtokolDto getProtokol(String protokolId) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
   @Override
-  public UserDto login(LoginDto login) {
-    logger.info("Login {}", login.getLogin());
+  public ProtokolDto putProtokol(String protokolId, ProtokolDto dto) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
-  @Override
-  public void logout(int userId) {
-    logger.info("Logout user {}", userId);
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
 
 }
