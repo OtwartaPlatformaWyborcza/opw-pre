@@ -41,7 +41,7 @@ import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaShortDto;
 import pl.otwartapw.opw.pre.inbound.ws.api.dto.UserDto;
 
 /**
- * REST API definition for OPW-PRE user.
+ * REST API definition for user resource.
  *
  * @author Adam Kowalewski
  * @version 2016.08.23

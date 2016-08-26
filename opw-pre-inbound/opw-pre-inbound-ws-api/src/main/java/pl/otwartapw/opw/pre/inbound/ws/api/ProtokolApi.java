@@ -23,6 +23,7 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws.api;
 
+import java.util.List;
 import pl.otwartapw.opw.pre.inbound.ws.api.dto.ProtokolDto;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -35,7 +36,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
-import javax.ws.rs.core.Response;
 
 /**
  * API definition for Protokol Komisji Obwodowej resource.
@@ -45,30 +45,30 @@ import javax.ws.rs.core.Response;
 @Path("/protokol")
 public interface ProtokolApi {
 
-    public static final String PP_PID = "protokolId";
+  public static final String PP_PID = "protokolId";
 
-    @GET
-    @Path("/")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getProtokolList();
+  @GET
+  @Path("/")
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  List<ProtokolDto> getProtokolList();
 
-    @POST
-    @Path("/")
-    @Consumes({APPLICATION_JSON, APPLICATION_XML})
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response postProtokol(@NotNull @Valid ProtokolDto dto);
+  @POST
+  @Path("/")
+  @Consumes({APPLICATION_JSON, APPLICATION_XML})
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  ProtokolDto postProtokol(@NotNull @Valid ProtokolDto dto);
 
-    @GET
-    @Path("/{" + PP_PID + "}")
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response getProtokol(@NotNull @Valid @PathParam(PP_PID) String protokolId);
+  @GET
+  @Path("/{" + PP_PID + "}")
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  ProtokolDto getProtokol(@NotNull @PathParam(PP_PID) String protokolId);
 
-    @PUT
-    @Path("/{" + PP_PID + "}")
-    @Consumes({APPLICATION_JSON, APPLICATION_XML})
-    @Produces({APPLICATION_JSON, APPLICATION_XML})
-    public Response putProtokol(
-            @NotNull @Valid @PathParam(PP_PID) String protokolId,
-            @NotNull @Valid ProtokolDto dto);
+  @PUT
+  @Path("/{" + PP_PID + "}")
+  @Consumes({APPLICATION_JSON, APPLICATION_XML})
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  ProtokolDto putProtokol(
+          @NotNull @PathParam(PP_PID) String protokolId,
+          @NotNull @Valid ProtokolDto dto);
 
 }
