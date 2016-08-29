@@ -105,22 +105,21 @@ Plan realizacji systemu OPW-PRE.
 ### Wersja 0.4.0
 Integracja komisji obwodowej. Integracja standardowego theme [bootstrap](getbootstrap.com).  
 * [x] [PRE-30](https://otwartapw.atlassian.net/browse/PRE-30) Migracja WildFly 10.0.0.Final
+* [x] [PRE-36](https://otwartapw.atlassian.net/browse/PRE-36) Serwer WildFly jako Maven module projektu
+* [x] [PRE-25](https://otwartapw.atlassian.net/browse/PRE-25) Definicja API serwisu REST dla komisji obwodowej
 * [ ] [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
-* [ ] [PRE-25](https://otwartapw.atlassian.net/browse/PRE-25) Definicja API serwisu REST dla komisji obwodowej
 * [ ] [PRE-26](https://otwartapw.atlassian.net/browse/PRE-26) Implementacja serwisu REST dla komisji obwodowej
 * [ ] [PRE-27](https://otwartapw.atlassian.net/browse/PRE-27) Generator danych dla komisji obwodowej  
 * [ ] [PRE-18](https://otwartapw.atlassian.net/browse/PRE-18) Integracja bootstrap w panelu administracyjnym
 * [ ] [PRE-28](https://otwartapw.atlassian.net/browse/PRE-28) Reset hasła wolontariusza
 * [ ]  [PRE-34](https://otwartapw.atlassian.net/browse/PRE-34) Aktywacja i deaktywacja konta wolontariusza w panelu administracyjnym
 * [ ]  [PRE-35](https://otwartapw.atlassian.net/browse/PRE-35) Zamknięcie listy kandydatów w panelu administracyjnym
-* Lista komisji wolontariusza w panelu administracyjnym
-* Zarządzanie listą komisji obwodowych wolontariusza w panelu administracyjnym
-* Upload liczb wyborczych w panelu administracyjnym
-* [ ]  Aktywacja konta wolontariusza poprzez link
-
-
-* Samodzielny reset hasła
-* Dane dostępowe wolontariusza poprzez E-Mail  
+* [ ]  [PRE-35](https://otwartapw.atlassian.net/browse/PRE-35)Lista komisji wolontariusza w panelu administracyjnym
+* [ ]  [PRE-35](https://otwartapw.atlassian.net/browse/PRE-35)Zarządzanie listą komisji obwodowych wolontariusza w panelu administracyjnym
+* [ ]  [PRE-35](https://otwartapw.atlassian.net/browse/PRE-35)Upload liczb wyborczych w panelu administracyjnym
+* [ ]  [PRE-35](https://otwartapw.atlassian.net/browse/PRE-35)Aktywacja konta wolontariusza poprzez link
+* [ ]  [PRE-35](https://otwartapw.atlassian.net/browse/PRE-35)Samodzielny reset hasła
+* [ ]  [PRE-35](https://otwartapw.atlassian.net/browse/PRE-35)Dane dostępowe wolontariusza poprzez E-Mail  
 
 
 
