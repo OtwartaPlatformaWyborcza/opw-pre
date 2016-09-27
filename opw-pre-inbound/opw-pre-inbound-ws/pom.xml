@@ -20,8 +20,13 @@
     <!-- OPW -->
     <dependency>
       <groupId>pl.otwartapw.opw-pre</groupId>
+      <artifactId>opw-pre-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>pl.otwartapw.opw-pre</groupId>
       <artifactId>opw-pre-inbound-ws-api</artifactId>
     </dependency>
+
 
     <!-- external -->
     <dependency>
@@ -31,6 +36,10 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
     </dependency>
 
     <!-- test -->
@@ -71,5 +80,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

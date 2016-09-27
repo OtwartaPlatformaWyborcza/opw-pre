@@ -23,6 +23,7 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import org.slf4j.Logger;
@@ -37,15 +38,17 @@ import pl.otwartapw.opw.pre.inbound.ws.api.dto.ProtokolDto;
  *
  * @author Adam Kowalewski
  */
-public class ObwodowaResource implements ObwodowaApi {
+public class ObwodowaResource implements Serializable, ObwodowaApi {
 
-  private static final Logger log = LoggerFactory.getLogger(ObwodowaResource.class);
+  private static final long serialVersionUID = 1L;
+  private final Logger log = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  ObwodowaService service;
+  private ObwodowaService service;
 
   @Override
   public List<ObwodowaDto> getObwodowaList() {
+    log.info("getObwodowaList");
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 

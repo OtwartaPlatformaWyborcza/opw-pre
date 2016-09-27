@@ -24,61 +24,38 @@
 package pl.otwartapw.opw.pre.inbound.ws;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.inbound.ws.api.UserApi;
-import pl.otwartapw.opw.pre.inbound.ws.api.dto.LoginDto;
-import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaShortDto;
-import pl.otwartapw.opw.pre.inbound.ws.api.dto.UserDto;
+import pl.otwartapw.opw.pre.inbound.ws.facade.UserFacade;
 
 /**
  *
  * @author Adam Kowalewski
  */
 @Stateless
-public class UserResource implements UserApi, Serializable {
+public class SecurityService implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger log = LoggerFactory.getLogger(this.getClass());
 
   @EJB
-  private UserService userService;
+  private UserFacade userFacade;
 
-  public UserResource() {
-    log.debug("UserResource");
+  public SecurityService() {
   }
 
-  @Override
-  public List<ObwodowaShortDto> loadObwodowaShortList(int userId) {
-    log.info("Load list of Komisja Obwodowa for user {}", userId);
-    return userService.getObwodowaList(userId);
+  public void login() {
+
   }
 
-  @Override
-  public List<ObwodowaShortDto> putObwodowa(int userId, String pkwId) {
-    log.info("Add Komisja Obwodowa {} to user {} list.", pkwId, userId);
-    return userService.addObwodowa(userId, pkwId);
+  public void logout() {
+
   }
 
-  @Override
-  public List<ObwodowaShortDto> deleteObwodowa(int userId, String pkwId) {
-    log.info("Remove Komisja Obwodowa {} from user {} list.", pkwId, userId);
-    return userService.deleteObwodowa(userId, pkwId);
-  }
-
-  @Override
-  public UserDto login(LoginDto login) {
-    log.info("Login {}", login.getLogin());
-    return userService.login(login.getLogin(), login.getPassword());
-  }
-
-  @Override
-  public void logout(int userId) {
-    log.info("Logout user {}", userId);
-    userService.logout(userId);
+  public boolean validateSession() {
+    return false;
   }
 
 }

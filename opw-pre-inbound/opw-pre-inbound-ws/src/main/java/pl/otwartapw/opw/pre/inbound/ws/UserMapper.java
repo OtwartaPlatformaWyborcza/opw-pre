@@ -23,62 +23,46 @@
  */
 package pl.otwartapw.opw.pre.inbound.ws;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.inbound.ws.api.UserApi;
-import pl.otwartapw.opw.pre.inbound.ws.api.dto.LoginDto;
-import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaShortDto;
+import pl.otwartapw.opw.pre.entity.OpwGroup;
+import pl.otwartapw.opw.pre.entity.OpwUser;
 import pl.otwartapw.opw.pre.inbound.ws.api.dto.UserDto;
 
 /**
  *
  * @author Adam Kowalewski
  */
-@Stateless
-public class UserResource implements UserApi, Serializable {
+public class UserMapper {
 
-  private static final long serialVersionUID = 1L;
   private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-  @EJB
-  private UserService userService;
-
-  public UserResource() {
-    log.debug("UserResource");
+  public UserMapper() {
+    log.debug("UserConverter");
   }
 
-  @Override
-  public List<ObwodowaShortDto> loadObwodowaShortList(int userId) {
-    log.info("Load list of Komisja Obwodowa for user {}", userId);
-    return userService.getObwodowaList(userId);
+  public UserDto from(OpwUser user) {
+    log.trace("from {}", user);
+    UserDto result = new UserDto();
+    result.setId(user.getId());
+    result.setFirstname(user.getFirstname());
+    result.setLastname(user.getLastname());
+    result.setEmail(user.getEmail());
+    result.setGroupList(extractList(user.getOpwGroupList()));
+    return result;
   }
 
-  @Override
-  public List<ObwodowaShortDto> putObwodowa(int userId, String pkwId) {
-    log.info("Add Komisja Obwodowa {} to user {} list.", pkwId, userId);
-    return userService.addObwodowa(userId, pkwId);
-  }
+  private List<String> extractList(List<OpwGroup> groupList) {
+    log.trace("extractList {}", groupList);
+    List<String> result = new ArrayList<>();
 
-  @Override
-  public List<ObwodowaShortDto> deleteObwodowa(int userId, String pkwId) {
-    log.info("Remove Komisja Obwodowa {} from user {} list.", pkwId, userId);
-    return userService.deleteObwodowa(userId, pkwId);
-  }
+    for (OpwGroup group : groupList) {
+      result.add(group.getName());
+    }
 
-  @Override
-  public UserDto login(LoginDto login) {
-    log.info("Login {}", login.getLogin());
-    return userService.login(login.getLogin(), login.getPassword());
-  }
-
-  @Override
-  public void logout(int userId) {
-    log.info("Logout user {}", userId);
-    userService.logout(userId);
+    return result;
   }
 
 }

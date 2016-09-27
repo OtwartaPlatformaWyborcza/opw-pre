@@ -24,7 +24,18 @@
 package pl.otwartapw.opw.pre.inbound.ws;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.otwartapw.opw.pre.entity.OpwObwodowa;
+import pl.otwartapw.opw.pre.entity.OpwUser;
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaShortDto;
+import pl.otwartapw.opw.pre.inbound.ws.api.dto.UserDto;
+import pl.otwartapw.opw.pre.inbound.ws.facade.ObwodowaFacade;
+import pl.otwartapw.opw.pre.inbound.ws.facade.UserFacade;
 
 /**
  *
@@ -34,8 +45,68 @@ import javax.ejb.Stateless;
 public class UserService implements Serializable {
 
   private static final long serialVersionUID = 1L;
+  private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+  private final UserMapper userMapper = new UserMapper();
+  private final ObwodowaMapper obwodowaMapper = new ObwodowaMapper();
+
+  @EJB
+  private UserFacade userFacade;
+
+  @EJB
+  private ObwodowaFacade obwodowaFacade;
+
+  @EJB
+  private SecurityService securityService;
 
   public UserService() {
+    log.debug("UserService");
+  }
+
+  public UserDto login(String login, String password) {
+    log.trace("login {}", login);
+    return userMapper.from(userFacade.find(login));
+  }
+
+  public void logout(int userId){
+    log.trace("logout {}", userId);
+  }
+
+  public List<ObwodowaShortDto> deleteObwodowa(int userId, String pkwId) {
+    log.trace("deleteObwodowa {} {}", userId, pkwId);
+
+    OpwUser user = userFacade.find(userId);
+    OpwObwodowa obwodowa = obwodowaFacade.find(pkwId);
+
+    user.getOpwObwodowaList().remove(obwodowa);
+    obwodowa.getOpwUserList().remove(user);
+    userFacade.edit(user);
+    obwodowaFacade.edit(obwodowa);
+    return getObwodowaList(userId);
+  }
+
+  public List<ObwodowaShortDto> addObwodowa(int userId, String pkwId) {
+    log.trace("addObwodowa {} {}", userId, pkwId);
+    OpwUser user = userFacade.find(userId);
+    OpwObwodowa obwodowa = obwodowaFacade.find(pkwId);
+
+    user.getOpwObwodowaList().add(obwodowa);
+    obwodowa.getOpwUserList().add(user);
+    userFacade.edit(user);
+    obwodowaFacade.edit(obwodowa);
+    return getObwodowaList(userId);
+  }
+
+  public List<ObwodowaShortDto> getObwodowaList(int userId) {
+    log.trace("getObwodowaList {}", userId);
+    List<ObwodowaShortDto> obwodowaShortList = new ArrayList<>();
+    List<OpwObwodowa> obwodowaList = userFacade.find(userId).getOpwObwodowaList();
+
+    for (OpwObwodowa opwObwodowa : obwodowaList) {
+      obwodowaShortList.add(obwodowaMapper.from(opwObwodowa));
+    }
+
+    return obwodowaShortList;
   }
 
 }

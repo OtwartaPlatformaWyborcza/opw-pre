@@ -69,10 +69,12 @@ public interface UserApi {
    *
    * @param userId unique ID of user.
    * @param pkwId unique ID of Komisja Obwodowa.
+   * @return updated list of all Komisja Obwodowa attached to given user.
    */
   @PUT
   @Path("/{" + PP_USER_ID + "}/obwodowa/{" + PP_PKW_ID + "}")
-  void putObwodowa(
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  List<ObwodowaShortDto> putObwodowa(
           @NotNull @PathParam(PP_USER_ID) int userId,
           @NotNull @PathParam(PP_PKW_ID) String pkwId);
 
@@ -81,10 +83,12 @@ public interface UserApi {
    *
    * @param userId unique ID of user.
    * @param pkwId unique ID of Komisja Obwodowa.
+   * @return updated list of all Komisja Obwodowa attached to given user.
    */
   @DELETE
   @Path("/{" + PP_USER_ID + "}/obwodowa/{" + PP_PKW_ID + "}")
-  void deleteObwodowa(
+  @Produces({APPLICATION_JSON, APPLICATION_XML})
+  List<ObwodowaShortDto> deleteObwodowa(
           @NotNull @PathParam(PP_USER_ID) int userId,
           @NotNull @PathParam(PP_PKW_ID) String pkwId);
 
