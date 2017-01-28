@@ -107,6 +107,7 @@ Integracja komisji obwodowej. Integracja standardowego theme [bootstrap](getboot
 * [x] [PRE-30](https://otwartapw.atlassian.net/browse/PRE-30) Migracja WildFly 10.0.0.Final
 * [x] [PRE-36](https://otwartapw.atlassian.net/browse/PRE-36) Serwer WildFly jako Maven module projektu
 * [x] [PRE-25](https://otwartapw.atlassian.net/browse/PRE-25) Definicja API serwisu REST dla komisji obwodowej
+* [x] [PRE-38](https://otwartapw.atlassian.net/browse/PRE-38) Monitoring serwera CI
 * [ ] [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
 * [ ] [PRE-26](https://otwartapw.atlassian.net/browse/PRE-26) Implementacja serwisu REST dla komisji obwodowej
 * [ ] [PRE-27](https://otwartapw.atlassian.net/browse/PRE-27) Generator danych dla komisji obwodowej  
