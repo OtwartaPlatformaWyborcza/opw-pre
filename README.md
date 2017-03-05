@@ -6,6 +6,7 @@
 
 # OPW-PRE
 Wybory prezydenckie
+[![Jenkins](http://91.250.114.134/ci-jenkins/buildStatus/icon?job=opw-pre)](http://91.250.114.134/ci-jenkins/job/opw-pre/)
 
 # Linki
 
