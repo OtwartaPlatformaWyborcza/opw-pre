@@ -6,13 +6,14 @@
 
 # OPW-PRE
 Wybory prezydenckie
-[![Jenkins](http://91.250.114.134/ci-jenkins/buildStatus/icon?job=opw-pre)](http://91.250.114.134/ci-jenkins/job/opw-pre/)
+
 
 # Linki
 
 | Środowisko | Element  | Link  |
 | -------------| ------------- | ------------- |
 | - | JIRA | https://otwartapw.atlassian.net/  |
+| - | Jenkins | [![Jenkins](http://dev.otwartapw.pl/ci-jenkins/buildStatus/icon?job=opw-pre)](http://dev.otwartapw.pl/ci-jenkins/job/opw-pre/)  |
 | DEV | Maski administracyjne | http://dev.otwartapw.pl/mgmt/  |
 | DEV | Serwis inbound | http://dev.otwartapw.pl/inbound |
 | DEV | Serwis outbound | http://dev.otwartapw.pl/outbound |
@@ -109,6 +110,7 @@ Integracja komisji obwodowej. Integracja standardowego theme [bootstrap](getboot
 * [x] [PRE-36](https://otwartapw.atlassian.net/browse/PRE-36) Serwer WildFly jako Maven module projektu
 * [x] [PRE-25](https://otwartapw.atlassian.net/browse/PRE-25) Definicja API serwisu REST dla komisji obwodowej
 * [x] [PRE-38](https://otwartapw.atlassian.net/browse/PRE-38) Monitoring serwera CI
+* [x] [PRE-37](https://otwartapw.atlassian.net/browse/PRE-37) Migracja Jenkins LTS
 * [ ] [PRE-19](https://otwartapw.atlassian.net/browse/PRE-19) Środowisko DEV i TEST
 * [ ] [PRE-26](https://otwartapw.atlassian.net/browse/PRE-26) Implementacja serwisu REST dla komisji obwodowej
 * [ ] [PRE-27](https://otwartapw.atlassian.net/browse/PRE-27) Generator danych dla komisji obwodowej  
