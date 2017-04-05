@@ -24,38 +24,75 @@
 package pl.otwartapw.opw.pre.inbound.ws;
 
 import java.io.Serializable;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.otwartapw.opw.pre.inbound.ws.facade.UserFacade;
+import pl.otwartapw.opw.pre.commons.UserHelper;
+import pl.otwartapw.opw.pre.entity.OpwUser;
 
-/**
- *
- * @author Adam Kowalewski
- */
-@Stateless
 public class SecurityService implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-  @EJB
-  private UserFacade userFacade;
+  private UserHelper userHelper = new UserHelper();
 
   public SecurityService() {
   }
 
-  public void login() {
+  public boolean verifyCredentials(OpwUser user, String password) {
+    log.trace("verifyCredentials {}", user.getEmail());
+
+    String pwd = encryptPassword(user.getSalt(), password, Configuration.APP_SALT);
+
+    if (pwd.equals(user.getPassword()) && user.getActive()) {
+      return true;
+    }
+
+    return false;
 
   }
 
-  public void logout() {
+  public String encryptPassword(String userSalt, String userPassword, String applicationSalt) {
+    log.trace("encryptPassword {} {} {}", userSalt, userPassword, applicationSalt);
+
+//    userHelper.encryptSHA()
+//    user.getSalt()
+    return "";
 
   }
 
   public boolean validateSession() {
     return false;
+  }
+
+  /**
+   * Generates a SHA-256 hash from the given String.
+   *
+   * @param value plain text password to be encrypted.
+   * @return String hashed text.
+   * @author Adam Kowalewski
+   * @version 2015.03.27
+   */
+  public String encryptSHA(String value) {
+    StringBuilder encrypted = new StringBuilder();
+    String algorithm = "SHA-256";
+    byte[] passwordArray = value.getBytes();
+
+    try {
+      MessageDigest md = MessageDigest.getInstance(algorithm);
+      md.reset();
+      md.update(passwordArray);
+      byte[] encryptedArray = md.digest();
+
+      for (int i = 0; i < encryptedArray.length; i++) {
+        encrypted.append(Integer.toHexString(0xFF & encryptedArray[i]));
+      }
+    } catch (NoSuchAlgorithmException ex) {
+      return null;
+    }
+    return encrypted.toString();
   }
 
 }

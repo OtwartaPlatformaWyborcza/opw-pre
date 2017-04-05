@@ -37,10 +37,7 @@ import pl.otwartapw.opw.pre.inbound.ws.api.dto.UserDto;
 import pl.otwartapw.opw.pre.inbound.ws.facade.ObwodowaFacade;
 import pl.otwartapw.opw.pre.inbound.ws.facade.UserFacade;
 
-/**
- *
- * @author Adam Kowalewski
- */
+
 @Stateless
 public class UserService implements Serializable {
 
@@ -49,6 +46,7 @@ public class UserService implements Serializable {
 
   private final UserMapper userMapper = new UserMapper();
   private final ObwodowaMapper obwodowaMapper = new ObwodowaMapper();
+  private final SecurityService securityService = new SecurityService();
 
   @EJB
   private UserFacade userFacade;
@@ -56,16 +54,19 @@ public class UserService implements Serializable {
   @EJB
   private ObwodowaFacade obwodowaFacade;
 
-  @EJB
-  private SecurityService securityService;
-
   public UserService() {
     log.debug("UserService");
   }
 
   public UserDto login(String login, String password) {
     log.trace("login {}", login);
-    return userMapper.from(userFacade.find(login));
+    OpwUser user = userFacade.find(login);
+
+    if (securityService.verifyCredentials(user, password)){
+      return userMapper.from(user);
+    }
+    // TODO
+    return null;
   }
 
   public void logout(int userId){

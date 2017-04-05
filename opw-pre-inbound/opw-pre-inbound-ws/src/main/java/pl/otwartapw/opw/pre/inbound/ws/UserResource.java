@@ -27,6 +27,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
+import javax.ws.rs.NotAuthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.otwartapw.opw.pre.inbound.ws.api.UserApi;
@@ -34,10 +36,6 @@ import pl.otwartapw.opw.pre.inbound.ws.api.dto.LoginDto;
 import pl.otwartapw.opw.pre.inbound.ws.api.dto.ObwodowaShortDto;
 import pl.otwartapw.opw.pre.inbound.ws.api.dto.UserDto;
 
-/**
- *
- * @author Adam Kowalewski
- */
 @Stateless
 public class UserResource implements UserApi, Serializable {
 
@@ -72,8 +70,13 @@ public class UserResource implements UserApi, Serializable {
   @Override
   public UserDto login(LoginDto login) {
     log.info("Login {}", login.getLogin());
+    try {
     return userService.login(login.getLogin(), login.getPassword());
-  }
+    } catch (NoResultException e){
+      throw new NotAuthorizedException("User");
+    }
+
+ }
 
   @Override
   public void logout(int userId) {
