@@ -107,6 +107,7 @@ Plan realizacji systemu OPW-PRE.
 ### Wersja 0.4.0
 Integracja komisji obwodowej. Integracja standardowego theme [bootstrap](getbootstrap.com).  
 * [x] [PRE-30](https://otwartapw.atlassian.net/browse/PRE-30) Migracja WildFly 10.0.0.Final
+* [x] [PRE-39](https://otwartapw.atlassian.net/browse/PRE-39) Migracja WildFly 10.1.0.Final
 * [x] [PRE-36](https://otwartapw.atlassian.net/browse/PRE-36) Serwer WildFly jako Maven module projektu
 * [x] [PRE-25](https://otwartapw.atlassian.net/browse/PRE-25) Definicja API serwisu REST dla komisji obwodowej
 * [x] [PRE-38](https://otwartapw.atlassian.net/browse/PRE-38) Monitoring serwera CI
