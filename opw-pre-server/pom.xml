@@ -27,7 +27,7 @@
                 <artifact>
                   <groupId>org.wildfly</groupId>
                   <artifactId>wildfly-dist</artifactId>
-                  <version>10.0.0.Final</version>
+                  <version>10.1.0.Final</version>
                   <type>zip</type>
                   <outputDirectory>${project.build.directory}/</outputDirectory>
                 </artifact>
@@ -50,7 +50,7 @@
             </goals>
             <configuration>
               <overwrite>true</overwrite>
-              <outputDirectory>${project.build.directory}/wildfly-10.0.0.Final/standalone/configuration</outputDirectory>
+              <outputDirectory>${project.build.directory}/wildfly-10.1.0.Final/standalone/configuration</outputDirectory>
               <resources>
                 <resource>
                   <filtering>false</filtering>
